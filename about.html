@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>このサイトについて | 便利ツール集</title>
+    <meta name="description" content="便利ツール集の運営者情報・サイトの目的・沿革についてご紹介します。日常生活で役立つ計算・早見ツールを無料で提供しています。">
+    <meta name="robots" content="noindex">
+    <link rel="canonical" href="https://hayami-navi.com/about.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --color-primary: #1a6b4a;
+            --color-primary-light: #e8f5ee;
+            --color-accent: #d4a843;
+            --color-bg: #f7f8fa;
+            --color-surface: #ffffff;
+            --color-text: #2c3e50;
+            --color-text-muted: #6b7b8d;
+            --color-border: #e2e6ea;
+            --color-footer-bg: #2c3e50;
+            --color-footer-text: #cfd8dc;
+            --shadow-card: 0 2px 8px rgba(0, 0, 0, .06);
+            --radius: 10px;
+            --max-width: 1080px;
+            --transition: .25s ease;
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: underline
+        }
+
+        a:hover {
+            text-decoration: none
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #1e7e56 100%);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .12)
+        }
+
+        .header__inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px
+        }
+
+        .header__icon {
+            font-size: 24px;
+            flex-shrink: 0
+        }
+
+        .header__home {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            text-decoration: none;
+            transition: opacity var(--transition)
+        }
+
+        .header__home:hover {
+            opacity: .85
+        }
+
+        .header__title {
+            font-size: 18px;
+            font-weight: 700
+        }
+
+        .subnav {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch
+        }
+
+        .subnav__inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex
+        }
+
+        .subnav__link {
+            padding: 12px 18px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text-muted);
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: color var(--transition), border-color var(--transition);
+            text-decoration: none
+        }
+
+        .subnav__link:hover {
+            color: var(--color-primary)
+        }
+
+        .breadcrumb {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 14px 24px 0;
+            font-size: 12px;
+            color: var(--color-text-muted);
+            width: 100%
+        }
+
+        .breadcrumb a {
+            color: var(--color-primary)
+        }
+
+        .main {
+            flex: 1;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 20px 24px 56px;
+            width: 100%
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 28px;
+            line-height: 1.4
+        }
+
+        .about {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
+            padding: 36px 32px;
+            margin-bottom: 32px
+        }
+
+        .about h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin: 36px 0 14px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-primary-light)
+        }
+
+        .about h2:first-child {
+            margin-top: 0
+        }
+
+        .about p {
+            font-size: 15px;
+            line-height: 2;
+            margin-bottom: 14px
+        }
+
+        .about ul {
+            margin: 0 0 14px 24px;
+            font-size: 15px;
+            line-height: 2
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0 20px;
+            font-size: 14px
+        }
+
+        .info-table th {
+            text-align: left;
+            padding: 12px 16px;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            font-weight: 600;
+            white-space: nowrap;
+            width: 160px;
+            color: var(--color-text)
+        }
+
+        .info-table td {
+            padding: 12px 16px;
+            border: 1px solid var(--color-border)
+        }
+
+        .tool-list {
+            list-style: none;
+            margin: 16px 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 10px
+        }
+
+        .tool-list li {
+            background: var(--color-primary-light);
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 14px
+        }
+
+        .tool-list li a {
+            color: var(--color-primary);
+            font-weight: 500;
+            text-decoration: none
+        }
+
+        .tool-list li a:hover {
+            text-decoration: underline
+        }
+
+        .footer {
+            background: var(--color-footer-bg);
+            color: var(--color-footer-text);
+            font-size: 13px
+        }
+
+        .footer__inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px
+        }
+
+        .footer__nav {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center
+        }
+
+        .footer__nav a {
+            color: var(--color-footer-text);
+            transition: color var(--transition);
+            font-size: 13px;
+            text-decoration: none
+        }
+
+        .footer__nav a:hover {
+            color: #fff
+        }
+
+        .footer__copy {
+            opacity: .7;
+            font-size: 12px
+        }
+
+        @media(max-width:640px) {
+            .header__inner {
+                padding: 12px 16px
+            }
+
+            .header__title {
+                font-size: 16px
+            }
+
+            .subnav__inner {
+                padding: 0 12px
+            }
+
+            .subnav__link {
+                padding: 10px 12px;
+                font-size: 12px
+            }
+
+            .main {
+                padding: 16px 16px 40px
+            }
+
+            .page-title {
+                font-size: 20px
+            }
+
+            .about {
+                padding: 24px 18px
+            }
+
+            .about h2 {
+                font-size: 18px
+            }
+
+            .info-table th {
+                width: 120px;
+                padding: 10px 12px
+            }
+
+            .info-table td {
+                padding: 10px 12px
+            }
+
+            .tool-list {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ6TZTK11H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-FJ6TZTK11H');
+    </script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header__inner">
+            <a href="index.html" class="header__home" aria-label="便利ツール集トップへ">
+                <span class="header__icon" aria-hidden="true">🛠️</span>
+                <span class="header__title">便利ツール集</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Sub Navigation -->
+    <nav class="subnav" aria-label="ツールナビゲーション">
+        <div class="subnav__inner">
+            <a href="nenrei.html" class="subnav__link">年齢早見表</a>
+            <a href="wareki.html" class="subnav__link">西暦⇔和暦</a>
+            <a href="eto.html" class="subnav__link">干支早見表</a>
+            <a href="gakureki.html" class="subnav__link">入学・卒業年度</a>
+            <a href="yakudoshi.html" class="subnav__link">厄年早見表</a>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">ホーム</a> &gt; このサイトについて
+    </div>
+
+    <!-- Main -->
+    <main class="main">
+        <h1 class="page-title">このサイトについて（運営者情報）</h1>
+
+        <div class="about">
+
+            <h2>サイトの目的</h2>
+            <p>「便利ツール集」は、日常生活で役立つ計算・早見ツールを無料で提供するウェブサイトです。年齢の確認、和暦と西暦の変換、干支の検索、入学・卒業年度の計算など、ちょっとした調べ物をすばやく正確に行えるツールを取り揃えています。
+            </p>
+            <p>すべてのツールはブラウザ上で動作するため、アプリのインストールは不要です。スマートフォン・タブレット・パソコン、どの端末からでもお使いいただけます。また、入力されたデータはサーバーに送信されないため、安心してご利用いただけます。
+            </p>
+
+            <h2>提供しているツール</h2>
+            <ul class="tool-list">
+                <li>📊 <a href="nenrei.html">年齢早見表</a></li>
+                <li>🔄 <a href="wareki.html">西暦⇔和暦変換</a></li>
+                <li>🐉 <a href="eto.html">干支早見表</a></li>
+                <li>🎓 <a href="gakureki.html">入学・卒業年度計算</a></li>
+                <li>⛩️ <a href="yakudoshi.html">厄年早見表</a></li>
+            </ul>
+
+            <h2>運営者情報</h2>
+            <table class="info-table">
+                <tr>
+                    <th>サイト名</th>
+                    <td>便利ツール集</td>
+                </tr>
+                <tr>
+                    <th>URL</th>
+                    <td><a href="https://hayami-navi.com/">https://hayami-navi.com/</a></td>
+                </tr>
+                <tr>
+                    <th>運営者名</th>
+                    <td>ゆり</td>
+                </tr>
+                <tr>
+                    <th>お問い合わせ</th>
+                    <td><a href="contact.html">お問い合わせページ</a>よりご連絡ください</td>
+                </tr>
+            </table>
+
+            <h2>サイトの沿革</h2>
+            <p>当サイトは、2026年2月に開設いたしました。年齢早見表や和暦変換など、日常で「ちょっと調べたい」と思う場面で役立つツールを集めたサイトとして運営を開始しました。</p>
+            <p>今後もユーザーの皆さまにとって便利なツールを追加・改善していく予定です。ご意見・ご要望がございましたら、お気軽に<a href="contact.html">お問い合わせページ</a>よりお寄せください。
+            </p>
+
+            <h2>リンクについて</h2>
+            <p>当サイトへのリンクは、原則として自由に行っていただけます。リンクの際に事前のご連絡は不要です。ただし、フレーム内に当サイトのコンテンツを表示する形でのリンクはご遠慮ください。</p>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <nav class="footer__nav" aria-label="フッターナビゲーション">
+                <a href="about.html">このサイトについて</a>
+                <a href="privacy.html">プライバシーポリシー</a>
+                <a href="contact.html">お問い合わせ</a>
+            </nav>
+            <p class="footer__copy">&copy; 2026 便利ツール集 All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

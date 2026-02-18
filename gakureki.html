@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>入学・卒業年度計算ツール | 便利ツール集</title>
+    <meta name="description" content="生まれ年から入学・卒業年度を自動計算。小学校から大学院まで、西暦・和暦の両方で確認できます。早生まれ対応。履歴書の学歴欄の書き方も解説。">
+    <meta name="keywords" content="入学年度,卒業年度,計算,早生まれ,学歴,履歴書,小学校,中学校,高校,大学,和暦,西暦">
+    <meta property="og:title" content="入学・卒業年度計算ツール | 便利ツール集">
+    <meta property="og:description" content="生まれ年から入学・卒業年を自動計算。小学校〜大学院まで西暦・和暦で確認。早生まれ対応。">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ja_JP">
+    <link rel="canonical" href="https://hayami-navi.com/gakureki.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --color-primary: #1a6b4a;
+            --color-primary-light: #e8f5ee;
+            --color-primary-hover: #145839;
+            --color-accent: #d4a843;
+            --color-bg: #f7f8fa;
+            --color-surface: #ffffff;
+            --color-text: #2c3e50;
+            --color-text-muted: #6b7b8d;
+            --color-border: #e2e6ea;
+            --color-footer-bg: #2c3e50;
+            --color-footer-text: #cfd8dc;
+            --shadow-card: 0 2px 8px rgba(0, 0, 0, .06);
+            --shadow-card-hover: 0 6px 20px rgba(0, 0, 0, .1);
+            --radius: 10px;
+            --max-width: 1080px;
+            --transition: .25s ease;
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #1e7e56 100%);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .12)
+        }
+
+        .header__inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px
+        }
+
+        .header__icon {
+            font-size: 24px;
+            flex-shrink: 0
+        }
+
+        .header__home {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            transition: opacity var(--transition)
+        }
+
+        .header__home:hover {
+            opacity: .85
+        }
+
+        .header__title {
+            font-size: 18px;
+            font-weight: 700
+        }
+
+        .subnav {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch
+        }
+
+        .subnav__inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex
+        }
+
+        .subnav__link {
+            padding: 12px 18px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text-muted);
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: color var(--transition), border-color var(--transition)
+        }
+
+        .subnav__link:hover {
+            color: var(--color-primary)
+        }
+
+        .subnav__link--active {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-primary);
+            font-weight: 700
+        }
+
+        .breadcrumb {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 14px 24px 0;
+            font-size: 12px;
+            color: var(--color-text-muted);
+            width: 100%
+        }
+
+        .breadcrumb a {
+            color: var(--color-primary);
+            text-decoration: underline
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: none
+        }
+
+        .main {
+            flex: 1;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 20px 24px 56px;
+            width: 100%
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 8px;
+            line-height: 1.4
+        }
+
+        .page-subtitle {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            margin-bottom: 28px
+        }
+
+        .tool-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
+            padding: 32px 28px;
+            margin-bottom: 32px
+        }
+
+        .tool-card__heading {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--color-primary-light)
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: flex-end;
+            margin-bottom: 8px
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text-muted)
+        }
+
+        .form-group select {
+            padding: 10px 14px;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            font-size: 15px;
+            font-family: inherit;
+            background: var(--color-bg);
+            color: var(--color-text);
+            transition: border-color var(--transition);
+            min-width: 180px
+        }
+
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(26, 107, 74, .12)
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 0
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--color-primary);
+            cursor: pointer
+        }
+
+        .checkbox-group label {
+            font-size: 14px;
+            cursor: pointer;
+            color: var(--color-text)
+        }
+
+        .hayaumare-note {
+            background: #fffce8;
+            border-left: 4px solid var(--color-accent);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-bottom: 20px;
+            display: none
+        }
+
+        .hayaumare-note.active {
+            display: block
+        }
+
+        /* Timeline Table */
+        .timeline {
+            display: none;
+            margin-top: 24px
+        }
+
+        .timeline.active {
+            display: block;
+            animation: fadeIn .4s ease
+        }
+
+        .timeline__heading {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 12px
+        }
+
+        .timeline__sub {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-bottom: 16px
+        }
+
+        .tl-table-wrapper {
+            overflow-x: auto;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card)
+        }
+
+        .tl-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: var(--color-surface)
+        }
+
+        .tl-table thead {
+            background: var(--color-primary);
+            color: #fff
+        }
+
+        .tl-table th {
+            padding: 12px 14px;
+            font-weight: 500;
+            font-size: 13px;
+            white-space: nowrap;
+            text-align: center
+        }
+
+        .tl-table td {
+            padding: 11px 14px;
+            text-align: center;
+            border-bottom: 1px solid var(--color-border);
+            white-space: nowrap
+        }
+
+        .tl-table tbody tr:nth-child(even) {
+            background: #f9fbfa
+        }
+
+        .tl-table tbody tr:hover {
+            background: var(--color-primary-light)
+        }
+
+        .tl-table .school-name {
+            text-align: left;
+            font-weight: 600;
+            color: var(--color-text);
+            padding-left: 18px
+        }
+
+        .tl-table .event-type {
+            font-weight: 500
+        }
+
+        .tl-table .event-enter {
+            color: var(--color-primary)
+        }
+
+        .tl-table .event-grad {
+            color: #b85450
+        }
+
+        .era-reiwa {
+            color: var(--color-primary);
+            font-weight: 500
+        }
+
+        .era-heisei {
+            color: #2e7d9c;
+            font-weight: 500
+        }
+
+        .era-showa {
+            color: #8b6914;
+            font-weight: 500
+        }
+
+        .era-taisho {
+            color: #7b5ea7;
+            font-weight: 500
+        }
+
+        /* School color bars */
+        .tl-table .level-elementary td:first-child {
+            border-left: 4px solid #4caf50
+        }
+
+        .tl-table .level-junior td:first-child {
+            border-left: 4px solid #2196f3
+        }
+
+        .tl-table .level-high td:first-child {
+            border-left: 4px solid #ff9800
+        }
+
+        .tl-table .level-uni td:first-child {
+            border-left: 4px solid #9c27b0
+        }
+
+        .tl-table .level-junior-college td:first-child {
+            border-left: 4px solid #e91e63
+        }
+
+        .tl-table .level-grad td:first-child {
+            border-left: 4px solid #607d8b
+        }
+
+        .age-col {
+            color: var(--color-text-muted);
+            font-size: 13px
+        }
+
+        /* Article */
+        .article {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
+            padding: 36px 32px;
+            margin-bottom: 32px
+        }
+
+        .article h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin: 36px 0 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-primary-light)
+        }
+
+        .article h2:first-child {
+            margin-top: 0
+        }
+
+        .article h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin: 24px 0 10px;
+            padding-left: 12px;
+            border-left: 3px solid var(--color-accent)
+        }
+
+        .article p {
+            font-size: 15px;
+            line-height: 2;
+            margin-bottom: 16px
+        }
+
+        .article ul,
+        .article ol {
+            margin: 0 0 16px 24px;
+            font-size: 15px;
+            line-height: 2
+        }
+
+        .article .tip-box {
+            background: #fffce8;
+            border-left: 4px solid var(--color-accent);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            font-size: 14px
+        }
+
+        .article .tip-box strong {
+            color: var(--color-accent)
+        }
+
+        .ad-slot {
+            text-align: center;
+            padding: 20px;
+            margin: 28px 0;
+            color: var(--color-text-muted);
+            font-size: 12px
+        }
+
+        .footer {
+            background: var(--color-footer-bg);
+            color: var(--color-footer-text);
+            font-size: 13px
+        }
+
+        .footer__inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px
+        }
+
+        .footer__nav {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center
+        }
+
+        .footer__nav a {
+            color: var(--color-footer-text);
+            transition: color var(--transition);
+            font-size: 13px
+        }
+
+        .footer__nav a:hover {
+            color: #fff
+        }
+
+        .footer__copy {
+            opacity: .7;
+            font-size: 12px
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @media(max-width:640px) {
+            .header__inner {
+                padding: 12px 16px
+            }
+
+            .header__title {
+                font-size: 16px
+            }
+
+            .subnav__inner {
+                padding: 0 12px
+            }
+
+            .subnav__link {
+                padding: 10px 12px;
+                font-size: 12px
+            }
+
+            .main {
+                padding: 16px 16px 40px
+            }
+
+            .page-title {
+                font-size: 20px
+            }
+
+            .tool-card {
+                padding: 22px 16px
+            }
+
+            .form-row {
+                flex-direction: column
+            }
+
+            .form-group select {
+                min-width: unset;
+                width: 100%
+            }
+
+            .tl-table {
+                font-size: 12px
+            }
+
+            .tl-table th,
+            .tl-table td {
+                padding: 8px 8px
+            }
+
+            .tl-table .school-name {
+                padding-left: 12px
+            }
+
+            .article {
+                padding: 24px 18px
+            }
+
+            .article h2 {
+                font-size: 18px
+            }
+
+            .article h3 {
+                font-size: 15px
+            }
+        }
+    </style>
+
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "入学・卒業年度計算ツール",
+    "url": "https://hayami-navi.com/gakureki.html",
+    "description": "生まれ年から入学・卒業年度を自動計算。小学校〜大学院まで西暦・和暦で確認。早生まれ対応。",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {"@type":"Offer","price":"0","priceCurrency":"JPY"},
+    "inLanguage": "ja"
+  }
+  </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ6TZTK11H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-FJ6TZTK11H');
+    </script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header__inner">
+            <a href="index.html" class="header__home" aria-label="便利ツール集トップへ">
+                <span class="header__icon" aria-hidden="true">🛠️</span>
+                <span class="header__title">便利ツール集</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Sub Navigation -->
+    <nav class="subnav" aria-label="ツールナビゲーション">
+        <div class="subnav__inner">
+            <a href="nenrei.html" class="subnav__link">年齢早見表</a>
+            <a href="wareki.html" class="subnav__link">西暦⇔和暦</a>
+            <a href="eto.html" class="subnav__link">干支早見表</a>
+            <a href="gakureki.html" class="subnav__link subnav__link--active">入学・卒業年度</a>
+            <a href="yakudoshi.html" class="subnav__link">厄年早見表</a>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">ホーム</a> &gt; 入学・卒業年度計算
+    </div>
+
+    <!-- Main -->
+    <main class="main">
+        <h1 class="page-title">入学・卒業年度計算ツール</h1>
+        <p class="page-subtitle">生まれ年と月を選ぶだけで、小学校から大学院までの入学・卒業年度を一覧表示します。</p>
+
+        <!-- ===== Tool ===== -->
+        <section class="tool-card" id="tool">
+            <h2 class="tool-card__heading">🎓 入学・卒業年度を調べる</h2>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="birth-year">生まれ年（西暦）</label>
+                    <select id="birth-year">
+                        <option value="">-- 選択 --</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="birth-month">生まれ月</label>
+                    <select id="birth-month">
+                        <option value="">-- 選択 --</option>
+                        <option value="1">1月</option>
+                        <option value="2">2月</option>
+                        <option value="3">3月</option>
+                        <option value="4">4月</option>
+                        <option value="5">5月</option>
+                        <option value="6">6月</option>
+                        <option value="7">7月</option>
+                        <option value="8">8月</option>
+                        <option value="9">9月</option>
+                        <option value="10">10月</option>
+                        <option value="11">11月</option>
+                        <option value="12">12月</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="hayaumare" disabled>
+                <label for="hayaumare">早生まれ（1月1日〜4月1日生まれ）</label>
+            </div>
+
+            <div class="hayaumare-note" id="hayaumare-note">
+                ⚠️ 早生まれの方は、同じ年の4月2日以降に生まれた方より<strong>1つ上の学年</strong>に入ります。生まれ月を選択すると自動で判定されます。
+            </div>
+
+            <!-- Timeline Result -->
+            <div class="timeline" id="timeline">
+                <div class="timeline__heading" id="tl-heading"></div>
+                <div class="timeline__sub" id="tl-sub"></div>
+                <div class="tl-table-wrapper">
+                    <table class="tl-table">
+                        <thead>
+                            <tr>
+                                <th>学校</th>
+                                <th>イベント</th>
+                                <th>年月（西暦）</th>
+                                <th>年月（和暦）</th>
+                                <th>年齢</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tl-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- AD SLOT 1 -->
+        <!-- ad-placement: rectangle-1 -->
+        <div class="ad-slot"><!-- 広告スペース① --></div>
+
+        <!-- ===== Article ===== -->
+        <article class="article" id="article">
+            <h2>日本の学校制度と入学時期のしくみ</h2>
+            <p>日本の学校の年度は、毎年4月に始まり翌年3月に終わります。これは世界的に見ると珍しい制度で、欧米やアジアの多くの国では9月入学が一般的です。日本が4月入学を採用している背景には、明治時代の会計年度が4月始まりに変更されたことが大きく影響しています。1886年（明治19年）に国の会計年度が4月始まりとなり、それに合わせて学校の年度も4月始まりに統一されました。
+            </p>
+            <p>日本の教育制度は「6・3・3・4制」と呼ばれ、小学校6年、中学校3年、高等学校3年、大学4年という構成が基本です。このうち、小学校6年間と中学校3年間の計9年間が義務教育となっています。高校への進学率は約99%と非常に高く、大学・短大への進学率も約60%に達しています。
+            </p>
+            <p>入学する学年は、子どもの生年月日によって決まります。具体的には、その年度の4月2日から翌年4月1日までに生まれた子どもが同じ学年になります。つまり、4月2日生まれの子どもは新しい学年の最年長に、4月1日生まれの子どもは前の学年の最年少になります。
+            </p>
+
+            <h3>入学・卒業の具体的な時期</h3>
+            <ul>
+                <li><strong>小学校入学：</strong>満6歳になった翌年度の4月（4月2日時点で満6歳）</li>
+                <li><strong>小学校卒業・中学校入学：</strong>小学校入学から6年後の3月卒業、4月入学</li>
+                <li><strong>中学校卒業・高校入学：</strong>中学校入学から3年後の3月卒業、4月入学</li>
+                <li><strong>高校卒業・大学入学：</strong>高校入学から3年後の3月卒業、4月入学</li>
+                <li><strong>大学卒業（4年制）：</strong>大学入学から4年後の3月</li>
+                <li><strong>短大卒業（2年制）：</strong>短大入学から2年後の3月</li>
+                <li><strong>大学院修士修了：</strong>大学卒業から2年後の3月</li>
+            </ul>
+
+            <h2>早生まれとは何か ― 詳しく解説</h2>
+            <p>「早生まれ」とは、1月1日から4月1日までに生まれた人のことを指します。この期間に生まれた人は、同じ年の4月2日以降に生まれた人よりも1つ上の学年に入ります。つまり、同じ学年の中で最も遅く生まれた子どもたちということになります。
+            </p>
+            <p>なぜ「早生まれ」と呼ぶのでしょうか。これは「年の初め（1月〜4月）に生まれた」という意味で、暦の上で年の早い時期に生まれたことから来ています。逆に4月2日〜12月31日に生まれた人を「遅生まれ」と呼ぶことがあります。
+            </p>
+
+            <h3>早生まれの学年区分の仕組み</h3>
+            <p>日本の法律（年齢計算ニ関スル法律）では、「年齢は誕生日の前日の満了をもって加算される」と定められています。したがって、4月1日生まれの人は、法律上は3月31日に年齢が1つ上がります。学校教育法では「満6歳に達した日の翌日以降における最初の学年の初め」に就学するとされているため、4月1日生まれの子どもは3月31日に6歳になり、翌日の4月1日から始まる学年に間に合う、つまり前の学年に入ることになるのです。
+            </p>
+            <p>具体的な例を挙げると、2000年3月15日生まれの子どもは早生まれです。この子は、1999年4月2日〜2000年4月1日生まれのグループに入り、2006年4月に小学校に入学します。一方、2000年5月10日生まれの子どもは遅生まれで、2000年4月2日〜2001年4月1日生まれのグループに入り、2007年4月に小学校に入学します。同じ2000年生まれでも、生まれ月によって入学年度が異なるのがポイントです。
+            </p>
+
+            <div class="tip-box">
+                <strong>💡
+                    ポイント：</strong>早生まれの人は、同じ学年の遅生まれの人と比べて最大で約1年近く年齢差があります。幼い頃はこの差が体格や学力に影響することがありますが、成長とともにその差は縮まっていきます。
+            </div>
+
+            <h2>履歴書の学歴欄を正しく書くコツ</h2>
+            <p>就職活動やアルバイトの応募で提出する履歴書の学歴欄は、正確に記入することが非常に重要です。ここでは、学歴欄を正しく書くためのポイントをまとめます。</p>
+
+            <h3>① 西暦と和暦はどちらかに統一</h3>
+            <p>履歴書全体で、西暦か和暦のどちらかに統一するのが基本マナーです。学歴欄だけでなく、職歴欄や資格欄なども含めて、すべて同じ暦を使いましょう。和暦で書く場合は「令和」「平成」「昭和」などの元号を正式に記載します。西暦の場合は4桁で記載しましょう。
+            </p>
+
+            <h3>② 学校名は正式名称で</h3>
+            <p>高校は「○○高校」ではなく「○○県立○○高等学校」「私立○○高等学校」のように正式名称で記載します。中学校も「○○中学」ではなく「○○市立○○中学校」と書きます。大学は「○○大学○○学部○○学科」まで記載するのが一般的です。
+            </p>
+
+            <h3>③ 入学と卒業はセットで記載</h3>
+            <p>一般的には「○年○月 ○○高等学校 入学」「○年○月 ○○高等学校 卒業」のようにセットで記載します。中退の場合は「中途退学」と明記します。在学中の場合は「○年○月 ○○大学 卒業見込み」と書きます。</p>
+
+            <h3>④ 月の記載を間違えない</h3>
+            <p>入学は4月、卒業は3月です。これを逆に書いてしまうミスが意外と多いので注意しましょう。当サイトの計算ツールで正確な年度を確認し、そのまま転記すると間違いを防げます。</p>
+
+            <div class="tip-box">
+                <strong>💡
+                    まとめ：</strong>履歴書の学歴欄は採用担当者が必ず目を通す重要な項目です。入学・卒業年度を正確に記載することはもちろん、学校名の正式名称、暦の統一など、細かい部分まで丁寧に書くことが大切です。このツールで年度を確認してから記入するようにしましょう。
+            </div>
+
+            <h3>⑤ よくある記入ミスと対策</h3>
+            <p>学歴欄でよく見られるミスには、以下のようなものがあります。</p>
+            <ul>
+                <li>入学・卒業年を1年間違える（特に早生まれの場合）</li>
+                <li>西暦と和暦を混在させてしまう</li>
+                <li>留年や浪人による年度のずれを反映し忘れる</li>
+                <li>大学の学部・学科名を省略してしまう</li>
+                <li>中退と卒業の区別を曖昧にする</li>
+            </ul>
+            <p>特に早生まれの方は、入学年度が同年生まれの遅生まれの方と1年異なるため、注意が必要です。このページの計算ツールで早生まれにチェックを入れて確認すれば、正確な年度がわかります。履歴書を書く際は、必ず事前に確認してから記入するようにしましょう。
+            </p>
+        </article>
+
+        <!-- AD SLOT 2 -->
+        <!-- ad-placement: rectangle-2 -->
+        <div class="ad-slot"><!-- 広告スペース② --></div>
+
+        <!-- AD SLOT 3 -->
+        <!-- ad-placement: rectangle-3 -->
+        <div class="ad-slot"><!-- 広告スペース③ --></div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <nav class="footer__nav" aria-label="フッターナビゲーション">
+                <a href="about.html">このサイトについて</a>
+                <a href="privacy.html">プライバシーポリシー</a>
+                <a href="contact.html">お問い合わせ</a>
+            </nav>
+            <p class="footer__copy">&copy; 2026 便利ツール集 All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        /* ===== Wareki Helper ===== */
+        function getWareki(year) {
+            if (year >= 2019) return { era: '令和', eraYear: year - 2018, cls: 'era-reiwa' };
+            if (year >= 1989) return { era: '平成', eraYear: year - 1988, cls: 'era-heisei' };
+            if (year >= 1926) return { era: '昭和', eraYear: year - 1925, cls: 'era-showa' };
+            if (year >= 1912) return { era: '大正', eraYear: year - 1911, cls: 'era-taisho' };
+            return { era: '明治', eraYear: year - 1867, cls: '' };
+        }
+
+        function formatWareki(year, month) {
+            const w = getWareki(year);
+            const yStr = w.eraYear === 1 ? '元' : w.eraYear;
+            return { text: w.era + yStr + '年' + month + '月', cls: w.cls };
+        }
+
+        /* ===== Populate Birth Year ===== */
+        const birthYearSelect = document.getElementById('birth-year');
+        for (let y = 2024; y >= 1950; y--) {
+            const w = getWareki(y);
+            const yStr = w.eraYear === 1 ? '元' : w.eraYear;
+            const opt = document.createElement('option');
+            opt.value = y;
+            opt.textContent = y + '年（' + w.era + yStr + '年）';
+            birthYearSelect.appendChild(opt);
+        }
+
+        /* ===== Event Listeners ===== */
+        const birthMonthSelect = document.getElementById('birth-month');
+        const hayaumareCheck = document.getElementById('hayaumare');
+        const hayaumareNote = document.getElementById('hayaumare-note');
+
+        // Auto-detect 早生まれ from birth month
+        birthMonthSelect.addEventListener('change', () => {
+            const month = parseInt(birthMonthSelect.value);
+            if (month >= 1 && month <= 3) {
+                hayaumareCheck.checked = true;
+                hayaumareCheck.disabled = true;
+                hayaumareNote.classList.add('active');
+            } else if (month === 4) {
+                // April - could be either (1st = hayaumare, 2nd+ = not), let user choose
+                hayaumareCheck.disabled = false;
+                hayaumareCheck.checked = false;
+                hayaumareNote.classList.remove('active');
+            } else {
+                hayaumareCheck.checked = false;
+                hayaumareCheck.disabled = true;
+                hayaumareNote.classList.remove('active');
+            }
+            calculate();
+        });
+
+        birthYearSelect.addEventListener('change', calculate);
+        hayaumareCheck.addEventListener('change', calculate);
+
+        /* ===== School Timeline Data ===== */
+        const SCHOOL_EVENTS = [
+            { school: '小学校', event: '入学', offsetYear: 6, month: 4, level: 'elementary', type: 'enter' },
+            { school: '小学校', event: '卒業', offsetYear: 12, month: 3, level: 'elementary', type: 'grad' },
+            { school: '中学校', event: '入学', offsetYear: 12, month: 4, level: 'junior', type: 'enter' },
+            { school: '中学校', event: '卒業', offsetYear: 15, month: 3, level: 'junior', type: 'grad' },
+            { school: '高等学校', event: '入学', offsetYear: 15, month: 4, level: 'high', type: 'enter' },
+            { school: '高等学校', event: '卒業', offsetYear: 18, month: 3, level: 'high', type: 'grad' },
+            { school: '大学（4年制）', event: '入学', offsetYear: 18, month: 4, level: 'uni', type: 'enter' },
+            { school: '短大（2年制）', event: '卒業', offsetYear: 20, month: 3, level: 'junior-college', type: 'grad' },
+            { school: '大学（4年制）', event: '卒業', offsetYear: 22, month: 3, level: 'uni', type: 'grad' },
+            { school: '大学院（修士）', event: '入学', offsetYear: 22, month: 4, level: 'grad', type: 'enter' },
+            { school: '大学院（修士）', event: '修了', offsetYear: 24, month: 3, level: 'grad', type: 'grad' },
+        ];
+
+        /* ===== Calculate ===== */
+        function calculate() {
+            const birthYear = parseInt(birthYearSelect.value);
+            const birthMonth = parseInt(birthMonthSelect.value);
+            if (!birthYear) return;
+
+            const isHayaumare = hayaumareCheck.checked;
+
+            // Determine school start base year
+            // Normal (Apr 2 - Dec 31): enters school at age 6 in April of (birthYear + 7)
+            // Hayaumare (Jan 1 - Apr 1): enters school at age 6 in April of (birthYear + 6)
+            const baseOffset = isHayaumare ? 0 : 1;
+
+            const timeline = document.getElementById('timeline');
+            const tbody = document.getElementById('tl-body');
+            const heading = document.getElementById('tl-heading');
+            const sub = document.getElementById('tl-sub');
+
+            // Build heading
+            const bw = getWareki(birthYear);
+            const bwStr = bw.eraYear === 1 ? '元' : bw.eraYear;
+            heading.textContent = birthYear + '年（' + bw.era + bwStr + '年）' +
+                (birthMonth ? birthMonth + '月' : '') + '生まれの入学・卒業年度';
+            sub.textContent = isHayaumare ? '※ 早生まれとして計算しています' : '';
+
+            // Clear & build
+            tbody.innerHTML = '';
+
+            SCHOOL_EVENTS.forEach(ev => {
+                const eventYear = birthYear + ev.offsetYear + baseOffset;
+                const eventMonth = ev.month;
+                const w = formatWareki(eventYear, eventMonth);
+                const age = eventYear - birthYear - (eventMonth < (birthMonth || 4) ? 1 : 0);
+
+                const tr = document.createElement('tr');
+                tr.className = 'level-' + ev.level;
+
+                // School name
+                const tdSchool = document.createElement('td');
+                tdSchool.className = 'school-name';
+                tdSchool.textContent = ev.school;
+                tr.appendChild(tdSchool);
+
+                // Event type
+                const tdEvent = document.createElement('td');
+                tdEvent.className = 'event-type ' + (ev.type === 'enter' ? 'event-enter' : 'event-grad');
+                tdEvent.textContent = ev.event;
+                tr.appendChild(tdEvent);
+
+                // Seireki
+                const tdSeireki = document.createElement('td');
+                tdSeireki.textContent = eventYear + '年' + eventMonth + '月';
+                tr.appendChild(tdSeireki);
+
+                // Wareki
+                const tdWareki = document.createElement('td');
+                tdWareki.innerHTML = '<span class="' + w.cls + '">' + w.text + '</span>';
+                tr.appendChild(tdWareki);
+
+                // Age
+                const tdAge = document.createElement('td');
+                tdAge.className = 'age-col';
+                tdAge.textContent = age + '歳';
+                tr.appendChild(tdAge);
+
+                tbody.appendChild(tr);
+            });
+
+            timeline.classList.add('active');
+        }
+    </script>
+
+</body>
+
+</html>

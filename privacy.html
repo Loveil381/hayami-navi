@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プライバシーポリシー | 便利ツール集</title>
+    <meta name="description" content="便利ツール集のプライバシーポリシー。個人情報の取り扱い、Cookie、広告配信、アクセス解析、免責事項について。">
+    <meta name="robots" content="noindex">
+    <link rel="canonical" href="https://hayami-navi.com/privacy.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --color-primary: #1a6b4a;
+            --color-primary-light: #e8f5ee;
+            --color-accent: #d4a843;
+            --color-bg: #f7f8fa;
+            --color-surface: #ffffff;
+            --color-text: #2c3e50;
+            --color-text-muted: #6b7b8d;
+            --color-border: #e2e6ea;
+            --color-footer-bg: #2c3e50;
+            --color-footer-text: #cfd8dc;
+            --shadow-card: 0 2px 8px rgba(0, 0, 0, .06);
+            --radius: 10px;
+            --max-width: 1080px;
+            --transition: .25s ease;
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: underline
+        }
+
+        a:hover {
+            text-decoration: none
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #1e7e56 100%);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .12)
+        }
+
+        .header__inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px
+        }
+
+        .header__icon {
+            font-size: 24px;
+            flex-shrink: 0
+        }
+
+        .header__home {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            text-decoration: none;
+            transition: opacity var(--transition)
+        }
+
+        .header__home:hover {
+            opacity: .85
+        }
+
+        .header__title {
+            font-size: 18px;
+            font-weight: 700
+        }
+
+        .subnav {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch
+        }
+
+        .subnav__inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex
+        }
+
+        .subnav__link {
+            padding: 12px 18px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text-muted);
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: color var(--transition), border-color var(--transition);
+            text-decoration: none
+        }
+
+        .subnav__link:hover {
+            color: var(--color-primary)
+        }
+
+        .breadcrumb {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 14px 24px 0;
+            font-size: 12px;
+            color: var(--color-text-muted);
+            width: 100%
+        }
+
+        .breadcrumb a {
+            color: var(--color-primary)
+        }
+
+        .main {
+            flex: 1;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 20px 24px 56px;
+            width: 100%
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 8px;
+            line-height: 1.4
+        }
+
+        .page-updated {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-bottom: 28px
+        }
+
+        .policy {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
+            padding: 36px 32px;
+            margin-bottom: 32px
+        }
+
+        .policy h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin: 36px 0 14px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-primary-light)
+        }
+
+        .policy h2:first-child {
+            margin-top: 0
+        }
+
+        .policy h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin: 20px 0 8px;
+            padding-left: 12px;
+            border-left: 3px solid var(--color-accent)
+        }
+
+        .policy p {
+            font-size: 14px;
+            line-height: 2;
+            margin-bottom: 14px
+        }
+
+        .policy ul,
+        .policy ol {
+            margin: 0 0 14px 24px;
+            font-size: 14px;
+            line-height: 2
+        }
+
+        .policy .note {
+            background: #f0f4f8;
+            border-radius: 6px;
+            padding: 14px 18px;
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin: 16px 0
+        }
+
+        .footer {
+            background: var(--color-footer-bg);
+            color: var(--color-footer-text);
+            font-size: 13px
+        }
+
+        .footer__inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px
+        }
+
+        .footer__nav {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center
+        }
+
+        .footer__nav a {
+            color: var(--color-footer-text);
+            transition: color var(--transition);
+            font-size: 13px;
+            text-decoration: none
+        }
+
+        .footer__nav a:hover {
+            color: #fff
+        }
+
+        .footer__copy {
+            opacity: .7;
+            font-size: 12px
+        }
+
+        @media(max-width:640px) {
+            .header__inner {
+                padding: 12px 16px
+            }
+
+            .header__title {
+                font-size: 16px
+            }
+
+            .subnav__inner {
+                padding: 0 12px
+            }
+
+            .subnav__link {
+                padding: 10px 12px;
+                font-size: 12px
+            }
+
+            .main {
+                padding: 16px 16px 40px
+            }
+
+            .page-title {
+                font-size: 20px
+            }
+
+            .policy {
+                padding: 24px 18px
+            }
+
+            .policy h2 {
+                font-size: 18px
+            }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ6TZTK11H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-FJ6TZTK11H');
+    </script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header__inner">
+            <a href="index.html" class="header__home" aria-label="便利ツール集トップへ">
+                <span class="header__icon" aria-hidden="true">🛠️</span>
+                <span class="header__title">便利ツール集</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Sub Navigation -->
+    <nav class="subnav" aria-label="ツールナビゲーション">
+        <div class="subnav__inner">
+            <a href="nenrei.html" class="subnav__link">年齢早見表</a>
+            <a href="wareki.html" class="subnav__link">西暦⇔和暦</a>
+            <a href="eto.html" class="subnav__link">干支早見表</a>
+            <a href="gakureki.html" class="subnav__link">入学・卒業年度</a>
+            <a href="yakudoshi.html" class="subnav__link">厄年早見表</a>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">ホーム</a> &gt; プライバシーポリシー
+    </div>
+
+    <!-- Main -->
+    <main class="main">
+        <h1 class="page-title">プライバシーポリシー</h1>
+        <p class="page-updated">最終更新日：2026年2月17日</p>
+
+        <div class="policy">
+
+            <p>「便利ツール集」（以下「当サイト」といいます）は、ユーザーの皆さまの個人情報の保護を重要視しております。本プライバシーポリシーでは、当サイトにおける個人情報の取り扱いについてご説明いたします。</p>
+
+            <h2>1. 個人情報の取り扱いについて</h2>
+            <p>当サイトで提供している各種計算ツール（年齢早見表、西暦⇔和暦変換、干支早見表、入学・卒業年度計算、厄年早見表など）は、すべてお使いのブラウザ上（クライアントサイド）で動作しております。</p>
+            <p>ユーザーがツールに入力された生まれ年、生まれ月などのデータは、一切サーバーに送信されることはありません。すべての計算処理はユーザーのブラウザ内で完結するため、当サイトがユーザーの入力データを取得・保存・利用することはございません。
+            </p>
+            <div class="note">
+                ✅ 計算ツールに入力されたデータは、お使いの端末内でのみ処理され、外部に送信されることはありません。
+            </div>
+
+            <h2>2. Cookie（クッキー）について</h2>
+            <p>当サイトでは、以下の目的でCookieを使用する場合がございます。</p>
+            <ul>
+                <li>第三者配信事業者（Google AdSenseなど）による広告配信のため</li>
+                <li>アクセス解析ツール（Google Analytics）によるサイト利用状況の把握のため</li>
+            </ul>
+            <p>Cookieとは、ウェブサイトがユーザーのブラウザに保存する小さなテキストファイルです。Cookieにより、ユーザーの個人を特定する情報が収集されることはありません。</p>
+            <p>ユーザーは、ブラウザの設定によりCookieの受け入れを拒否することができます。ただし、Cookieを無効にした場合、当サイトの一部機能が正常に動作しないことがあります。</p>
+
+            <h2>3. 広告配信について</h2>
+            <p>当サイトでは、第三者配信の広告サービス「Google AdSense（グーグルアドセンス）」を利用しております。</p>
+            <p>Google AdSenseでは、ユーザーの興味・関心に基づいた広告を表示するために、Cookie（DoubleClick Cookie）を使用することがあります。ユーザーは、Googleの広告設定ページ（<a
+                    href="https://adssettings.google.com/" target="_blank"
+                    rel="noopener noreferrer">https://adssettings.google.com/</a>）にアクセスすることで、パーソナライズ広告を無効にすることができます。</p>
+            <p>また、<a href="https://www.aboutads.info/choices/" target="_blank"
+                    rel="noopener noreferrer">www.aboutads.info</a>にアクセスすることで、第三者配信事業者によるCookieの利用を無効にすることも可能です。</p>
+            <p>Googleによる広告配信におけるプライバシーの詳細については、<a href="https://policies.google.com/technologies/ads?hl=ja"
+                    target="_blank" rel="noopener noreferrer">Google ポリシーと規約</a>をご参照ください。</p>
+
+            <h2>4. アクセス解析について</h2>
+            <p>当サイトでは、サイトの利用状況を把握するために「Google Analytics（グーグルアナリティクス）」を使用しております。</p>
+            <p>Google
+                Analyticsでは、Cookieを利用してユーザーのアクセス情報を収集しますが、収集されるデータは匿名であり、個人を特定する情報は含まれません。収集される情報には、利用しているブラウザの種類、参照元のURL、閲覧したページ、滞在時間などが含まれます。
+            </p>
+            <p>このデータは、当サイトのサービス向上およびコンテンツの改善のみに利用いたします。</p>
+            <p>Google Analyticsの利用規約については、<a href="https://marketingplatform.google.com/about/analytics/terms/jp/"
+                    target="_blank" rel="noopener noreferrer">Google アナリティクス利用規約</a>をご確認ください。Googleのプライバシーポリシーについては、<a
+                    href="https://policies.google.com/privacy?hl=ja" target="_blank" rel="noopener noreferrer">Google
+                    プライバシーポリシー</a>をご参照ください。</p>
+            <p>なお、Google Analyticsによるデータ収集を無効にしたい場合は、Googleが提供する<a href="https://tools.google.com/dlpage/gaoptout?hl=ja"
+                    target="_blank" rel="noopener noreferrer">オプトアウトアドオン</a>をご利用ください。</p>
+
+            <h2>5. 免責事項</h2>
+            <p>当サイトで提供している各種計算ツールの計算結果および掲載情報は、正確性を期しておりますが、その完全性・正確性を保証するものではありません。</p>
+            <p>計算結果はあくまで参考情報としてご利用いただくものとし、公的書類への記入など正確性が求められる場面では、必ず公的機関の情報や専門家にご確認ください。</p>
+            <p>当サイトの情報を利用することによって生じたいかなる損害に対しても、当サイトは一切の責任を負いかねます。あらかじめご了承ください。</p>
+            <ul>
+                <li>計算結果の誤りに起因する書類の記載ミスや手続き上の不利益</li>
+                <li>当サイトの利用により発生したシステム障害やデータ損失</li>
+                <li>当サイトからリンクされている外部サイトの内容や安全性</li>
+            </ul>
+
+            <h2>6. 著作権について</h2>
+            <p>当サイトに掲載されているコンテンツ（文章、画像、デザイン、プログラムコードなど）の著作権は、当サイト運営者に帰属いたします。無断での転載・複製・改変はご遠慮ください。</p>
+            <p>ただし、個人的な利用の範囲内でのブックマークやSNSでの共有は歓迎いたします。引用される場合は、出典として当サイトのURLを明記してください。</p>
+
+            <h2>7. プライバシーポリシーの変更</h2>
+            <p>当サイトは、必要に応じて本プライバシーポリシーの内容を見直し、変更することがあります。変更後のプライバシーポリシーは、本ページに掲載した時点から効力を有するものとします。定期的にご確認いただくことをお勧めいたします。
+            </p>
+
+            <h2>8. お問い合わせ先</h2>
+            <p>本プライバシーポリシーに関するお問い合わせは、下記のお問い合わせページよりご連絡ください。</p>
+            <p><a href="contact.html">お問い合わせページ</a></p>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <nav class="footer__nav" aria-label="フッターナビゲーション">
+                <a href="about.html">このサイトについて</a>
+                <a href="privacy.html">プライバシーポリシー</a>
+                <a href="contact.html">お問い合わせ</a>
+            </nav>
+            <p class="footer__copy">&copy; 2026 便利ツール集 All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

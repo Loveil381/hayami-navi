@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>年齢早見表 2026年（令和8年）版 | 便利ツール集</title>
+    <meta name="description" content="2026年（令和8年）の年齢早見表。生まれ年から年齢・干支・和暦を瞬時に確認できます。早生まれ対応。履歴書の書き方も解説。">
+    <meta name="keywords" content="年齢早見表,2026年,令和8年,年齢計算,干支,和暦,早生まれ,履歴書,年齢">
+    <meta property="og:title" content="年齢早見表 2026年（令和8年）版 | 便利ツール集">
+    <meta property="og:description" content="2026年（令和8年）の年齢早見表。生まれ年から年齢・干支・和暦を瞬時に確認。早生まれ対応。">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ja_JP">
+    <link rel="canonical" href="https://hayami-navi.com/nenrei.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== Reset & Base ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #1a6b4a;
+            --color-primary-light: #e8f5ee;
+            --color-primary-hover: #145839;
+            --color-accent: #d4a843;
+            --color-bg: #f7f8fa;
+            --color-surface: #ffffff;
+            --color-text: #2c3e50;
+            --color-text-muted: #6b7b8d;
+            --color-border: #e2e6ea;
+            --color-footer-bg: #2c3e50;
+            --color-footer-text: #cfd8dc;
+            --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-card-hover: 0 6px 20px rgba(0, 0, 0, 0.1);
+            --radius: 10px;
+            --max-width: 1080px;
+            --transition: 0.25s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ===== Header ===== */
+        .header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #1e7e56 100%);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+        }
+
+        .header__inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .header__icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .header__home {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            transition: opacity var(--transition);
+        }
+
+        .header__home:hover {
+            opacity: 0.85;
+        }
+
+        .header__title {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* ===== Sub-navigation ===== */
+        .subnav {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .subnav__inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            gap: 0;
+        }
+
+        .subnav__link {
+            padding: 12px 18px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text-muted);
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: color var(--transition), border-color var(--transition);
+        }
+
+        .subnav__link:hover {
+            color: var(--color-primary);
+        }
+
+        .subnav__link--active {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        /* ===== Breadcrumb ===== */
+        .breadcrumb {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 14px 24px 0;
+            font-size: 12px;
+            color: var(--color-text-muted);
+            width: 100%;
+        }
+
+        .breadcrumb a {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: none;
+        }
+
+        /* ===== Main Content ===== */
+        .main {
+            flex: 1;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 20px 24px 56px;
+            width: 100%;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .page-subtitle {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            margin-bottom: 28px;
+        }
+
+        /* ===== Tool Card ===== */
+        .tool-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
+            padding: 32px 28px;
+            margin-bottom: 32px;
+        }
+
+        .tool-card__heading {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--color-primary-light);
+        }
+
+        /* ===== Form Controls ===== */
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: flex-end;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text-muted);
+        }
+
+        .form-group select,
+        .form-group input[type="number"] {
+            padding: 10px 14px;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            font-size: 15px;
+            font-family: inherit;
+            background: var(--color-bg);
+            color: var(--color-text);
+            transition: border-color var(--transition);
+            min-width: 160px;
+        }
+
+        .form-group select:focus,
+        .form-group input[type="number"]:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(26, 107, 74, 0.12);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--color-primary);
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            font-size: 14px;
+            cursor: pointer;
+            color: var(--color-text);
+        }
+
+        /* ===== Result Display ===== */
+        .result-box {
+            background: var(--color-primary-light);
+            border: 1px solid #c8e6d5;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .result-box.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-item__label {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            margin-bottom: 4px;
+        }
+
+        .result-item__value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1.3;
+        }
+
+        .result-item__sub {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-top: 2px;
+        }
+
+        /* ===== Table ===== */
+        .table-section {
+            margin-bottom: 32px;
+        }
+
+        .table-section__heading {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 16px;
+            padding-left: 14px;
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
+        }
+
+        .age-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: var(--color-surface);
+        }
+
+        .age-table thead {
+            background: var(--color-primary);
+            color: #fff;
+        }
+
+        .age-table th {
+            padding: 12px 14px;
+            font-weight: 500;
+            font-size: 13px;
+            white-space: nowrap;
+            text-align: center;
+            position: sticky;
+            top: 0;
+        }
+
+        .age-table td {
+            padding: 10px 14px;
+            text-align: center;
+            border-bottom: 1px solid var(--color-border);
+            white-space: nowrap;
+        }
+
+        .age-table tbody tr:nth-child(even) {
+            background: #f9fbfa;
+        }
+
+        .age-table tbody tr:hover {
+            background: var(--color-primary-light);
+        }
+
+        .age-table tbody tr.highlight {
+            background: #fff3cd;
+            font-weight: 700;
+        }
+
+        .era-reiwa {
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        .era-heisei {
+            color: #2e7d9c;
+            font-weight: 500;
+        }
+
+        .era-showa {
+            color: #8b6914;
+            font-weight: 500;
+        }
+
+        .era-taisho {
+            color: #7b5ea7;
+            font-weight: 500;
+        }
+
+        .era-meiji {
+            color: #b85450;
+            font-weight: 500;
+        }
+
+        /* ===== Article ===== */
+        .article {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
+            padding: 36px 32px;
+            margin-bottom: 32px;
+        }
+
+        .article h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin: 36px 0 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-primary-light);
+        }
+
+        .article h2:first-child {
+            margin-top: 0;
+        }
+
+        .article h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin: 24px 0 10px;
+            padding-left: 12px;
+            border-left: 3px solid var(--color-accent);
+        }
+
+        .article p {
+            font-size: 15px;
+            line-height: 2;
+            margin-bottom: 16px;
+            color: var(--color-text);
+        }
+
+        .article ul,
+        .article ol {
+            margin: 0 0 16px 24px;
+            font-size: 15px;
+            line-height: 2;
+        }
+
+        .article .tip-box {
+            background: #fffce8;
+            border-left: 4px solid var(--color-accent);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .article .tip-box strong {
+            color: var(--color-accent);
+        }
+
+        /* ===== Ad Placeholder ===== */
+        .ad-slot {
+            text-align: center;
+            padding: 20px;
+            margin: 28px 0;
+            color: var(--color-text-muted);
+            font-size: 12px;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: var(--color-footer-bg);
+            color: var(--color-footer-text);
+            font-size: 13px;
+        }
+
+        .footer__inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer__nav {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer__nav a {
+            color: var(--color-footer-text);
+            transition: color var(--transition);
+            font-size: 13px;
+        }
+
+        .footer__nav a:hover {
+            color: #fff;
+        }
+
+        .footer__copy {
+            opacity: 0.7;
+            font-size: 12px;
+        }
+
+        /* ===== Animations ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 640px) {
+            .header__inner {
+                padding: 12px 16px;
+            }
+
+            .header__title {
+                font-size: 16px;
+            }
+
+            .subnav__inner {
+                padding: 0 12px;
+            }
+
+            .subnav__link {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+
+            .main {
+                padding: 16px 16px 40px;
+            }
+
+            .page-title {
+                font-size: 20px;
+            }
+
+            .tool-card {
+                padding: 22px 16px;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+
+            .form-group select,
+            .form-group input[type="number"] {
+                width: 100%;
+                min-width: unset;
+            }
+
+            .result-item__value {
+                font-size: 22px;
+            }
+
+            .article {
+                padding: 24px 18px;
+            }
+
+            .article h2 {
+                font-size: 18px;
+            }
+
+            .article h3 {
+                font-size: 15px;
+            }
+
+            .age-table {
+                font-size: 12px;
+            }
+
+            .age-table th,
+            .age-table td {
+                padding: 8px 8px;
+            }
+        }
+    </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "年齢早見表 2026年版",
+    "url": "https://hayami-navi.com/nenrei.html",
+    "description": "2026年（令和8年）の年齢早見表。生まれ年から年齢・干支・和暦を瞬時に確認。",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+    "inLanguage": "ja"
+  }
+  </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ6TZTK11H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-FJ6TZTK11H');
+    </script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header__inner">
+            <a href="index.html" class="header__home" aria-label="便利ツール集トップへ">
+                <span class="header__icon" aria-hidden="true">🛠️</span>
+                <span class="header__title">便利ツール集</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Sub Navigation -->
+    <nav class="subnav" aria-label="ツールナビゲーション">
+        <div class="subnav__inner">
+            <a href="nenrei.html" class="subnav__link subnav__link--active">年齢早見表</a>
+            <a href="wareki.html" class="subnav__link">西暦⇔和暦</a>
+            <a href="eto.html" class="subnav__link">干支早見表</a>
+            <a href="gakureki.html" class="subnav__link">入学・卒業年度</a>
+            <a href="yakudoshi.html" class="subnav__link">厄年早見表</a>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">ホーム</a> &gt; 年齢早見表
+    </div>
+
+    <!-- Main Content -->
+    <main class="main">
+        <h1 class="page-title">年齢早見表 2026年（令和8年）</h1>
+        <p class="page-subtitle">生まれ年を選ぶだけで、年齢・干支・和暦をすぐに確認できます。</p>
+
+        <!-- ===== Interactive Tool ===== -->
+        <section class="tool-card" id="tool">
+            <h2 class="tool-card__heading">📅 年齢を調べる</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="birth-year">生まれ年（西暦）</label>
+                    <select id="birth-year">
+                        <option value="">-- 選択 --</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="birth-month">生まれ月</label>
+                    <select id="birth-month">
+                        <option value="">-- 任意 --</option>
+                        <option value="1">1月</option>
+                        <option value="2">2月</option>
+                        <option value="3">3月</option>
+                        <option value="4">4月</option>
+                        <option value="5">5月</option>
+                        <option value="6">6月</option>
+                        <option value="7">7月</option>
+                        <option value="8">8月</option>
+                        <option value="9">9月</option>
+                        <option value="10">10月</option>
+                        <option value="11">11月</option>
+                        <option value="12">12月</option>
+                    </select>
+                </div>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="hayaumare">
+                <label for="hayaumare">早生まれ（1月1日〜4月1日生まれ）で学年を調整する</label>
+            </div>
+
+            <div class="result-box" id="result-box">
+                <div class="result-grid">
+                    <div class="result-item">
+                        <div class="result-item__label">2026年の年齢</div>
+                        <div class="result-item__value" id="res-age">--</div>
+                        <div class="result-item__sub" id="res-age-sub"></div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-item__label">干支（えと）</div>
+                        <div class="result-item__value" id="res-eto">--</div>
+                        <div class="result-item__sub" id="res-eto-sub"></div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-item__label">和暦</div>
+                        <div class="result-item__value" id="res-wareki">--</div>
+                        <div class="result-item__sub" id="res-wareki-sub"></div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-item__label">学年</div>
+                        <div class="result-item__value" id="res-school" style="font-size:18px;">--</div>
+                        <div class="result-item__sub" id="res-school-sub"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AD SLOT 1 -->
+        <!-- ad-placement: rectangle-1 -->
+        <div class="ad-slot"><!-- 広告スペース① --></div>
+
+        <!-- ===== Age Table ===== -->
+        <section class="table-section" id="table">
+            <h2 class="table-section__heading">2026年（令和8年）年齢早見表</h2>
+            <div class="table-wrapper">
+                <table class="age-table" id="age-table">
+                    <thead>
+                        <tr>
+                            <th>西暦</th>
+                            <th>和暦</th>
+                            <th>年齢</th>
+                            <th>干支</th>
+                        </tr>
+                    </thead>
+                    <tbody id="age-table-body">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- AD SLOT 2 -->
+        <!-- ad-placement: rectangle-2 -->
+        <div class="ad-slot"><!-- 広告スペース② --></div>
+
+        <!-- ===== Article ===== -->
+        <article class="article" id="article">
+            <h2>年齢早見表の見方と活用方法</h2>
+            <p>年齢早見表は、生まれ年（西暦）から現在の年齢をひと目で確認できる便利な一覧表です。日常生活の中で、自分や家族の年齢を正確に把握したい場面は意外と多いものです。たとえば、保険の手続き、公的書類の記入、年末調整の扶養控除の確認など、さまざまなシーンで「今、何歳だっけ？」と確認する必要があります。
+            </p>
+            <p>この年齢早見表では、2026年（令和8年）を基準に、1930年（昭和5年）から2026年（令和8年）までの各生まれ年に対応する年齢を一覧にしています。誕生日を迎える前後で年齢が1歳異なる点にご注意ください。表に記載されている年齢は、その年の誕生日を迎えた後の満年齢です。
+            </p>
+            <p>使い方はとても簡単です。上部の検索ツールで生まれ年を選択するか、下の一覧表からご自身の生まれ年を探してください。西暦・和暦・年齢・干支の4つの情報を同時に確認できるため、複数の情報をまとめて調べたいときにも重宝します。ブックマークしておくと、いつでもすぐに参照できて便利です。
+            </p>
+
+            <h2>西暦と和暦の関係について</h2>
+            <p>日本では西暦（グレゴリオ暦）と和暦（元号を使った年の数え方）の2つの暦が併用されています。公的な書類や伝統的な場面では和暦が使われることが多く、ビジネスやインターネットでは西暦が主流です。どちらの暦も正しく理解しておくことが、日本で生活する上でとても大切です。
+            </p>
+
+            <h3>現在使われている元号</h3>
+            <p>現在は「令和」の時代で、2019年5月1日に令和元年が始まりました。2026年は令和8年にあたります。それ以前の元号は「平成」（1989年〜2019年）、「昭和」（1926年〜1989年）、「大正」（1912年〜1926年）、「明治」（1868年〜1912年）と続いています。
+            </p>
+            <p>西暦から和暦への変換は、各元号の開始年を知っていれば簡単に計算できます。たとえば、令和の場合は西暦から2018を引くだけです。2026年であれば、2026 − 2018 ＝
+                8で、令和8年とわかります。平成なら西暦から1988を、昭和なら1925を引きます。よく使う変換なので、覚えておくと便利です。</p>
+            <p>ただし注意が必要なのは、元号の切り替わりの年です。たとえば昭和64年は1989年1月7日までで、翌1月8日から平成元年になりました。同じ1989年でも、1月前半は昭和、それ以降は平成となるため、書類に記載する際は正確な日付を確認する必要があります。
+            </p>
+
+            <h3>和暦変換の早見ポイント</h3>
+            <ul>
+                <li>令和＝西暦 − 2018（令和元年 ＝ 2019年）</li>
+                <li>平成＝西暦 − 1988（平成元年 ＝ 1989年）</li>
+                <li>昭和＝西暦 − 1925（昭和元年 ＝ 1926年）</li>
+                <li>大正＝西暦 − 1911（大正元年 ＝ 1912年）</li>
+                <li>明治＝西暦 − 1867（明治元年 ＝ 1868年）</li>
+            </ul>
+
+            <h2>履歴書に年齢を書くときのポイント</h2>
+            <p>就職活動やアルバイトの応募で提出する履歴書には、生年月日と年齢を記載する欄があります。ここで間違いやすいのが「年齢の基準日」です。履歴書に記載する年齢は、原則として「提出日時点の満年齢」です。面接日ではなく、履歴書を書いた日（もしくは提出する日）の年齢を記入しましょう。
+            </p>
+
+            <h3>満年齢と数え年の違い</h3>
+            <p>現代の日本では、法律上「満年齢」が使われています。満年齢とは、生まれた日を0歳とし、誕生日を迎えるたびに1歳加算する数え方です。一方、「数え年」は生まれた年を1歳とし、元旦（1月1日）を迎えるたびに1歳加えます。履歴書や公的書類では必ず満年齢を使いましょう。
+            </p>
+            <p>なお、法律上は「誕生日の前日に年齢が加算される」というルールがあります。たとえば4月1日生まれの人は、3月31日に年齢が1つ上がります。これが「早生まれ」の学年区分に影響する仕組みで、4月1日生まれの人は前の学年に入ることになります。
+            </p>
+
+            <div class="tip-box">
+                <strong>💡 ポイント：</strong>履歴書の学歴欄に入学・卒業年を記載する際は、西暦か和暦のどちらかに統一しましょう。混在すると読みにくく、マイナスの印象を与えてしまうことがあります。
+            </div>
+
+            <h3>履歴書でよくある記入例</h3>
+            <p>たとえば、1995年（平成7年）6月15日生まれの方が2026年2月に履歴書を提出する場合、まだ誕生日を迎えていないため年齢は「30歳」となります。誕生日を迎えた6月15日以降の提出であれば「31歳」と記入します。生年月日の欄は「平成7年6月15日」または「1995年6月15日」と記入します。
+            </p>
+
+            <h2>年齢の数え方でよくある間違いと注意点</h2>
+            <p>年齢に関して、意外と間違えやすいポイントがいくつかあります。ここでは、特によくある間違いとその対策をまとめます。</p>
+
+            <h3>① 誕生日前後の年齢の数え間違い</h3>
+            <p>今年の誕生日をまだ迎えていない場合、年齢は「今年 − 生まれ年 −
+                1」です。たとえば1990年8月生まれの人が2026年2月時点で年齢を聞かれたら、「35歳」ではなく「まだ35歳になっていない」ので正しくは「35歳」です（2026 − 1990 = 36
+                だが、誕生日前なので36 − 1 = 35歳）。この点が最も間違えやすいポイントです。</p>
+
+            <h3>② 早生まれの学年計算</h3>
+            <p>日本の学校制度では、4月2日から翌年4月1日までに生まれた児童が同じ学年になります。1月1日〜4月1日に生まれた人は「早生まれ」と呼ばれ、同じ年の4月2日以降に生まれた人より1つ上の学年に入ります。たとえば2000年3月生まれの人は、1999年4月〜2000年4月1日生まれのグループに入り、1999年度の学年になります。
+            </p>
+
+            <h3>③ 厄年の数え方と混同</h3>
+            <p>厄年は「数え年」で計算するのが一般的です。満年齢で計算してしまうと1〜2歳のずれが生じます。厄年を調べる場合は当サイトの「厄年早見表」もあわせてご活用ください。数え年は「満年齢 +
+                1歳」（元旦以降、誕生日前）もしくは「満年齢 + 2歳」（元旦前）で計算できます。ただし簡易的には「満年齢 + 1」と覚えておくとよいでしょう。</p>
+
+            <h3>④ 西暦と和暦の書き間違い</h3>
+            <p>書類に記入する際、西暦と和暦を混在させてしまうミスがよくあります。特に「平成」と「令和」の境目（2019年前後）で間違いやすいので注意しましょう。また、昭和と平成の切り替わり（1989年）も混乱しやすいポイントです。当サイトの「西暦⇔和暦変換」ツールを活用して、正確に変換することをおすすめします。
+            </p>
+
+            <div class="tip-box">
+                <strong>💡
+                    まとめ：</strong>年齢を正確に把握するためには、①満年齢と数え年の違いを理解する、②誕生日前後に注意する、③西暦と和暦を統一する、の3点を意識することが大切です。この年齢早見表をブックマークしておけば、いつでも手軽に確認できます。
+            </div>
+        </article>
+
+        <!-- AD SLOT 3 -->
+        <!-- ad-placement: rectangle-3 -->
+        <div class="ad-slot"><!-- 広告スペース③ --></div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <nav class="footer__nav" aria-label="フッターナビゲーション">
+                <a href="about.html">このサイトについて</a>
+                <a href="privacy.html">プライバシーポリシー</a>
+                <a href="contact.html">お問い合わせ</a>
+            </nav>
+            <p class="footer__copy">&copy; 2026 便利ツール集 All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        /* ===== Data ===== */
+        const CURRENT_YEAR = 2026;
+        const ETO_LIST = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
+        const ETO_READING = ['ね', 'うし', 'とら', 'う', 'たつ', 'み', 'うま', 'ひつじ', 'さる', 'とり', 'いぬ', 'い'];
+        const ETO_ANIMAL = ['🐭', '🐮', '🐯', '🐰', '🐲', '🐍', '🐴', '🐏', '🐵', '🐔', '🐶', '🐗'];
+
+        function getEtoIndex(year) {
+            return (year + 8) % 12; // 子=0 for years where (year+8)%12==0
+        }
+
+        function getWareki(year) {
+            if (year >= 2019) return { era: '令和', eraYear: year - 2018, cls: 'era-reiwa' };
+            if (year >= 1989) return { era: '平成', eraYear: year - 1988, cls: 'era-heisei' };
+            if (year >= 1926) return { era: '昭和', eraYear: year - 1925, cls: 'era-showa' };
+            if (year >= 1912) return { era: '大正', eraYear: year - 1911, cls: 'era-taisho' };
+            if (year >= 1868) return { era: '明治', eraYear: year - 1867, cls: 'era-meiji' };
+            return { era: '', eraYear: year, cls: '' };
+        }
+
+        function formatWareki(w) {
+            const yearStr = w.eraYear === 1 ? '元' : w.eraYear;
+            return w.era + yearStr + '年';
+        }
+
+        function getSchoolInfo(birthYear, isHayaumare) {
+            let schoolStartYear = birthYear + 7; // Elementary school entry (age 6, April)
+            if (isHayaumare) {
+                schoolStartYear -= 1; // Early born enters one year earlier
+            }
+
+            const stages = [
+                { name: '小学校入学', offset: 0 },
+                { name: '小学校卒業', offset: 6 },
+                { name: '中学校入学', offset: 6 },
+                { name: '中学校卒業', offset: 9 },
+                { name: '高校入学', offset: 9 },
+                { name: '高校卒業', offset: 12 },
+                { name: '大学入学(4年制)', offset: 12 },
+                { name: '大学卒業(4年制)', offset: 16 },
+            ];
+
+            // Current status
+            const age2026 = CURRENT_YEAR - birthYear;
+            let statusText = '';
+
+            if (age2026 < 6 || (age2026 === 6 && !isHayaumare)) {
+                statusText = '未就学';
+            } else if (age2026 <= 11 + (isHayaumare ? 1 : 0)) {
+                statusText = '小学生';
+            } else if (age2026 <= 14 + (isHayaumare ? 1 : 0)) {
+                statusText = '中学生';
+            } else if (age2026 <= 17 + (isHayaumare ? 1 : 0)) {
+                statusText = '高校生';
+            } else if (age2026 <= 21 + (isHayaumare ? 1 : 0)) {
+                statusText = '大学生の年齢';
+            } else {
+                statusText = '社会人の年齢';
+            }
+
+            return statusText;
+        }
+
+        /* ===== Populate birth year dropdown ===== */
+        const birthYearSelect = document.getElementById('birth-year');
+        for (let y = CURRENT_YEAR; y >= 1930; y--) {
+            const w = getWareki(y);
+            const opt = document.createElement('option');
+            opt.value = y;
+            opt.textContent = y + '年（' + formatWareki(w) + '）';
+            birthYearSelect.appendChild(opt);
+        }
+
+        /* ===== Interactive Tool Logic ===== */
+        function updateResult() {
+            const yearVal = birthYearSelect.value;
+            const resultBox = document.getElementById('result-box');
+
+            if (!yearVal) {
+                resultBox.classList.remove('active');
+                return;
+            }
+
+            const birthYear = parseInt(yearVal);
+            const birthMonth = parseInt(document.getElementById('birth-month').value) || 0;
+            const isHayaumare = document.getElementById('hayaumare').checked;
+            const age = CURRENT_YEAR - birthYear;
+
+            // Age display
+            const resAge = document.getElementById('res-age');
+            const resAgeSub = document.getElementById('res-age-sub');
+            resAge.textContent = age + '歳';
+            if (birthMonth) {
+                const currentMonth = 2; // February 2026
+                if (birthMonth > currentMonth) {
+                    resAgeSub.textContent = '※ 誕生日前のため現在は' + (age - 1) + '歳';
+                } else {
+                    resAgeSub.textContent = '※ 誕生日後のため現在' + age + '歳';
+                }
+            } else {
+                resAgeSub.textContent = '誕生日後の満年齢';
+            }
+
+            // Eto
+            const etoIdx = getEtoIndex(birthYear);
+            document.getElementById('res-eto').textContent = ETO_ANIMAL[etoIdx] + ETO_LIST[etoIdx];
+            document.getElementById('res-eto-sub').textContent = ETO_READING[etoIdx] + '年';
+
+            // Wareki
+            const w = getWareki(birthYear);
+            document.getElementById('res-wareki').textContent = formatWareki(w);
+            document.getElementById('res-wareki-sub').textContent = birthYear + '年';
+
+            // School status
+            const schoolInfo = getSchoolInfo(birthYear, isHayaumare);
+            document.getElementById('res-school').textContent = schoolInfo;
+            document.getElementById('res-school-sub').textContent = isHayaumare ? '早生まれ調整済み' : '';
+
+            resultBox.classList.add('active');
+
+            // Highlight table row
+            document.querySelectorAll('.age-table tbody tr').forEach(tr => {
+                tr.classList.remove('highlight');
+                if (tr.dataset.year == birthYear) {
+                    tr.classList.add('highlight');
+                    tr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+        }
+
+        birthYearSelect.addEventListener('change', updateResult);
+        document.getElementById('birth-month').addEventListener('change', updateResult);
+        document.getElementById('hayaumare').addEventListener('change', updateResult);
+
+        /* ===== Build Age Table ===== */
+        function buildTable() {
+            const tbody = document.getElementById('age-table-body');
+            const fragment = document.createDocumentFragment();
+
+            for (let year = CURRENT_YEAR; year >= 1930; year--) {
+                const age = CURRENT_YEAR - year;
+                const w = getWareki(year);
+                const etoIdx = getEtoIndex(year);
+
+                const tr = document.createElement('tr');
+                tr.dataset.year = year;
+
+                // 西暦
+                const tdYear = document.createElement('td');
+                tdYear.textContent = year + '年';
+                tr.appendChild(tdYear);
+
+                // 和暦
+                const tdWareki = document.createElement('td');
+                tdWareki.innerHTML = '<span class="' + w.cls + '">' + formatWareki(w) + '</span>';
+                tr.appendChild(tdWareki);
+
+                // 年齢
+                const tdAge = document.createElement('td');
+                tdAge.textContent = age + '歳';
+                tdAge.style.fontWeight = '700';
+                tr.appendChild(tdAge);
+
+                // 干支
+                const tdEto = document.createElement('td');
+                tdEto.textContent = ETO_ANIMAL[etoIdx] + ' ' + ETO_LIST[etoIdx] + '（' + ETO_READING[etoIdx] + '）';
+                tr.appendChild(tdEto);
+
+                fragment.appendChild(tr);
+            }
+
+            tbody.appendChild(fragment);
+        }
+
+        buildTable();
+    </script>
+
+</body>
+
+</html>
