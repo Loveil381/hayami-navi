@@ -1,9 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>干支早見表 2026年（令和8年）版 | 便利ツール集</title>
     <meta name="description" content="干支早見表で自分の干支をすぐにチェック。2026年（令和8年）の干支は午年（うまどし）。十二支の意味や性格、年賀状との関係も解説。">
     <meta name="keywords" content="干支早見表,干支,十二支,えと,2026年,午年,うまどし,年賀状,性格,六十干支">
@@ -12,269 +10,735 @@
     <meta property="og:type" content="article">
     <meta property="og:locale" content="ja_JP">
     <link rel="canonical" href="https://hayami-navi.com/eto.html">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #1a6b4a;
+    --color-primary-light: #e8f5ee;
+    --color-primary-hover: #145839;
+    --color-accent: #d4a843;
+    --color-bg: #f7f8fa;
+    --color-surface: #ffffff;
+    --color-text: #2c3e50;
+    --color-text-muted: #6b7b8d;
+    --color-border: #e2e6ea;
+    --color-footer-bg: #2c3e50;
+    --color-footer-text: #cfd8dc;
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-card-hover: 0 6px 20px rgba(0, 0, 0, 0.1);
+    --radius: 10px;
+    --max-width: 1080px;
+    --transition: 0.25s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.8;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ===== Header ===== */
+.header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #1e7e56 100%);
+    color: #fff;
+    position: sticky;
+    top: 0;
+    padding: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.header__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.header__inner--index {
+    padding: 18px 24px;
+}
+
+.header__icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.header__inner--index .header__icon {
+    font-size: 28px;
+}
+
+.header__home {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    transition: opacity var(--transition);
+}
+
+.header__home:hover {
+    opacity: 0.85;
+}
+
+.header__title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.header__inner--index .header__title {
+    font-size: 20px;
+    letter-spacing: 0.02em;
+}
+
+.header__subtitle {
+    font-size: 12px;
+    opacity: 0.85;
+    font-weight: 400;
+    display: block;
+    margin-top: 2px;
+    letter-spacing: 0.04em;
+}
+
+/* ===== Sub-navigation ===== */
+.subnav {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.subnav__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+}
+
+.subnav__link {
+    padding: 12px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color var(--transition), border-color var(--transition);
+}
+
+.subnav__link:hover {
+    color: var(--color-primary);
+}
+
+.subnav__link--active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* ===== Breadcrumb ===== */
+.breadcrumb {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 14px 24px 0;
+    font-size: 12px;
+    color: var(--color-text-muted);
+    width: 100%;
+}
+
+.breadcrumb a {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.breadcrumb a:hover {
+    text-decoration: none;
+}
+
+/* ===== Main Content ===== */
+.main {
+    flex: 1;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 20px 24px 56px;
+    width: 100%;
+}
+
+.page-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.page-subtitle {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-bottom: 28px;
+}
+
+/* ===== Tool Card ===== */
+.tool-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    padding: 32px 28px;
+    margin-bottom: 32px;
+}
+
+.tool-card__heading {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-primary-light);
+}
+
+/* ===== Form Controls ===== */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+    margin-bottom: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+}
+
+.form-group select,
+.form-group input[type="number"],
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    padding: 10px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: inherit;
+    background: var(--color-bg);
+    color: var(--color-text);
+    transition: border-color var(--transition);
+    min-width: 160px;
+}
+
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(26, 107, 74, 0.12);
+}
+
+.form-group-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.reset-btn {
+    padding: 10px 14px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all var(--transition);
+    color: var(--color-text-muted);
+    font-family: inherit;
+    white-space: nowrap;
+}
+
+.reset-btn:hover {
+    background: #e2e6ea;
+    color: var(--color-text);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--color-text);
+}
+
+/* ===== Result Display ===== */
+.result-box {
+    background: var(--color-primary-light);
+    border: 1px solid #c8e6d5;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-top: 20px;
+    display: none;
+}
+
+.result-box.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.result-item {
+    text-align: center;
+}
+
+.result-item__label {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    margin-bottom: 4px;
+}
+
+.result-item__value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.3;
+}
+
+.result-item__sub {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+}
+
+.scroll-to-table-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 24px;
+    background: #fff;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-align: center;
+    font-family: inherit;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.scroll-to-table-btn:hover {
+    background: var(--color-primary-light);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Table ===== */
+.table-section {
+    margin-bottom: 32px;
+}
+
+.table-section__heading {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 16px;
+    padding-left: 14px;
+    border-left: 4px solid var(--color-primary);
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+}
+
+.age-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background: var(--color-surface);
+}
+
+.age-table thead {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.age-table th {
+    padding: 12px 14px;
+    font-weight: 500;
+    font-size: 13px;
+    white-space: nowrap;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+
+.age-table td {
+    padding: 10px 14px;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+    white-space: nowrap;
+}
+
+.age-table tbody tr:nth-child(even) {
+    background: #f9fbfa;
+}
+
+.age-table tbody tr:hover {
+    background: var(--color-primary-light);
+}
+
+.age-table tbody tr.highlight {
+    background: #fff3cd;
+    font-weight: 700;
+}
+
+.age-table tbody tr.highlight.pulse {
+    animation: pulseHighlight 0.8s ease-in-out 2;
+}
+
+@keyframes pulseHighlight {
+    0% {
+        background-color: #fff3cd;
+    }
+
+    50% {
+        background-color: #ffe680;
+    }
+
+    100% {
+        background-color: #fff3cd;
+    }
+}
+
+.era-reiwa {
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+.era-heisei {
+    color: #2e7d9c;
+    font-weight: 500;
+}
+
+.era-showa {
+    color: #8b6914;
+    font-weight: 500;
+}
+
+.era-taisho {
+    color: #7b5ea7;
+    font-weight: 500;
+}
+
+.era-meiji {
+    color: #b85450;
+    font-weight: 500;
+}
+
+/* ===== Article ===== */
+.article {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    padding: 36px 32px;
+    margin-bottom: 32px;
+}
+
+.article h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 36px 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-primary-light);
+}
+
+.article h2:first-child {
+    margin-top: 0;
+}
+
+.article h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 24px 0 10px;
+    padding-left: 12px;
+    border-left: 3px solid var(--color-accent);
+}
+
+.article p {
+    font-size: 15px;
+    line-height: 2;
+    margin-bottom: 16px;
+    color: var(--color-text);
+}
+
+.article ul,
+.article ol {
+    margin: 0 0 16px 24px;
+    font-size: 15px;
+    line-height: 2;
+}
+
+.article .tip-box,
+.note {
+    background: #fffce8;
+    border-left: 4px solid var(--color-accent);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.article .tip-box strong,
+.note strong {
+    color: var(--color-accent);
+}
+
+/* ===== Ad Placeholder ===== */
+.ad-slot {
+    text-align: center;
+    padding: 20px;
+    margin: 28px 0;
+    color: var(--color-text-muted);
+    font-size: 12px;
+}
+
+/* ===== Footer ===== */
+.footer {
+    background: var(--color-footer-bg);
+    color: var(--color-footer-text);
+    font-size: 13px;
+}
+
+.footer__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.footer__nav {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer__nav a {
+    color: var(--color-footer-text);
+    transition: color var(--transition);
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.footer__nav a:hover {
+    color: #fff;
+}
+
+.footer__copy {
+    opacity: 0.7;
+    font-size: 12px;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+    .header__inner {
+        padding: 12px 16px;
+    }
+
+    .header__inner--index {
+        padding: 14px 16px;
+    }
+
+    .header__title {
+        font-size: 16px;
+    }
+
+    .header__inner--index .header__title {
+        font-size: 17px;
+    }
+
+    .header__subtitle {
+        font-size: 11px;
+    }
+
+    .subnav__inner {
+        padding: 0 12px;
+    }
+
+    .subnav__link {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    .main {
+        padding: 16px 16px 40px;
+    }
+
+    .page-title {
+        font-size: 20px;
+    }
+
+    .tool-card {
+        padding: 22px 16px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-group select,
+    .form-group input[type="number"],
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .result-item__value {
+        font-size: 22px;
+    }
+
+    .article {
+        padding: 24px 18px;
+    }
+
+    .article h2 {
+        font-size: 18px;
+    }
+
+    .article h3 {
+        font-size: 15px;
+    }
+
+    .age-table {
+        font-size: 12px;
+    }
+
+    .age-table th,
+    .age-table td {
+        padding: 8px 8px;
+    }
+
+    .footer__nav {
+        gap: 16px;
+    }
+}
+    </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ6TZTK11H"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-FJ6TZTK11H');
+</script>
     <style>
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box
-        }
-
-        :root {
-            --color-primary: #1a6b4a;
-            --color-primary-light: #e8f5ee;
-            --color-primary-hover: #145839;
-            --color-accent: #d4a843;
-            --color-bg: #f7f8fa;
-            --color-surface: #ffffff;
-            --color-text: #2c3e50;
-            --color-text-muted: #6b7b8d;
-            --color-border: #e2e6ea;
-            --color-footer-bg: #2c3e50;
-            --color-footer-text: #cfd8dc;
-            --shadow-card: 0 2px 8px rgba(0, 0, 0, .06);
-            --shadow-card-hover: 0 6px 20px rgba(0, 0, 0, .1);
-            --radius: 10px;
-            --max-width: 1080px;
-            --transition: .25s ease;
-        }
-
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
-            background: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.8;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            -webkit-font-smoothing: antialiased
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none
-        }
-
-        .header {
-            background: linear-gradient(135deg, var(--color-primary) 0%, #1e7e56 100%);
-            color: #fff;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, .12)
-        }
-
-        .header__inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 14px 24px;
-            display: flex;
-            align-items: center;
-            gap: 14px
-        }
-
-        .header__icon {
-            font-size: 24px;
-            flex-shrink: 0
-        }
-
-        .header__home {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #fff;
-            transition: opacity var(--transition)
-        }
-
-        .header__home:hover {
-            opacity: .85
-        }
-
-        .header__title {
-            font-size: 18px;
-            font-weight: 700
-        }
-
-        .subnav {
-            background: var(--color-surface);
-            border-bottom: 1px solid var(--color-border);
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch
-        }
-
-        .subnav__inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex
-        }
-
-        .subnav__link {
-            padding: 12px 18px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--color-text-muted);
-            white-space: nowrap;
-            border-bottom: 3px solid transparent;
-            transition: color var(--transition), border-color var(--transition)
-        }
-
-        .subnav__link:hover {
-            color: var(--color-primary)
-        }
-
-        .subnav__link--active {
-            color: var(--color-primary);
-            border-bottom-color: var(--color-primary);
-            font-weight: 700
-        }
-
-        .breadcrumb {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 14px 24px 0;
-            font-size: 12px;
-            color: var(--color-text-muted);
-            width: 100%
-        }
-
-        .breadcrumb a {
-            color: var(--color-primary);
-            text-decoration: underline
-        }
-
-        .breadcrumb a:hover {
-            text-decoration: none
-        }
-
-        .main {
-            flex: 1;
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 20px 24px 56px;
-            width: 100%
-        }
-
-        .page-title {
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: 8px;
-            line-height: 1.4
-        }
-
-        .page-subtitle {
-            font-size: 14px;
-            color: var(--color-text-muted);
-            margin-bottom: 28px
-        }
-
-        /* Tool Card */
-        .tool-card {
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-card);
-            padding: 32px 28px;
-            margin-bottom: 32px
-        }
-
-        .tool-card__heading {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--color-primary-light)
-        }
-
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            align-items: flex-end;
-            margin-bottom: 8px
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px
-        }
-
-        .form-group label {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--color-text-muted)
-        }
-
-        .form-group select,
-        .form-group input[type="number"] {
-            padding: 10px 14px;
-            border: 1px solid var(--color-border);
-            border-radius: 6px;
-            font-size: 15px;
-            font-family: inherit;
-            background: var(--color-bg);
-            color: var(--color-text);
-            transition: border-color var(--transition);
-            min-width: 200px
-        }
-
-        .form-group select:focus,
-        .form-group input[type="number"]:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(26, 107, 74, .12)
-        }
-
         /* Result */
         .result-box {
-            background: var(--color-primary-light);
-            border: 1px solid #c8e6d5;
-            border-radius: 12px;
-            padding: 32px 24px;
-            margin-top: 24px;
-            display: none;
-            text-align: center
-        }
-
-        .result-box.active {
-            display: block;
-            animation: fadeIn .4s ease
+            text-align: center;
         }
 
         .result-emoji {
             font-size: 72px;
             line-height: 1;
-            margin-bottom: 12px
+            margin-bottom: 12px;
         }
 
         .result-kanji {
             font-size: 36px;
             font-weight: 700;
             color: var(--color-primary);
-            margin-bottom: 4px
+            margin-bottom: 4px;
         }
 
         .result-reading {
             font-size: 16px;
             color: var(--color-text-muted);
-            margin-bottom: 12px
+            margin-bottom: 12px;
         }
 
         .result-detail {
             font-size: 14px;
             color: var(--color-text);
-            line-height: 1.8
+            line-height: 1.8;
         }
 
         /* Zodiac Wheel */
@@ -285,25 +749,25 @@
             box-shadow: var(--shadow-card);
             padding: 24px;
             margin-bottom: 32px;
-            text-align: center
+            text-align: center;
         }
 
         .zodiac-current__label {
             font-size: 14px;
             color: var(--color-text-muted);
-            margin-bottom: 8px
+            margin-bottom: 8px;
         }
 
         .zodiac-current__main {
             font-size: 48px;
             line-height: 1;
-            margin-bottom: 6px
+            margin-bottom: 6px;
         }
 
         .zodiac-current__name {
             font-size: 22px;
             font-weight: 700;
-            color: var(--color-primary)
+            color: var(--color-primary);
         }
 
         /* 12-Animal Grid */
@@ -311,7 +775,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
             gap: 16px;
-            margin-bottom: 32px
+            margin-bottom: 32px;
         }
 
         .zodiac-card {
@@ -321,41 +785,41 @@
             padding: 20px 16px;
             text-align: center;
             box-shadow: var(--shadow-card);
-            transition: transform var(--transition), box-shadow var(--transition)
+            transition: transform var(--transition), box-shadow var(--transition);
         }
 
         .zodiac-card:hover {
             transform: translateY(-3px);
-            box-shadow: var(--shadow-card-hover)
+            box-shadow: var(--shadow-card-hover);
         }
 
         .zodiac-card.highlight {
             border-color: var(--color-primary);
-            background: var(--color-primary-light)
+            background: var(--color-primary-light);
         }
 
         .zodiac-card__emoji {
             font-size: 40px;
             line-height: 1;
-            margin-bottom: 8px
+            margin-bottom: 8px;
         }
 
         .zodiac-card__kanji {
             font-size: 22px;
             font-weight: 700;
-            color: var(--color-text)
+            color: var(--color-text);
         }
 
         .zodiac-card__reading {
             font-size: 13px;
             color: var(--color-text-muted);
-            margin-bottom: 8px
+            margin-bottom: 8px;
         }
 
         .zodiac-card__years {
             font-size: 12px;
             color: var(--color-text-muted);
-            line-height: 1.6
+            line-height: 1.6;
         }
 
         .zodiac-card__years span {
@@ -363,272 +827,47 @@
             background: var(--color-bg);
             padding: 1px 6px;
             border-radius: 3px;
-            margin: 2px
-        }
-
-        /* Table */
-        .table-section {
-            margin-bottom: 32px
-        }
-
-        .table-section__heading {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: 16px;
-            padding-left: 14px;
-            border-left: 4px solid var(--color-primary)
-        }
-
-        .table-wrapper {
-            overflow-x: auto;
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-card)
-        }
-
-        .eto-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-            background: var(--color-surface)
-        }
-
-        .eto-table thead {
-            background: var(--color-primary);
-            color: #fff
-        }
-
-        .eto-table th {
-            padding: 12px 10px;
-            font-weight: 500;
-            font-size: 13px;
-            text-align: center
-        }
-
-        .eto-table td {
-            padding: 10px;
-            text-align: center;
-            border-bottom: 1px solid var(--color-border)
-        }
-
-        .eto-table tbody tr:nth-child(even) {
-            background: #f9fbfa
-        }
-
-        .eto-table tbody tr:hover {
-            background: var(--color-primary-light)
+            margin: 2px;
         }
 
         .eto-table tbody tr.highlight {
             background: #fff3cd;
-            font-weight: 700
-        }
-
-        /* Article */
-        .article {
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-card);
-            padding: 36px 32px;
-            margin-bottom: 32px
-        }
-
-        .article h2 {
-            font-size: 22px;
             font-weight: 700;
-            color: var(--color-text);
-            margin: 36px 0 16px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--color-primary-light)
-        }
-
-        .article h2:first-child {
-            margin-top: 0
-        }
-
-        .article h3 {
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin: 24px 0 10px;
-            padding-left: 12px;
-            border-left: 3px solid var(--color-accent)
-        }
-
-        .article p {
-            font-size: 15px;
-            line-height: 2;
-            margin-bottom: 16px
-        }
-
-        .article ul,
-        .article ol {
-            margin: 0 0 16px 24px;
-            font-size: 15px;
-            line-height: 2
-        }
-
-        .article .tip-box {
-            background: #fffce8;
-            border-left: 4px solid var(--color-accent);
-            padding: 16px 20px;
-            border-radius: 0 8px 8px 0;
-            margin: 20px 0;
-            font-size: 14px
-        }
-
-        .article .tip-box strong {
-            color: var(--color-accent)
-        }
-
-        .ad-slot {
-            text-align: center;
-            padding: 20px;
-            margin: 28px 0;
-            color: var(--color-text-muted);
-            font-size: 12px
-        }
-
-        .footer {
-            background: var(--color-footer-bg);
-            color: var(--color-footer-text);
-            font-size: 13px
-        }
-
-        .footer__inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 32px 24px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px
-        }
-
-        .footer__nav {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            justify-content: center
-        }
-
-        .footer__nav a {
-            color: var(--color-footer-text);
-            transition: color var(--transition);
-            font-size: 13px
-        }
-
-        .footer__nav a:hover {
-            color: #fff
-        }
-
-        .footer__copy {
-            opacity: .7;
-            font-size: 12px
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px)
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0)
-            }
         }
 
         @media(max-width:640px) {
-            .header__inner {
-                padding: 12px 16px
-            }
-
-            .header__title {
-                font-size: 16px
-            }
-
-            .subnav__inner {
-                padding: 0 12px
-            }
-
-            .subnav__link {
-                padding: 10px 12px;
-                font-size: 12px
-            }
-
-            .main {
-                padding: 16px 16px 40px
-            }
-
-            .page-title {
-                font-size: 20px
-            }
-
-            .tool-card {
-                padding: 22px 16px
-            }
-
-            .form-group select,
-            .form-group input[type="number"] {
-                min-width: unset;
-                width: 100%
-            }
-
-            .form-row {
-                flex-direction: column
-            }
-
             .result-emoji {
-                font-size: 56px
+                font-size: 56px;
             }
 
             .result-kanji {
-                font-size: 28px
+                font-size: 28px;
             }
 
             .zodiac-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 10px
+                gap: 10px;
             }
 
             .zodiac-card {
-                padding: 14px 10px
+                padding: 14px 10px;
             }
 
             .zodiac-card__emoji {
-                font-size: 32px
+                font-size: 32px;
             }
 
             .zodiac-card__kanji {
-                font-size: 18px
+                font-size: 18px;
             }
 
             .zodiac-current__main {
-                font-size: 40px
+                font-size: 40px;
             }
 
-            .article {
-                padding: 24px 18px
-            }
-
-            .article h2 {
-                font-size: 18px
-            }
-
-            .article h3 {
-                font-size: 15px
-            }
-
-            .eto-table {
-                font-size: 12px
-            }
-
-            .eto-table th,
-            .eto-table td {
-                padding: 8px 6px
+            .age-table th,
+            .age-table td {
+                padding: 8px 6px;
             }
         }
     </style>
@@ -646,39 +885,31 @@
     "inLanguage": "ja"
   }
   </script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ6TZTK11H"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-FJ6TZTK11H');
-    </script>
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE">
 </head>
 
 <body>
 
     <!-- Header -->
-    <header class="header" role="banner">
-        <div class="header__inner">
-            <a href="index.html" class="header__home" aria-label="便利ツール集トップへ">
-                <span class="header__icon" aria-hidden="true">🛠️</span>
-                <span class="header__title">便利ツール集</span>
-            </a>
-        </div>
-    </header>
+<header class="header" role="banner">
+    <div class="header__inner">
+        <a href="/index.html" class="header__home" aria-label="便利ツール集トップへ">
+            <span class="header__icon" aria-hidden="true">🛠️</span>
+            <span class="header__title">便利ツール集</span>
+        </a>
+    </div>
+</header>
 
-    <!-- Sub Navigation -->
-    <nav class="subnav" aria-label="ツールナビゲーション">
-        <div class="subnav__inner">
-            <a href="nenrei.html" class="subnav__link">年齢早見表</a>
-            <a href="wareki.html" class="subnav__link">西暦⇔和暦</a>
-            <a href="eto.html" class="subnav__link subnav__link--active">干支早見表</a>
-            <a href="gakureki.html" class="subnav__link">入学・卒業年度</a>
-            <a href="yakudoshi.html" class="subnav__link">厄年早見表</a>
-        </div>
-    </nav>
+<!-- Sub Navigation -->
+<nav class="subnav" aria-label="ツールナビゲーション">
+    <div class="subnav__inner">
+        <a href="/nenrei.html" class="subnav__link ">年齢早見表</a>
+        <a href="/wareki.html" class="subnav__link ">西暦⇔和暦</a>
+        <a href="/eto.html" class="subnav__link subnav__link--active">干支早見表</a>
+        <a href="/gakureki.html" class="subnav__link ">入学・卒業年度</a>
+        <a href="/yakudoshi.html" class="subnav__link ">厄年早見表</a>
+    </div>
+</nav>
 
     <!-- Breadcrumb -->
     <div class="breadcrumb">
@@ -701,7 +932,7 @@
         <section class="tool-card" id="tool">
             <h2 class="tool-card__heading">🐉 干支を調べる</h2>
             <div class="form-row">
-                <div class="form-group">
+                <div class="form-group" style="flex:1">
                     <label for="birth-year">生まれ年（西暦）</label>
                     <input type="number" id="birth-year" min="1924" max="2030" placeholder="例: 1990" autocomplete="off">
                 </div>
@@ -722,14 +953,162 @@
         <!-- ===== 12-Animal Cards ===== -->
         <section class="table-section">
             <h2 class="table-section__heading">十二支一覧</h2>
-            <div class="zodiac-grid" id="zodiac-grid"></div>
+            <div class="zodiac-grid" id="zodiac-grid">
+
+                                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐭</div>
+                    <div class="zodiac-card__kanji">子</div>
+                    <div class="zodiac-card__reading">ねどし（ねずみ）</div>
+                    <div class="zodiac-card__years"><span>2020</span><span>2008</span><span>1996</span><span>1984</span><span>1972</span><span>1960</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐮</div>
+                    <div class="zodiac-card__kanji">丑</div>
+                    <div class="zodiac-card__reading">うしどし（うし）</div>
+                    <div class="zodiac-card__years"><span>2021</span><span>2009</span><span>1997</span><span>1985</span><span>1973</span><span>1961</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐯</div>
+                    <div class="zodiac-card__kanji">寅</div>
+                    <div class="zodiac-card__reading">とらどし（とら）</div>
+                    <div class="zodiac-card__years"><span>2022</span><span>2010</span><span>1998</span><span>1986</span><span>1974</span><span>1962</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐰</div>
+                    <div class="zodiac-card__kanji">卯</div>
+                    <div class="zodiac-card__reading">うどし（うさぎ）</div>
+                    <div class="zodiac-card__years"><span>2023</span><span>2011</span><span>1999</span><span>1987</span><span>1975</span><span>1963</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐲</div>
+                    <div class="zodiac-card__kanji">辰</div>
+                    <div class="zodiac-card__reading">たつどし（りゅう）</div>
+                    <div class="zodiac-card__years"><span>2024</span><span>2012</span><span>2000</span><span>1988</span><span>1976</span><span>1964</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐍</div>
+                    <div class="zodiac-card__kanji">巳</div>
+                    <div class="zodiac-card__reading">みどし（へび）</div>
+                    <div class="zodiac-card__years"><span>2025</span><span>2013</span><span>2001</span><span>1989</span><span>1977</span><span>1965</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐴</div>
+                    <div class="zodiac-card__kanji">午</div>
+                    <div class="zodiac-card__reading">うまどし（うま）</div>
+                    <div class="zodiac-card__years"><span>2026</span><span>2014</span><span>2002</span><span>1990</span><span>1978</span><span>1966</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐏</div>
+                    <div class="zodiac-card__kanji">未</div>
+                    <div class="zodiac-card__reading">ひつじどし（ひつじ）</div>
+                    <div class="zodiac-card__years"><span>2015</span><span>2003</span><span>1991</span><span>1979</span><span>1967</span><span>1955</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐵</div>
+                    <div class="zodiac-card__kanji">申</div>
+                    <div class="zodiac-card__reading">さるどし（さる）</div>
+                    <div class="zodiac-card__years"><span>2016</span><span>2004</span><span>1992</span><span>1980</span><span>1968</span><span>1956</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐔</div>
+                    <div class="zodiac-card__kanji">酉</div>
+                    <div class="zodiac-card__reading">とりどし（とり）</div>
+                    <div class="zodiac-card__years"><span>2017</span><span>2005</span><span>1993</span><span>1981</span><span>1969</span><span>1957</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐶</div>
+                    <div class="zodiac-card__kanji">戌</div>
+                    <div class="zodiac-card__reading">いぬどし（いぬ）</div>
+                    <div class="zodiac-card__years"><span>2018</span><span>2006</span><span>1994</span><span>1982</span><span>1970</span><span>1958</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐗</div>
+                    <div class="zodiac-card__kanji">亥</div>
+                    <div class="zodiac-card__reading">いどし（いのしし）</div>
+                    <div class="zodiac-card__years"><span>2019</span><span>2007</span><span>1995</span><span>1983</span><span>1971</span><span>1959</span></div>
+                </div>
+
+            
+                    </div>
+                    <div class="zodiac-card__kanji">子</div>
+                    <div class="zodiac-card__reading">ねどし（ねずみ）</div>
+                    <div class="zodiac-card__years"><span>2020</span><span>2008</span><span>1996</span><span>1984</span><span>1972</span><span>1960</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐮</div>
+                    <div class="zodiac-card__kanji">丑</div>
+                    <div class="zodiac-card__reading">うしどし（うし）</div>
+                    <div class="zodiac-card__years"><span>2021</span><span>2009</span><span>1997</span><span>1985</span><span>1973</span><span>1961</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐯</div>
+                    <div class="zodiac-card__kanji">寅</div>
+                    <div class="zodiac-card__reading">とらどし（とら）</div>
+                    <div class="zodiac-card__years"><span>2022</span><span>2010</span><span>1998</span><span>1986</span><span>1974</span><span>1962</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐰</div>
+                    <div class="zodiac-card__kanji">卯</div>
+                    <div class="zodiac-card__reading">うどし（うさぎ）</div>
+                    <div class="zodiac-card__years"><span>2023</span><span>2011</span><span>1999</span><span>1987</span><span>1975</span><span>1963</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐲</div>
+                    <div class="zodiac-card__kanji">辰</div>
+                    <div class="zodiac-card__reading">たつどし（りゅう）</div>
+                    <div class="zodiac-card__years"><span>2024</span><span>2012</span><span>2000</span><span>1988</span><span>1976</span><span>1964</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐍</div>
+                    <div class="zodiac-card__kanji">巳</div>
+                    <div class="zodiac-card__reading">みどし（へび）</div>
+                    <div class="zodiac-card__years"><span>2025</span><span>2013</span><span>2001</span><span>1989</span><span>1977</span><span>1965</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐴</div>
+                    <div class="zodiac-card__kanji">午</div>
+                    <div class="zodiac-card__reading">うまどし（うま）</div>
+                    <div class="zodiac-card__years"><span>2026</span><span>2014</span><span>2002</span><span>1990</span><span>1978</span><span>1966</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐏</div>
+                    <div class="zodiac-card__kanji">未</div>
+                    <div class="zodiac-card__reading">ひつじどし（ひつじ）</div>
+                    <div class="zodiac-card__years"><span>2015</span><span>2003</span><span>1991</span><span>1979</span><span>1967</span><span>1955</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐵</div>
+                    <div class="zodiac-card__kanji">申</div>
+                    <div class="zodiac-card__reading">さるどし（さる）</div>
+                    <div class="zodiac-card__years"><span>2016</span><span>2004</span><span>1992</span><span>1980</span><span>1968</span><span>1956</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐔</div>
+                    <div class="zodiac-card__kanji">酉</div>
+                    <div class="zodiac-card__reading">とりどし（とり）</div>
+                    <div class="zodiac-card__years"><span>2017</span><span>2005</span><span>1993</span><span>1981</span><span>1969</span><span>1957</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐶</div>
+                    <div class="zodiac-card__kanji">戌</div>
+                    <div class="zodiac-card__reading">いぬどし（いぬ）</div>
+                    <div class="zodiac-card__years"><span>2018</span><span>2006</span><span>1994</span><span>1982</span><span>1970</span><span>1958</span></div>
+                </div>
+                <div class="zodiac-card">
+                    <div class="zodiac-card__emoji">🐗</div>
+                    <div class="zodiac-card__kanji">亥</div>
+                    <div class="zodiac-card__reading">いどし（いのしし）</div>
+                    <div class="zodiac-card__years"><span>2019</span><span>2007</span><span>1995</span><span>1983</span><span>1971</span><span>1959</span></div>
+                </div>
+
+            </div>
         </section>
 
         <!-- ===== Year-by-Year Table ===== -->
         <section class="table-section" id="table">
             <h2 class="table-section__heading">西暦別 干支早見表</h2>
             <div class="table-wrapper">
-                <table class="eto-table" id="eto-table">
+                <table class="age-table" id="eto-table">
                     <thead>
                         <tr>
                             <th>西暦</th>
@@ -738,7 +1117,629 @@
                             <th>年齢（2026年）</th>
                         </tr>
                     </thead>
-                    <tbody id="eto-table-body"></tbody>
+                    <tbody id="eto-table-body">
+
+                                                <tr data-year="2026">
+                            <td>2026年</td>
+                            <td>🐴 午</td>
+                            <td>うまどし</td>
+                            <td style="font-weight: 700;">0歳</td>
+                        </tr>
+                        <tr data-year="2025">
+                            <td>2025年</td>
+                            <td>🐍 巳</td>
+                            <td>みどし</td>
+                            <td style="font-weight: 700;">1歳</td>
+                        </tr>
+                        <tr data-year="2024">
+                            <td>2024年</td>
+                            <td>🐲 辰</td>
+                            <td>たつどし</td>
+                            <td style="font-weight: 700;">2歳</td>
+                        </tr>
+                        <tr data-year="2023">
+                            <td>2023年</td>
+                            <td>🐰 卯</td>
+                            <td>うどし</td>
+                            <td style="font-weight: 700;">3歳</td>
+                        </tr>
+                        <tr data-year="2022">
+                            <td>2022年</td>
+                            <td>🐯 寅</td>
+                            <td>とらどし</td>
+                            <td style="font-weight: 700;">4歳</td>
+                        </tr>
+                        <tr data-year="2021">
+                            <td>2021年</td>
+                            <td>🐮 丑</td>
+                            <td>うしどし</td>
+                            <td style="font-weight: 700;">5歳</td>
+                        </tr>
+                        <tr data-year="2020">
+                            <td>2020年</td>
+                            <td>🐭 子</td>
+                            <td>ねどし</td>
+                            <td style="font-weight: 700;">6歳</td>
+                        </tr>
+                        <tr data-year="2019">
+                            <td>2019年</td>
+                            <td>🐗 亥</td>
+                            <td>いどし</td>
+                            <td style="font-weight: 700;">7歳</td>
+                        </tr>
+                        <tr data-year="2018">
+                            <td>2018年</td>
+                            <td>🐶 戌</td>
+                            <td>いぬどし</td>
+                            <td style="font-weight: 700;">8歳</td>
+                        </tr>
+                        <tr data-year="2017">
+                            <td>2017年</td>
+                            <td>🐔 酉</td>
+                            <td>とりどし</td>
+                            <td style="font-weight: 700;">9歳</td>
+                        </tr>
+                        <tr data-year="2016">
+                            <td>2016年</td>
+                            <td>🐵 申</td>
+                            <td>さるどし</td>
+                            <td style="font-weight: 700;">10歳</td>
+                        </tr>
+                        <tr data-year="2015">
+                            <td>2015年</td>
+                            <td>🐏 未</td>
+                            <td>ひつじどし</td>
+                            <td style="font-weight: 700;">11歳</td>
+                        </tr>
+                        <tr data-year="2014">
+                            <td>2014年</td>
+                            <td>🐴 午</td>
+                            <td>うまどし</td>
+                            <td style="font-weight: 700;">12歳</td>
+                        </tr>
+                        <tr data-year="2013">
+                            <td>2013年</td>
+                            <td>🐍 巳</td>
+                            <td>みどし</td>
+                            <td style="font-weight: 700;">13歳</td>
+                        </tr>
+                        <tr data-year="2012">
+                            <td>2012年</td>
+                            <td>🐲 辰</td>
+                            <td>たつどし</td>
+                            <td style="font-weight: 700;">14歳</td>
+                        </tr>
+                        <tr data-year="2011">
+                            <td>2011年</td>
+                            <td>🐰 卯</td>
+                            <td>うどし</td>
+                            <td style="font-weight: 700;">15歳</td>
+                        </tr>
+                        <tr data-year="2010">
+                            <td>2010年</td>
+                            <td>🐯 寅</td>
+                            <td>とらどし</td>
+                            <td style="font-weight: 700;">16歳</td>
+                        </tr>
+                        <tr data-year="2009">
+                            <td>2009年</td>
+                            <td>🐮 丑</td>
+                            <td>うしどし</td>
+                            <td style="font-weight: 700;">17歳</td>
+                        </tr>
+                        <tr data-year="2008">
+                            <td>2008年</td>
+                            <td>🐭 子</td>
+                            <td>ねどし</td>
+                            <td style="font-weight: 700;">18歳</td>
+                        </tr>
+                        <tr data-year="2007">
+                            <td>2007年</td>
+                            <td>🐗 亥</td>
+                            <td>いどし</td>
+                            <td style="font-weight: 700;">19歳</td>
+                        </tr>
+                        <tr data-year="2006">
+                            <td>2006年</td>
+                            <td>🐶 戌</td>
+                            <td>いぬどし</td>
+                            <td style="font-weight: 700;">20歳</td>
+                        </tr>
+                        <tr data-year="2005">
+                            <td>2005年</td>
+                            <td>🐔 酉</td>
+                            <td>とりどし</td>
+                            <td style="font-weight: 700;">21歳</td>
+                        </tr>
+                        <tr data-year="2004">
+                            <td>2004年</td>
+                            <td>🐵 申</td>
+                            <td>さるどし</td>
+                            <td style="font-weight: 700;">22歳</td>
+                        </tr>
+                        <tr data-year="2003">
+                            <td>2003年</td>
+                            <td>🐏 未</td>
+                            <td>ひつじどし</td>
+                            <td style="font-weight: 700;">23歳</td>
+                        </tr>
+                        <tr data-year="2002">
+                            <td>2002年</td>
+                            <td>🐴 午</td>
+                            <td>うまどし</td>
+                            <td style="font-weight: 700;">24歳</td>
+                        </tr>
+                        <tr data-year="2001">
+                            <td>2001年</td>
+                            <td>🐍 巳</td>
+                            <td>みどし</td>
+                            <td style="font-weight: 700;">25歳</td>
+                        </tr>
+                        <tr data-year="2000">
+                            <td>2000年</td>
+                            <td>🐲 辰</td>
+                            <td>たつどし</td>
+                            <td style="font-weight: 700;">26歳</td>
+                        </tr>
+                        <tr data-year="1999">
+                            <td>1999年</td>
+                            <td>🐰 卯</td>
+                            <td>うどし</td>
+                            <td style="font-weight: 700;">27歳</td>
+                        </tr>
+                        <tr data-year="1998">
+                            <td>1998年</td>
+                            <td>🐯 寅</td>
+                            <td>とらどし</td>
+                            <td style="font-weight: 700;">28歳</td>
+                        </tr>
+                        <tr data-year="1997">
+                            <td>1997年</td>
+                            <td>🐮 丑</td>
+                            <td>うしどし</td>
+                            <td style="font-weight: 700;">29歳</td>
+                        </tr>
+                        <tr data-year="1996">
+                            <td>1996年</td>
+                            <td>🐭 子</td>
+                            <td>ねどし</td>
+                            <td style="font-weight: 700;">30歳</td>
+                        </tr>
+                        <tr data-year="1995">
+                            <td>1995年</td>
+                            <td>🐗 亥</td>
+                            <td>いどし</td>
+                            <td style="font-weight: 700;">31歳</td>
+                        </tr>
+                        <tr data-year="1994">
+                            <td>1994年</td>
+                            <td>🐶 戌</td>
+                            <td>いぬどし</td>
+                            <td style="font-weight: 700;">32歳</td>
+                        </tr>
+                        <tr data-year="1993">
+                            <td>1993年</td>
+                            <td>🐔 酉</td>
+                            <td>とりどし</td>
+                            <td style="font-weight: 700;">33歳</td>
+                        </tr>
+                        <tr data-year="1992">
+                            <td>1992年</td>
+                            <td>🐵 申</td>
+                            <td>さるどし</td>
+                            <td style="font-weight: 700;">34歳</td>
+                        </tr>
+                        <tr data-year="1991">
+                            <td>1991年</td>
+                            <td>🐏 未</td>
+                            <td>ひつじどし</td>
+                            <td style="font-weight: 700;">35歳</td>
+                        </tr>
+                        <tr data-year="1990">
+                            <td>1990年</td>
+                            <td>🐴 午</td>
+                            <td>うまどし</td>
+                            <td style="font-weight: 700;">36歳</td>
+                        </tr>
+                        <tr data-year="1989">
+                            <td>1989年</td>
+                            <td>🐍 巳</td>
+                            <td>みどし</td>
+                            <td style="font-weight: 700;">37歳</td>
+                        </tr>
+                        <tr data-year="1988">
+                            <td>1988年</td>
+                            <td>🐲 辰</td>
+                            <td>たつどし</td>
+                            <td style="font-weight: 700;">38歳</td>
+                        </tr>
+                        <tr data-year="1987">
+                            <td>1987年</td>
+                            <td>🐰 卯</td>
+                            <td>うどし</td>
+                            <td style="font-weight: 700;">39歳</td>
+                        </tr>
+                        <tr data-year="1986">
+                            <td>1986年</td>
+                            <td>🐯 寅</td>
+                            <td>とらどし</td>
+                            <td style="font-weight: 700;">40歳</td>
+                        </tr>
+                        <tr data-year="1985">
+                            <td>1985年</td>
+                            <td>🐮 丑</td>
+                            <td>うしどし</td>
+                            <td style="font-weight: 700;">41歳</td>
+                        </tr>
+                        <tr data-year="1984">
+                            <td>1984年</td>
+                            <td>🐭 子</td>
+                            <td>ねどし</td>
+                            <td style="font-weight: 700;">42歳</td>
+                        </tr>
+                        <tr data-year="1983">
+                            <td>1983年</td>
+                            <td>🐗 亥</td>
+                            <td>いどし</td>
+                            <td style="font-weight: 700;">43歳</td>
+                        </tr>
+                        <tr data-year="1982">
+                            <td>1982年</td>
+                            <td>🐶 戌</td>
+                            <td>いぬどし</td>
+                            <td style="font-weight: 700;">44歳</td>
+                        </tr>
+                        <tr data-year="1981">
+                            <td>1981年</td>
+                            <td>🐔 酉</td>
+                            <td>とりどし</td>
+                            <td style="font-weight: 700;">45歳</td>
+                        </tr>
+                        <tr data-year="1980">
+                            <td>1980年</td>
+                            <td>🐵 申</td>
+                            <td>さるどし</td>
+                            <td style="font-weight: 700;">46歳</td>
+                        </tr>
+                        <tr data-year="1979">
+                            <td>1979年</td>
+                            <td>🐏 未</td>
+                            <td>ひつじどし</td>
+                            <td style="font-weight: 700;">47歳</td>
+                        </tr>
+                        <tr data-year="1978">
+                            <td>1978年</td>
+                            <td>🐴 午</td>
+                            <td>うまどし</td>
+                            <td style="font-weight: 700;">48歳</td>
+                        </tr>
+                        <tr data-year="1977">
+                            <td>1977年</td>
+                            <td>🐍 巳</td>
+                            <td>みどし</td>
+                            <td style="font-weight: 700;">49歳</td>
+                        </tr>
+                        <tr data-year="1976">
+                            <td>1976年</td>
+                            <td>🐲 辰</td>
+                            <td>たつどし</td>
+                            <td style="font-weight: 700;">50歳</td>
+                        </tr>
+                        <tr data-year="1975">
+                            <td>1975年</td>
+                            <td>🐰 卯</td>
+                            <td>うどし</td>
+                            <td style="font-weight: 700;">51歳</td>
+                        </tr>
+                        <tr data-year="1974">
+                            <td>1974年</td>
+                            <td>🐯 寅</td>
+                            <td>とらどし</td>
+                            <td style="font-weight: 700;">52歳</td>
+                        </tr>
+                        <tr data-year="1973">
+                            <td>1973年</td>
+                            <td>🐮 丑</td>
+                            <td>うしどし</td>
+                            <td style="font-weight: 700;">53歳</td>
+                        </tr>
+                        <tr data-year="1972">
+                            <td>1972年</td>
+                            <td>🐭 子</td>
+                            <td>ねどし</td>
+                            <td style="font-weight: 700;">54歳</td>
+                        </tr>
+                        <tr data-year="1971">
+                            <td>1971年</td>
+                            <td>🐗 亥</td>
+                            <td>いどし</td>
+                            <td style="font-weight: 700;">55歳</td>
+                        </tr>
+                        <tr data-year="1970">
+                            <td>1970年</td>
+                            <td>🐶 戌</td>
+                            <td>いぬどし</td>
+                            <td style="font-weight: 700;">56歳</td>
+                        </tr>
+                        <tr data-year="1969">
+                            <td>1969年</td>
+                            <td>🐔 酉</td>
+                            <td>とりどし</td>
+                            <td style="font-weight: 700;">57歳</td>
+                        </tr>
+                        <tr data-year="1968">
+                            <td>1968年</td>
+                            <td>🐵 申</td>
+                            <td>さるどし</td>
+                            <td style="font-weight: 700;">58歳</td>
+                        </tr>
+                        <tr data-year="1967">
+                            <td>1967年</td>
+                            <td>🐏 未</td>
+                            <td>ひつじどし</td>
+                            <td style="font-weight: 700;">59歳</td>
+                        </tr>
+                        <tr data-year="1966">
+                            <td>1966年</td>
+                            <td>🐴 午</td>
+                            <td>うまどし</td>
+                            <td style="font-weight: 700;">60歳</td>
+                        </tr>
+                        <tr data-year="1965">
+                            <td>1965年</td>
+                            <td>🐍 巳</td>
+                            <td>みどし</td>
+                            <td style="font-weight: 700;">61歳</td>
+                        </tr>
+                        <tr data-year="1964">
+                            <td>1964年</td>
+                            <td>🐲 辰</td>
+                            <td>たつどし</td>
+                            <td style="font-weight: 700;">62歳</td>
+                        </tr>
+                        <tr data-year="1963">
+                            <td>1963年</td>
+                            <td>🐰 卯</td>
+                            <td>うどし</td>
+                            <td style="font-weight: 700;">63歳</td>
+                        </tr>
+                        <tr data-year="1962">
+                            <td>1962年</td>
+                            <td>🐯 寅</td>
+                            <td>とらどし</td>
+                            <td style="font-weight: 700;">64歳</td>
+                        </tr>
+                        <tr data-year="1961">
+                            <td>1961年</td>
+                            <td>🐮 丑</td>
+                            <td>うしどし</td>
+                            <td style="font-weight: 700;">65歳</td>
+                        </tr>
+                        <tr data-year="1960">
+                            <td>1960年</td>
+                            <td>🐭 子</td>
+                            <td>ねどし</td>
+                            <td style="font-weight: 700;">66歳</td>
+                        </tr>
+                        <tr data-year="1959">
+                            <td>1959年</td>
+                            <td>🐗 亥</td>
+                            <td>いどし</td>
+                            <td style="font-weight: 700;">67歳</td>
+                        </tr>
+                        <tr data-year="1958">
+                            <td>1958年</td>
+                            <td>🐶 戌</td>
+                            <td>いぬどし</td>
+                            <td style="font-weight: 700;">68歳</td>
+                        </tr>
+                        <tr data-year="1957">
+                            <td>1957年</td>
+                            <td>🐔 酉</td>
+                            <td>とりどし</td>
+                            <td style="font-weight: 700;">69歳</td>
+                        </tr>
+                        <tr data-year="1956">
+                            <td>1956年</td>
+                            <td>🐵 申</td>
+                            <td>さるどし</td>
+                            <td style="font-weight: 700;">70歳</td>
+                        </tr>
+                        <tr data-year="1955">
+                            <td>1955年</td>
+                            <td>🐏 未</td>
+                            <td>ひつじどし</td>
+                            <td style="font-weight: 700;">71歳</td>
+                        </tr>
+                        <tr data-year="1954">
+                            <td>1954年</td>
+                            <td>🐴 午</td>
+                            <td>うまどし</td>
+                            <td style="font-weight: 700;">72歳</td>
+                        </tr>
+                        <tr data-year="1953">
+                            <td>1953年</td>
+                            <td>🐍 巳</td>
+                            <td>みどし</td>
+                            <td style="font-weight: 700;">73歳</td>
+                        </tr>
+                        <tr data-year="1952">
+                            <td>1952年</td>
+                            <td>🐲 辰</td>
+                            <td>たつどし</td>
+                            <td style="font-weight: 700;">74歳</td>
+                        </tr>
+                        <tr data-year="1951">
+                            <td>1951年</td>
+                            <td>🐰 卯</td>
+                            <td>うどし</td>
+                            <td style="font-weight: 700;">75歳</td>
+                        </tr>
+                        <tr data-year="1950">
+                            <td>1950年</td>
+                            <td>🐯 寅</td>
+                            <td>とらどし</td>
+                            <td style="font-weight: 700;">76歳</td>
+                        </tr>
+                        <tr data-year="1949">
+                            <td>1949年</td>
+                            <td>🐮 丑</td>
+                            <td>うしどし</td>
+                            <td style="font-weight: 700;">77歳</td>
+                        </tr>
+                        <tr data-year="1948">
+                            <td>1948年</td>
+                            <td>🐭 子</td>
+                            <td>ねどし</td>
+                            <td style="font-weight: 700;">78歳</td>
+                        </tr>
+                        <tr data-year="1947">
+                            <td>1947年</td>
+                            <td>🐗 亥</td>
+                            <td>いどし</td>
+                            <td style="font-weight: 700;">79歳</td>
+                        </tr>
+                        <tr data-year="1946">
+                            <td>1946年</td>
+                            <td>🐶 戌</td>
+                            <td>いぬどし</td>
+                            <td style="font-weight: 700;">80歳</td>
+                        </tr>
+                        <tr data-year="1945">
+                            <td>1945年</td>
+                            <td>🐔 酉</td>
+                            <td>とりどし</td>
+                            <td style="font-weight: 700;">81歳</td>
+                        </tr>
+                        <tr data-year="1944">
+                            <td>1944年</td>
+                            <td>🐵 申</td>
+                            <td>さるどし</td>
+                            <td style="font-weight: 700;">82歳</td>
+                        </tr>
+                        <tr data-year="1943">
+                            <td>1943年</td>
+                            <td>🐏 未</td>
+                            <td>ひつじどし</td>
+                            <td style="font-weight: 700;">83歳</td>
+                        </tr>
+                        <tr data-year="1942">
+                            <td>1942年</td>
+                            <td>🐴 午</td>
+                            <td>うまどし</td>
+                            <td style="font-weight: 700;">84歳</td>
+                        </tr>
+                        <tr data-year="1941">
+                            <td>1941年</td>
+                            <td>🐍 巳</td>
+                            <td>みどし</td>
+                            <td style="font-weight: 700;">85歳</td>
+                        </tr>
+                        <tr data-year="1940">
+                            <td>1940年</td>
+                            <td>🐲 辰</td>
+                            <td>たつどし</td>
+                            <td style="font-weight: 700;">86歳</td>
+                        </tr>
+                        <tr data-year="1939">
+                            <td>1939年</td>
+                            <td>🐰 卯</td>
+                            <td>うどし</td>
+                            <td style="font-weight: 700;">87歳</td>
+                        </tr>
+                        <tr data-year="1938">
+                            <td>1938年</td>
+                            <td>🐯 寅</td>
+                            <td>とらどし</td>
+                            <td style="font-weight: 700;">88歳</td>
+                        </tr>
+                        <tr data-year="1937">
+                            <td>1937年</td>
+                            <td>🐮 丑</td>
+                            <td>うしどし</td>
+                            <td style="font-weight: 700;">89歳</td>
+                        </tr>
+                        <tr data-year="1936">
+                            <td>1936年</td>
+                            <td>🐭 子</td>
+                            <td>ねどし</td>
+                            <td style="font-weight: 700;">90歳</td>
+                        </tr>
+                        <tr data-year="1935">
+                            <td>1935年</td>
+                            <td>🐗 亥</td>
+                            <td>いどし</td>
+                            <td style="font-weight: 700;">91歳</td>
+                        </tr>
+                        <tr data-year="1934">
+                            <td>1934年</td>
+                            <td>🐶 戌</td>
+                            <td>いぬどし</td>
+                            <td style="font-weight: 700;">92歳</td>
+                        </tr>
+                        <tr data-year="1933">
+                            <td>1933年</td>
+                            <td>🐔 酉</td>
+                            <td>とりどし</td>
+                            <td style="font-weight: 700;">93歳</td>
+                        </tr>
+                        <tr data-year="1932">
+                            <td>1932年</td>
+                            <td>🐵 申</td>
+                            <td>さるどし</td>
+                            <td style="font-weight: 700;">94歳</td>
+                        </tr>
+                        <tr data-year="1931">
+                            <td>1931年</td>
+                            <td>🐏 未</td>
+                            <td>ひつじどし</td>
+                            <td style="font-weight: 700;">95歳</td>
+                        </tr>
+                        <tr data-year="1930">
+                            <td>1930年</td>
+                            <td>🐴 午</td>
+                            <td>うまどし</td>
+                            <td style="font-weight: 700;">96歳</td>
+                        </tr>
+                        <tr data-year="1929">
+                            <td>1929年</td>
+                            <td>🐍 巳</td>
+                            <td>みどし</td>
+                            <td style="font-weight: 700;">97歳</td>
+                        </tr>
+                        <tr data-year="1928">
+                            <td>1928年</td>
+                            <td>🐲 辰</td>
+                            <td>たつどし</td>
+                            <td style="font-weight: 700;">98歳</td>
+                        </tr>
+                        <tr data-year="1927">
+                            <td>1927年</td>
+                            <td>🐰 卯</td>
+                            <td>うどし</td>
+                            <td style="font-weight: 700;">99歳</td>
+                        </tr>
+                        <tr data-year="1926">
+                            <td>1926年</td>
+                            <td>🐯 寅</td>
+                            <td>とらどし</td>
+                            <td style="font-weight: 700;">100歳</td>
+                        </tr>
+                        <tr data-year="1925">
+                            <td>1925年</td>
+                            <td>🐮 丑</td>
+                            <td>うしどし</td>
+                            <td style="font-weight: 700;">101歳</td>
+                        </tr>
+                        <tr data-year="1924">
+                            <td>1924年</td>
+                            <td>🐭 子</td>
+                            <td>ねどし</td>
+                            <td style="font-weight: 700;">102歳</td>
+                        </tr>
+
+                    
+                    </tbody>
                 </table>
             </div>
         </section>
@@ -802,20 +1803,55 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer" role="contentinfo">
-        <div class="footer__inner">
-            <nav class="footer__nav" aria-label="フッターナビゲーション">
-                <a href="about.html">このサイトについて</a>
-                <a href="privacy.html">プライバシーポリシー</a>
-                <a href="contact.html">お問い合わせ</a>
-            </nav>
-            <p class="footer__copy">&copy; 2026 便利ツール集 All rights reserved.</p>
-        </div>
-    </footer>
+<footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+        <nav class="footer__nav" aria-label="フッターナビゲーション">
+            <a href="/about.html">このサイトについて</a>
+            <a href="/privacy.html">プライバシーポリシー</a>
+            <a href="/contact.html">お問い合わせ</a>
+        </nav>
+        <p class="footer__copy">&copy; 2026 便利ツール集 All rights reserved.</p>
+    </div>
+</footer>
 
     <script>
+/* ===== Shared Data & Utilities ===== */
+const CURRENT_YEAR = new Date().getFullYear();
+const ETO_LIST = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
+const ETO_READING = ['ね', 'うし', 'とら', 'う', 'たつ', 'み', 'うま', 'ひつじ', 'さる', 'とり', 'いぬ', 'い'];
+const ETO_ANIMAL = ['🐭', '🐮', '🐯', '🐰', '🐲', '🐍', '🐴', '🐏', '🐵', '🐔', '🐶', '🐗'];
+
+/**
+ * Returns the index of the Eto array for a given year.
+ */
+function getEtoIndex(year) {
+    return (year + 8) % 12; // 子=0 for years where (year+8)%12==0
+}
+
+/**
+ * Returns the Wareki object { era, eraYear, cls } for a given year.
+ */
+function getWareki(year) {
+    if (year >= 2019) return { era: '令和', eraYear: year - 2018, cls: 'era-reiwa' };
+    if (year >= 1989) return { era: '平成', eraYear: year - 1988, cls: 'era-heisei' };
+    if (year >= 1926) return { era: '昭和', eraYear: year - 1925, cls: 'era-showa' };
+    if (year >= 1912) return { era: '大正', eraYear: year - 1911, cls: 'era-taisho' };
+    if (year >= 1868) return { era: '明治', eraYear: year - 1867, cls: 'era-meiji' };
+    return { era: '', eraYear: year, cls: '' };
+}
+
+/**
+ * Formats a Wareki object into a string, converting year 1 to '元'.
+ */
+function formatWareki(w) {
+    if (!w.era) return w.eraYear + '年';
+    const yearStr = w.eraYear === 1 ? '元' : w.eraYear;
+    return w.era + yearStr + '年';
+}
+
+    </script>
+    <script>
         /* ===== Zodiac Data ===== */
-        const CURRENT_YEAR = 2026;
         const ZODIAC = [
             { kanji: '子', reading: 'ね', animal: 'ねずみ', emoji: '🐭', trait: '社交的で機転が利く' },
             { kanji: '丑', reading: 'うし', animal: 'うし', emoji: '🐮', trait: '勤勉で忍耐強い' },
@@ -830,19 +1866,6 @@
             { kanji: '戌', reading: 'いぬ', animal: 'いぬ', emoji: '🐶', trait: '忠実で誠実' },
             { kanji: '亥', reading: 'い', animal: 'いのしし', emoji: '🐗', trait: 'まっすぐで情に厚い' },
         ];
-
-        function getEtoIndex(year) {
-            return (year + 8) % 12;
-        }
-
-        function getYearsForEto(etoIndex) {
-            const years = [];
-            for (let y = CURRENT_YEAR; y >= 1924; y--) {
-                if (getEtoIndex(y) === etoIndex) years.push(y);
-                if (years.length >= 6) break;
-            }
-            return years;
-        }
 
         /* ===== Interactive Lookup ===== */
         const birthInput = document.getElementById('birth-year');
@@ -867,76 +1890,19 @@
 
             resultBox.classList.add('active');
 
-            // Highlight matching zodiac card
+            // Highlight matching zodiac card and table row
             document.querySelectorAll('.zodiac-card').forEach((card, i) => {
                 card.classList.toggle('highlight', i === idx);
             });
-        });
-
-        /* ===== Build 12-Animal Grid ===== */
-        function buildZodiacGrid() {
-            const grid = document.getElementById('zodiac-grid');
-            const fragment = document.createDocumentFragment();
-
-            ZODIAC.forEach((z, idx) => {
-                const card = document.createElement('div');
-                card.className = 'zodiac-card';
-
-                const years = getYearsForEto(idx);
-                const yearsHtml = years.map(y => '<span>' + y + '</span>').join('');
-
-                card.innerHTML =
-                    '<div class="zodiac-card__emoji">' + z.emoji + '</div>' +
-                    '<div class="zodiac-card__kanji">' + z.kanji + '</div>' +
-                    '<div class="zodiac-card__reading">' + z.reading + 'どし（' + z.animal + '）</div>' +
-                    '<div class="zodiac-card__years">' + yearsHtml + '</div>';
-
-                fragment.appendChild(card);
+            document.querySelectorAll('#eto-table-body tr').forEach(tr => {
+                tr.classList.remove('highlight');
+                if (tr.dataset.year == year) {
+                    tr.classList.add('highlight');
+                    tr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
             });
-
-            grid.appendChild(fragment);
-        }
-
-        /* ===== Build Year Table ===== */
-        function buildTable() {
-            const tbody = document.getElementById('eto-table-body');
-            const fragment = document.createDocumentFragment();
-
-            for (let year = CURRENT_YEAR; year >= 1924; year--) {
-                const idx = getEtoIndex(year);
-                const z = ZODIAC[idx];
-                const age = CURRENT_YEAR - year;
-
-                const tr = document.createElement('tr');
-                tr.dataset.year = year;
-
-                const tdYear = document.createElement('td');
-                tdYear.textContent = year + '年';
-                tr.appendChild(tdYear);
-
-                const tdEto = document.createElement('td');
-                tdEto.textContent = z.emoji + ' ' + z.kanji;
-                tr.appendChild(tdEto);
-
-                const tdReading = document.createElement('td');
-                tdReading.textContent = z.reading + 'どし';
-                tr.appendChild(tdReading);
-
-                const tdAge = document.createElement('td');
-                tdAge.textContent = age + '歳';
-                tdAge.style.fontWeight = '700';
-                tr.appendChild(tdAge);
-
-                fragment.appendChild(tr);
-            }
-
-            tbody.appendChild(fragment);
-        }
-
-        buildZodiacGrid();
-        buildTable();
+        });
     </script>
-
 </body>
 
 </html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>便利ツール集 - 暮らしに役立つ計算ツール</title>
+    <meta name="description" content="年齢早見表、西暦和暦変換、干支早見表、入学卒業年度計算、厄年早見表など、日本の暮らしに役立つ無料の計算・早見ツールを集めました。">
+    <meta name="keywords" content="便利ツール,年齢早見表,西暦和暦変換,干支早見表,入学卒業年度計算,厄年早見表,計算ツール,早見表">
+    <meta property="og:title" content="便利ツール集 - 暮らしに役立つ計算ツール">
+    <meta property="og:description" content="年齢早見表、和暦変換、干支、入学卒業年度計算など、日常生活に役立つ無料ツール集。">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    <link rel="canonical" href="https://hayami-navi.com/">
+    {{HEAD}}
+    <style>
+        /* ===== Hero / Introduction ===== */
+        .hero {
+            background: var(--color-primary-light);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .hero__inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 40px 24px 36px;
+            text-align: center;
+        }
+
+        .hero__heading {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .hero__text {
+            font-size: 15px;
+            color: var(--color-text-muted);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.9;
+        }
+
+        /* ===== Tool Cards Grid ===== */
+        .tools {
+            flex: 1;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 40px 24px 56px;
+            width: 100%;
+        }
+
+        .tools__heading {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 24px;
+            padding-left: 14px;
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .tools__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: var(--shadow-card);
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition),
+                border-color var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card-hover);
+            border-color: var(--color-primary);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card__icon {
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .card__title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .card__desc {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+        }
+
+        .card__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-primary);
+            margin-top: auto;
+            padding-top: 6px;
+            transition: gap var(--transition);
+        }
+
+        .card:hover .card__link {
+            gap: 8px;
+        }
+
+        .card__link-arrow {
+            transition: transform var(--transition);
+        }
+
+        .card:hover .card__link-arrow {
+            transform: translateX(3px);
+        }
+
+        @media (max-width: 640px) {
+            .hero__inner {
+                padding: 28px 16px 24px;
+            }
+
+            .hero__heading {
+                font-size: 20px;
+            }
+
+            .hero__text {
+                font-size: 14px;
+            }
+
+            .tools {
+                padding: 28px 16px 40px;
+            }
+
+            .tools__grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .card {
+                padding: 22px 18px;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 900px) {
+            .tools__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeInUp 0.5s ease both;
+        }
+
+        .card:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+
+        .card:nth-child(4) {
+            animation-delay: 0.2s;
+        }
+
+        .card:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+    </style>
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "便利ツール集",
+    "url": "https://hayami-navi.com/",
+    "description": "年齢早見表、西暦和暦変換、干支早見表、入学卒業年度計算、厄年早見表など、日本の暮らしに役立つ無料の計算・早見ツールを集めました。",
+    "inLanguage": "ja"
+  }
+  </script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header__inner header__inner--index">
+            <span class="header__icon" aria-hidden="true">🛠️</span>
+            <div>
+                <h1 class="header__title">
+                    便利ツール集
+                    <span class="header__subtitle">暮らしに役立つ計算ツール</span>
+                </h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Introduction -->
+    <section class="hero">
+        <div class="hero__inner">
+            <h2 class="hero__heading">日常のちょっとした「知りたい」を<br>すぐに解決</h2>
+            <p class="hero__text">
+                「便利ツール集」は、日本の暮らしで役立つ計算・早見ツールを無料でご提供するサイトです。年齢の確認、和暦と西暦の変換、干支のチェック、入学・卒業年度の計算など、日常のさまざまな場面で必要になる情報を手軽に調べることができます。面倒な計算はツールにおまかせして、毎日の暮らしをもっと便利にしましょう。
+            </p>
+        </div>
+    </section>
+
+    <!-- Tools Grid -->
+    <main class="tools" id="tools">
+        <h2 class="tools__heading">ツール一覧</h2>
+        <div class="tools__grid">
+
+            <!-- 年齢早見表 -->
+            <a href="nenrei.html" class="card" id="tool-nenrei">
+                <span class="card__icon" aria-hidden="true">📅</span>
+                <h3 class="card__title">年齢早見表</h3>
+                <p class="card__desc">生まれ年から現在の年齢を瞬時に確認。今年・来年の年齢もすぐにわかります。</p>
+                <span class="card__link">このツールを使う <span class="card__link-arrow" aria-hidden="true">→</span></span>
+            </a>
+
+            <!-- 西暦⇔和暦変換 -->
+            <a href="wareki.html" class="card" id="tool-wareki">
+                <span class="card__icon" aria-hidden="true">🔄</span>
+                <h3 class="card__title">西暦⇔和暦変換</h3>
+                <p class="card__desc">西暦と和暦をワンクリックで相互変換。令和・平成・昭和・大正・明治に対応しています。</p>
+                <span class="card__link">このツールを使う <span class="card__link-arrow" aria-hidden="true">→</span></span>
+            </a>
+
+            <!-- 干支早見表 -->
+            <a href="eto.html" class="card" id="tool-eto">
+                <span class="card__icon" aria-hidden="true">🐉</span>
+                <h3 class="card__title">干支早見表</h3>
+                <p class="card__desc">自分の干支をすぐにチェック。年齢から干支を検索することもできます。</p>
+                <span class="card__link">このツールを使う <span class="card__link-arrow" aria-hidden="true">→</span></span>
+            </a>
+
+            <!-- 入学・卒業年度計算 -->
+            <a href="gakureki.html" class="card" id="tool-gakureki">
+                <span class="card__icon" aria-hidden="true">🎓</span>
+                <h3 class="card__title">入学・卒業年度計算</h3>
+                <p class="card__desc">生まれ年から入学・卒業年を自動計算。小学校から大学まで対応しています。</p>
+                <span class="card__link">このツールを使う <span class="card__link-arrow" aria-hidden="true">→</span></span>
+            </a>
+
+            <!-- 厄年早見表 -->
+            <a href="yakudoshi.html" class="card" id="tool-yakudoshi">
+                <span class="card__icon" aria-hidden="true">⛩️</span>
+                <h3 class="card__title">厄年早見表</h3>
+                <p class="card__desc">男女別の厄年を一目で確認。前厄・本厄・後厄の年もわかります。</p>
+                <span class="card__link">このツールを使う <span class="card__link-arrow" aria-hidden="true">→</span></span>
+            </a>
+
+        </div>
+    </main>
+
+    {{FOOTER}}
+
+</body>
+
+</html>

@@ -1,9 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>西暦⇔和暦変換ツール | 便利ツール集</title>
     <meta name="description" content="西暦と和暦（令和・平成・昭和・大正・明治）をワンクリックで相互変換。変換早見表と元号の歴史・使い分けも詳しく解説。">
     <meta name="keywords" content="西暦,和暦,変換,令和,平成,昭和,大正,明治,元号,年号変換">
@@ -12,194 +10,707 @@
     <meta property="og:type" content="article">
     <meta property="og:locale" content="ja_JP">
     <link rel="canonical" href="https://hayami-navi.com/wareki.html">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #1a6b4a;
+    --color-primary-light: #e8f5ee;
+    --color-primary-hover: #145839;
+    --color-accent: #d4a843;
+    --color-bg: #f7f8fa;
+    --color-surface: #ffffff;
+    --color-text: #2c3e50;
+    --color-text-muted: #6b7b8d;
+    --color-border: #e2e6ea;
+    --color-footer-bg: #2c3e50;
+    --color-footer-text: #cfd8dc;
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-card-hover: 0 6px 20px rgba(0, 0, 0, 0.1);
+    --radius: 10px;
+    --max-width: 1080px;
+    --transition: 0.25s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.8;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ===== Header ===== */
+.header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #1e7e56 100%);
+    color: #fff;
+    position: sticky;
+    top: 0;
+    padding: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.header__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.header__inner--index {
+    padding: 18px 24px;
+}
+
+.header__icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.header__inner--index .header__icon {
+    font-size: 28px;
+}
+
+.header__home {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    transition: opacity var(--transition);
+}
+
+.header__home:hover {
+    opacity: 0.85;
+}
+
+.header__title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.header__inner--index .header__title {
+    font-size: 20px;
+    letter-spacing: 0.02em;
+}
+
+.header__subtitle {
+    font-size: 12px;
+    opacity: 0.85;
+    font-weight: 400;
+    display: block;
+    margin-top: 2px;
+    letter-spacing: 0.04em;
+}
+
+/* ===== Sub-navigation ===== */
+.subnav {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.subnav__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+}
+
+.subnav__link {
+    padding: 12px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color var(--transition), border-color var(--transition);
+}
+
+.subnav__link:hover {
+    color: var(--color-primary);
+}
+
+.subnav__link--active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* ===== Breadcrumb ===== */
+.breadcrumb {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 14px 24px 0;
+    font-size: 12px;
+    color: var(--color-text-muted);
+    width: 100%;
+}
+
+.breadcrumb a {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.breadcrumb a:hover {
+    text-decoration: none;
+}
+
+/* ===== Main Content ===== */
+.main {
+    flex: 1;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 20px 24px 56px;
+    width: 100%;
+}
+
+.page-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.page-subtitle {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-bottom: 28px;
+}
+
+/* ===== Tool Card ===== */
+.tool-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    padding: 32px 28px;
+    margin-bottom: 32px;
+}
+
+.tool-card__heading {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-primary-light);
+}
+
+/* ===== Form Controls ===== */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+    margin-bottom: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+}
+
+.form-group select,
+.form-group input[type="number"],
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    padding: 10px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: inherit;
+    background: var(--color-bg);
+    color: var(--color-text);
+    transition: border-color var(--transition);
+    min-width: 160px;
+}
+
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(26, 107, 74, 0.12);
+}
+
+.form-group-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.reset-btn {
+    padding: 10px 14px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all var(--transition);
+    color: var(--color-text-muted);
+    font-family: inherit;
+    white-space: nowrap;
+}
+
+.reset-btn:hover {
+    background: #e2e6ea;
+    color: var(--color-text);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--color-text);
+}
+
+/* ===== Result Display ===== */
+.result-box {
+    background: var(--color-primary-light);
+    border: 1px solid #c8e6d5;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-top: 20px;
+    display: none;
+}
+
+.result-box.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.result-item {
+    text-align: center;
+}
+
+.result-item__label {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    margin-bottom: 4px;
+}
+
+.result-item__value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.3;
+}
+
+.result-item__sub {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+}
+
+.scroll-to-table-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 24px;
+    background: #fff;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-align: center;
+    font-family: inherit;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.scroll-to-table-btn:hover {
+    background: var(--color-primary-light);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Table ===== */
+.table-section {
+    margin-bottom: 32px;
+}
+
+.table-section__heading {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 16px;
+    padding-left: 14px;
+    border-left: 4px solid var(--color-primary);
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+}
+
+.age-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background: var(--color-surface);
+}
+
+.age-table thead {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.age-table th {
+    padding: 12px 14px;
+    font-weight: 500;
+    font-size: 13px;
+    white-space: nowrap;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+
+.age-table td {
+    padding: 10px 14px;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+    white-space: nowrap;
+}
+
+.age-table tbody tr:nth-child(even) {
+    background: #f9fbfa;
+}
+
+.age-table tbody tr:hover {
+    background: var(--color-primary-light);
+}
+
+.age-table tbody tr.highlight {
+    background: #fff3cd;
+    font-weight: 700;
+}
+
+.age-table tbody tr.highlight.pulse {
+    animation: pulseHighlight 0.8s ease-in-out 2;
+}
+
+@keyframes pulseHighlight {
+    0% {
+        background-color: #fff3cd;
+    }
+
+    50% {
+        background-color: #ffe680;
+    }
+
+    100% {
+        background-color: #fff3cd;
+    }
+}
+
+.era-reiwa {
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+.era-heisei {
+    color: #2e7d9c;
+    font-weight: 500;
+}
+
+.era-showa {
+    color: #8b6914;
+    font-weight: 500;
+}
+
+.era-taisho {
+    color: #7b5ea7;
+    font-weight: 500;
+}
+
+.era-meiji {
+    color: #b85450;
+    font-weight: 500;
+}
+
+/* ===== Article ===== */
+.article {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    padding: 36px 32px;
+    margin-bottom: 32px;
+}
+
+.article h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 36px 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-primary-light);
+}
+
+.article h2:first-child {
+    margin-top: 0;
+}
+
+.article h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 24px 0 10px;
+    padding-left: 12px;
+    border-left: 3px solid var(--color-accent);
+}
+
+.article p {
+    font-size: 15px;
+    line-height: 2;
+    margin-bottom: 16px;
+    color: var(--color-text);
+}
+
+.article ul,
+.article ol {
+    margin: 0 0 16px 24px;
+    font-size: 15px;
+    line-height: 2;
+}
+
+.article .tip-box,
+.note {
+    background: #fffce8;
+    border-left: 4px solid var(--color-accent);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.article .tip-box strong,
+.note strong {
+    color: var(--color-accent);
+}
+
+/* ===== Ad Placeholder ===== */
+.ad-slot {
+    text-align: center;
+    padding: 20px;
+    margin: 28px 0;
+    color: var(--color-text-muted);
+    font-size: 12px;
+}
+
+/* ===== Footer ===== */
+.footer {
+    background: var(--color-footer-bg);
+    color: var(--color-footer-text);
+    font-size: 13px;
+}
+
+.footer__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.footer__nav {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer__nav a {
+    color: var(--color-footer-text);
+    transition: color var(--transition);
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.footer__nav a:hover {
+    color: #fff;
+}
+
+.footer__copy {
+    opacity: 0.7;
+    font-size: 12px;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+    .header__inner {
+        padding: 12px 16px;
+    }
+
+    .header__inner--index {
+        padding: 14px 16px;
+    }
+
+    .header__title {
+        font-size: 16px;
+    }
+
+    .header__inner--index .header__title {
+        font-size: 17px;
+    }
+
+    .header__subtitle {
+        font-size: 11px;
+    }
+
+    .subnav__inner {
+        padding: 0 12px;
+    }
+
+    .subnav__link {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    .main {
+        padding: 16px 16px 40px;
+    }
+
+    .page-title {
+        font-size: 20px;
+    }
+
+    .tool-card {
+        padding: 22px 16px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-group select,
+    .form-group input[type="number"],
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .result-item__value {
+        font-size: 22px;
+    }
+
+    .article {
+        padding: 24px 18px;
+    }
+
+    .article h2 {
+        font-size: 18px;
+    }
+
+    .article h3 {
+        font-size: 15px;
+    }
+
+    .age-table {
+        font-size: 12px;
+    }
+
+    .age-table th,
+    .age-table td {
+        padding: 8px 8px;
+    }
+
+    .footer__nav {
+        gap: 16px;
+    }
+}
+    </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ6TZTK11H"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-FJ6TZTK11H');
+</script>
     <style>
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box
-        }
-
-        :root {
-            --color-primary: #1a6b4a;
-            --color-primary-light: #e8f5ee;
-            --color-primary-hover: #145839;
-            --color-accent: #d4a843;
-            --color-bg: #f7f8fa;
-            --color-surface: #ffffff;
-            --color-text: #2c3e50;
-            --color-text-muted: #6b7b8d;
-            --color-border: #e2e6ea;
-            --color-footer-bg: #2c3e50;
-            --color-footer-text: #cfd8dc;
-            --shadow-card: 0 2px 8px rgba(0, 0, 0, .06);
-            --shadow-card-hover: 0 6px 20px rgba(0, 0, 0, .1);
-            --radius: 10px;
-            --max-width: 1080px;
-            --transition: .25s ease;
-        }
-
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
-            background: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.8;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            -webkit-font-smoothing: antialiased
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--color-primary) 0%, #1e7e56 100%);
-            color: #fff;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, .12)
-        }
-
-        .header__inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 14px 24px;
-            display: flex;
-            align-items: center;
-            gap: 14px
-        }
-
-        .header__icon {
-            font-size: 24px;
-            flex-shrink: 0
-        }
-
-        .header__home {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #fff;
-            transition: opacity var(--transition)
-        }
-
-        .header__home:hover {
-            opacity: .85
-        }
-
-        .header__title {
-            font-size: 18px;
-            font-weight: 700
-        }
-
-        /* Sub-nav */
-        .subnav {
-            background: var(--color-surface);
-            border-bottom: 1px solid var(--color-border);
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch
-        }
-
-        .subnav__inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex
-        }
-
-        .subnav__link {
-            padding: 12px 18px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--color-text-muted);
-            white-space: nowrap;
-            border-bottom: 3px solid transparent;
-            transition: color var(--transition), border-color var(--transition)
-        }
-
-        .subnav__link:hover {
-            color: var(--color-primary)
-        }
-
-        .subnav__link--active {
-            color: var(--color-primary);
-            border-bottom-color: var(--color-primary);
-            font-weight: 700
-        }
-
-        /* Breadcrumb */
-        .breadcrumb {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 14px 24px 0;
-            font-size: 12px;
-            color: var(--color-text-muted);
-            width: 100%
-        }
-
-        .breadcrumb a {
-            color: var(--color-primary);
-            text-decoration: underline
-        }
-
-        .breadcrumb a:hover {
-            text-decoration: none
-        }
-
-        /* Main */
-        .main {
-            flex: 1;
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 20px 24px 56px;
-            width: 100%
-        }
-
-        .page-title {
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: 8px;
-            line-height: 1.4
-        }
-
-        .page-subtitle {
-            font-size: 14px;
-            color: var(--color-text-muted);
-            margin-bottom: 28px
-        }
-
-        /* Tool Card */
-        .tool-card {
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-card);
-            padding: 32px 28px;
-            margin-bottom: 32px
-        }
-
-        .tool-card__heading {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--color-primary-light)
-        }
-
         /* Mode Tabs */
         .mode-tabs {
             display: flex;
@@ -207,7 +718,7 @@
             margin-bottom: 24px;
             border-radius: 8px;
             overflow: hidden;
-            border: 1px solid var(--color-border)
+            border: 1px solid var(--color-border);
         }
 
         .mode-tab {
@@ -221,74 +732,32 @@
             color: var(--color-text-muted);
             border: none;
             font-family: inherit;
-            transition: all var(--transition)
+            transition: all var(--transition);
         }
 
         .mode-tab:hover {
             background: var(--color-primary-light);
-            color: var(--color-primary)
+            color: var(--color-primary);
         }
 
         .mode-tab.active {
             background: var(--color-primary);
             color: #fff;
-            font-weight: 700
+            font-weight: 700;
         }
 
         /* Converter Panels */
         .converter-panel {
             display: none;
-            animation: fadeIn .3s ease
+            animation: fadeIn .3s ease;
         }
 
         .converter-panel.active {
-            display: block
-        }
-
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            align-items: flex-end;
-            margin-bottom: 8px
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            flex: 1;
-            min-width: 140px
-        }
-
-        .form-group label {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--color-text-muted)
-        }
-
-        .form-group select,
-        .form-group input[type="number"] {
-            padding: 10px 14px;
-            border: 1px solid var(--color-border);
-            border-radius: 6px;
-            font-size: 15px;
-            font-family: inherit;
-            background: var(--color-bg);
-            color: var(--color-text);
-            transition: border-color var(--transition);
-            width: 100%
-        }
-
-        .form-group select:focus,
-        .form-group input[type="number"]:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(26, 107, 74, .12)
+            display: block;
         }
 
         input[type="number"]::-webkit-inner-spin-button {
-            opacity: 1
+            opacity: 1;
         }
 
         /* Arrow */
@@ -299,42 +768,30 @@
             padding: 24px 0 16px;
             font-size: 28px;
             color: var(--color-primary);
-            opacity: .6
+            opacity: .6;
         }
 
-        /* Result */
         .result-box {
-            background: var(--color-primary-light);
-            border: 1px solid #c8e6d5;
-            border-radius: 8px;
-            padding: 24px;
-            margin-top: 20px;
-            display: none;
-            text-align: center
-        }
-
-        .result-box.active {
-            display: block;
-            animation: fadeIn .3s ease
+            text-align: center;
         }
 
         .result-main {
             font-size: 32px;
             font-weight: 700;
             color: var(--color-primary);
-            margin-bottom: 6px
+            margin-bottom: 6px;
         }
 
         .result-sub {
             font-size: 15px;
-            color: var(--color-text-muted)
+            color: var(--color-text-muted);
         }
 
         .result-note {
             font-size: 13px;
             color: var(--color-accent);
             margin-top: 10px;
-            font-weight: 500
+            font-weight: 500;
         }
 
         /* Era badge colors */
@@ -345,108 +802,27 @@
             font-size: 13px;
             font-weight: 500;
             color: #fff;
-            margin-right: 6px
+            margin-right: 6px;
         }
 
         .era-badge--reiwa {
-            background: #1a6b4a
+            background: #1a6b4a;
         }
 
         .era-badge--heisei {
-            background: #2e7d9c
+            background: #2e7d9c;
         }
 
         .era-badge--showa {
-            background: #8b6914
+            background: #8b6914;
         }
 
         .era-badge--taisho {
-            background: #7b5ea7
+            background: #7b5ea7;
         }
 
         .era-badge--meiji {
-            background: #b85450
-        }
-
-        /* Table */
-        .table-section {
-            margin-bottom: 32px
-        }
-
-        .table-section__heading {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: 16px;
-            padding-left: 14px;
-            border-left: 4px solid var(--color-primary)
-        }
-
-        .table-wrapper {
-            overflow-x: auto;
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-card)
-        }
-
-        .ref-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-            background: var(--color-surface)
-        }
-
-        .ref-table thead {
-            background: var(--color-primary);
-            color: #fff
-        }
-
-        .ref-table th {
-            padding: 12px 14px;
-            font-weight: 500;
-            font-size: 13px;
-            white-space: nowrap;
-            text-align: center
-        }
-
-        .ref-table td {
-            padding: 10px 14px;
-            text-align: center;
-            border-bottom: 1px solid var(--color-border);
-            white-space: nowrap
-        }
-
-        .ref-table tbody tr:nth-child(even) {
-            background: #f9fbfa
-        }
-
-        .ref-table tbody tr:hover {
-            background: var(--color-primary-light)
-        }
-
-        .era-reiwa {
-            color: var(--color-primary);
-            font-weight: 500
-        }
-
-        .era-heisei {
-            color: #2e7d9c;
-            font-weight: 500
-        }
-
-        .era-showa {
-            color: #8b6914;
-            font-weight: 500
-        }
-
-        .era-taisho {
-            color: #7b5ea7;
-            font-weight: 500
-        }
-
-        .era-meiji {
-            color: #b85450;
-            font-weight: 500
+            background: #b85450;
         }
 
         /* Era summary cards */
@@ -454,7 +830,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 14px;
-            margin-bottom: 28px
+            margin-bottom: 28px;
         }
 
         .era-card {
@@ -463,18 +839,18 @@
             border-radius: 8px;
             padding: 16px;
             text-align: center;
-            box-shadow: var(--shadow-card)
+            box-shadow: var(--shadow-card);
         }
 
         .era-card__name {
             font-size: 20px;
             font-weight: 700;
-            margin-bottom: 4px
+            margin-bottom: 4px;
         }
 
         .era-card__range {
             font-size: 12px;
-            color: var(--color-text-muted)
+            color: var(--color-text-muted);
         }
 
         .era-card__formula {
@@ -484,202 +860,35 @@
             background: var(--color-bg);
             padding: 4px 8px;
             border-radius: 4px;
-            display: inline-block
-        }
-
-        /* Article */
-        .article {
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-card);
-            padding: 36px 32px;
-            margin-bottom: 32px
-        }
-
-        .article h2 {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--color-text);
-            margin: 36px 0 16px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--color-primary-light)
-        }
-
-        .article h2:first-child {
-            margin-top: 0
-        }
-
-        .article h3 {
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin: 24px 0 10px;
-            padding-left: 12px;
-            border-left: 3px solid var(--color-accent)
-        }
-
-        .article p {
-            font-size: 15px;
-            line-height: 2;
-            margin-bottom: 16px
-        }
-
-        .article ul,
-        .article ol {
-            margin: 0 0 16px 24px;
-            font-size: 15px;
-            line-height: 2
-        }
-
-        .article .tip-box {
-            background: #fffce8;
-            border-left: 4px solid var(--color-accent);
-            padding: 16px 20px;
-            border-radius: 0 8px 8px 0;
-            margin: 20px 0;
-            font-size: 14px
-        }
-
-        .article .tip-box strong {
-            color: var(--color-accent)
-        }
-
-        /* Ad Slot */
-        .ad-slot {
-            text-align: center;
-            padding: 20px;
-            margin: 28px 0;
-            color: var(--color-text-muted);
-            font-size: 12px
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--color-footer-bg);
-            color: var(--color-footer-text);
-            font-size: 13px
-        }
-
-        .footer__inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 32px 24px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px
-        }
-
-        .footer__nav {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            justify-content: center
-        }
-
-        .footer__nav a {
-            color: var(--color-footer-text);
-            transition: color var(--transition);
-            font-size: 13px
-        }
-
-        .footer__nav a:hover {
-            color: #fff
-        }
-
-        .footer__copy {
-            opacity: .7;
-            font-size: 12px
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px)
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0)
-            }
+            display: inline-block;
         }
 
         @media(max-width:640px) {
-            .header__inner {
-                padding: 12px 16px
-            }
-
-            .header__title {
-                font-size: 16px
-            }
-
-            .subnav__inner {
-                padding: 0 12px
-            }
-
-            .subnav__link {
-                padding: 10px 12px;
-                font-size: 12px
-            }
-
-            .main {
-                padding: 16px 16px 40px
-            }
-
-            .page-title {
-                font-size: 20px
-            }
-
-            .tool-card {
-                padding: 22px 16px
-            }
-
             .mode-tab {
                 font-size: 13px;
-                padding: 10px 8px
-            }
-
-            .form-row {
-                flex-direction: column
+                padding: 10px 8px;
             }
 
             .result-main {
-                font-size: 24px
-            }
-
-            .article {
-                padding: 24px 18px
-            }
-
-            .article h2 {
-                font-size: 18px
-            }
-
-            .article h3 {
-                font-size: 15px
+                font-size: 24px;
             }
 
             .era-cards {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 10px
+                gap: 10px;
             }
 
             .era-card {
-                padding: 12px 8px
+                padding: 12px 8px;
             }
 
             .era-card__name {
-                font-size: 17px
+                font-size: 17px;
             }
 
-            .ref-table {
-                font-size: 12px
-            }
-
-            .ref-table th,
-            .ref-table td {
-                padding: 8px 6px
+            .age-table th,
+            .age-table td {
+                padding: 8px 6px;
             }
         }
     </style>
@@ -697,39 +906,31 @@
     "inLanguage": "ja"
   }
   </script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ6TZTK11H"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-FJ6TZTK11H');
-    </script>
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE">
 </head>
 
 <body>
 
     <!-- Header -->
-    <header class="header" role="banner">
-        <div class="header__inner">
-            <a href="index.html" class="header__home" aria-label="便利ツール集トップへ">
-                <span class="header__icon" aria-hidden="true">🛠️</span>
-                <span class="header__title">便利ツール集</span>
-            </a>
-        </div>
-    </header>
+<header class="header" role="banner">
+    <div class="header__inner">
+        <a href="/index.html" class="header__home" aria-label="便利ツール集トップへ">
+            <span class="header__icon" aria-hidden="true">🛠️</span>
+            <span class="header__title">便利ツール集</span>
+        </a>
+    </div>
+</header>
 
-    <!-- Sub Navigation -->
-    <nav class="subnav" aria-label="ツールナビゲーション">
-        <div class="subnav__inner">
-            <a href="nenrei.html" class="subnav__link">年齢早見表</a>
-            <a href="wareki.html" class="subnav__link subnav__link--active">西暦⇔和暦</a>
-            <a href="eto.html" class="subnav__link">干支早見表</a>
-            <a href="gakureki.html" class="subnav__link">入学・卒業年度</a>
-            <a href="yakudoshi.html" class="subnav__link">厄年早見表</a>
-        </div>
-    </nav>
+<!-- Sub Navigation -->
+<nav class="subnav" aria-label="ツールナビゲーション">
+    <div class="subnav__inner">
+        <a href="/nenrei.html" class="subnav__link ">年齢早見表</a>
+        <a href="/wareki.html" class="subnav__link subnav__link--active">西暦⇔和暦</a>
+        <a href="/eto.html" class="subnav__link ">干支早見表</a>
+        <a href="/gakureki.html" class="subnav__link ">入学・卒業年度</a>
+        <a href="/yakudoshi.html" class="subnav__link ">厄年早見表</a>
+    </div>
+</nav>
 
     <!-- Breadcrumb -->
     <div class="breadcrumb">
@@ -783,7 +984,7 @@
             <!-- Panel: 西暦 → 和暦 -->
             <div class="converter-panel active" id="panel-seireki">
                 <div class="form-row">
-                    <div class="form-group">
+                    <div class="form-group" style="flex:1">
                         <label for="input-seireki">西暦（年）</label>
                         <input type="number" id="input-seireki" min="1868" max="2100" placeholder="例: 2026"
                             autocomplete="off">
@@ -833,7 +1034,7 @@
         <section class="table-section" id="table">
             <h2 class="table-section__heading">西暦⇔和暦 変換早見表</h2>
             <div class="table-wrapper">
-                <table class="ref-table" id="ref-table">
+                <table class="age-table" id="ref-table">
                     <thead>
                         <tr>
                             <th>西暦</th>
@@ -842,7 +1043,536 @@
                             <th>和暦</th>
                         </tr>
                     </thead>
-                    <tbody id="ref-table-body"></tbody>
+                    <tbody id="ref-table-body">
+
+                                                <tr>
+                            <td>2030年</td>
+                            <td><span class="era-reiwa" style="font-weight:700;">令和12年</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2029年</td>
+                            <td><span class="era-reiwa" style="font-weight:700;">令和11年</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2028年</td>
+                            <td><span class="era-reiwa" style="font-weight:700;">令和10年</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2027年</td>
+                            <td><span class="era-reiwa" style="font-weight:700;">令和9年</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>2026年</td>
+                            <td><span class="era-reiwa" style="font-weight:700;">令和8年</span></td>
+                            <td>0歳 （今年）</td>
+                        </tr>
+                        <tr>
+                            <td>2025年</td>
+                            <td><span class="era-reiwa" style="font-weight:700;">令和7年</span></td>
+                            <td>1歳</td>
+                        </tr>
+                        <tr>
+                            <td>2024年</td>
+                            <td><span class="era-reiwa" style="font-weight:700;">令和6年</span></td>
+                            <td>2歳</td>
+                        </tr>
+                        <tr>
+                            <td>2023年</td>
+                            <td><span class="era-reiwa" style="font-weight:700;">令和5年</span></td>
+                            <td>3歳</td>
+                        </tr>
+                        <tr>
+                            <td>2022年</td>
+                            <td><span class="era-reiwa" style="font-weight:700;">令和4年</span></td>
+                            <td>4歳</td>
+                        </tr>
+                        <tr>
+                            <td>2021年</td>
+                            <td><span class="era-reiwa" style="font-weight:700;">令和3年</span></td>
+                            <td>5歳</td>
+                        </tr>
+                        <tr>
+                            <td>2020年</td>
+                            <td><span class="era-reiwa" style="font-weight:700;">令和2年</span></td>
+                            <td>6歳</td>
+                        </tr>
+                        <tr>
+                            <td>2019年</td>
+                            <td><span class="era-reiwa" style="font-weight:700;">令和元年</span></td>
+                            <td>7歳</td>
+                        </tr>
+                        <tr>
+                            <td>2018年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成30年</span></td>
+                            <td>8歳</td>
+                        </tr>
+                        <tr>
+                            <td>2017年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成29年</span></td>
+                            <td>9歳</td>
+                        </tr>
+                        <tr>
+                            <td>2016年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成28年</span></td>
+                            <td>10歳</td>
+                        </tr>
+                        <tr>
+                            <td>2015年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成27年</span></td>
+                            <td>11歳</td>
+                        </tr>
+                        <tr>
+                            <td>2014年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成26年</span></td>
+                            <td>12歳</td>
+                        </tr>
+                        <tr>
+                            <td>2013年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成25年</span></td>
+                            <td>13歳</td>
+                        </tr>
+                        <tr>
+                            <td>2012年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成24年</span></td>
+                            <td>14歳</td>
+                        </tr>
+                        <tr>
+                            <td>2011年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成23年</span></td>
+                            <td>15歳</td>
+                        </tr>
+                        <tr>
+                            <td>2010年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成22年</span></td>
+                            <td>16歳</td>
+                        </tr>
+                        <tr>
+                            <td>2009年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成21年</span></td>
+                            <td>17歳</td>
+                        </tr>
+                        <tr>
+                            <td>2008年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成20年</span></td>
+                            <td>18歳</td>
+                        </tr>
+                        <tr>
+                            <td>2007年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成19年</span></td>
+                            <td>19歳</td>
+                        </tr>
+                        <tr>
+                            <td>2006年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成18年</span></td>
+                            <td>20歳</td>
+                        </tr>
+                        <tr>
+                            <td>2005年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成17年</span></td>
+                            <td>21歳</td>
+                        </tr>
+                        <tr>
+                            <td>2004年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成16年</span></td>
+                            <td>22歳</td>
+                        </tr>
+                        <tr>
+                            <td>2003年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成15年</span></td>
+                            <td>23歳</td>
+                        </tr>
+                        <tr>
+                            <td>2002年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成14年</span></td>
+                            <td>24歳</td>
+                        </tr>
+                        <tr>
+                            <td>2001年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成13年</span></td>
+                            <td>25歳</td>
+                        </tr>
+                        <tr>
+                            <td>2000年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成12年</span></td>
+                            <td>26歳</td>
+                        </tr>
+                        <tr>
+                            <td>1999年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成11年</span></td>
+                            <td>27歳</td>
+                        </tr>
+                        <tr>
+                            <td>1998年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成10年</span></td>
+                            <td>28歳</td>
+                        </tr>
+                        <tr>
+                            <td>1997年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成9年</span></td>
+                            <td>29歳</td>
+                        </tr>
+                        <tr>
+                            <td>1996年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成8年</span></td>
+                            <td>30歳</td>
+                        </tr>
+                        <tr>
+                            <td>1995年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成7年</span></td>
+                            <td>31歳</td>
+                        </tr>
+                        <tr>
+                            <td>1994年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成6年</span></td>
+                            <td>32歳</td>
+                        </tr>
+                        <tr>
+                            <td>1993年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成5年</span></td>
+                            <td>33歳</td>
+                        </tr>
+                        <tr>
+                            <td>1992年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成4年</span></td>
+                            <td>34歳</td>
+                        </tr>
+                        <tr>
+                            <td>1991年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成3年</span></td>
+                            <td>35歳</td>
+                        </tr>
+                        <tr>
+                            <td>1990年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成2年</span></td>
+                            <td>36歳</td>
+                        </tr>
+                        <tr>
+                            <td>1989年</td>
+                            <td><span class="era-heisei" style="font-weight:700;">平成元年</span></td>
+                            <td>37歳</td>
+                        </tr>
+                        <tr>
+                            <td>1988年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和63年</span></td>
+                            <td>38歳</td>
+                        </tr>
+                        <tr>
+                            <td>1987年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和62年</span></td>
+                            <td>39歳</td>
+                        </tr>
+                        <tr>
+                            <td>1986年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和61年</span></td>
+                            <td>40歳</td>
+                        </tr>
+                        <tr>
+                            <td>1985年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和60年</span></td>
+                            <td>41歳</td>
+                        </tr>
+                        <tr>
+                            <td>1984年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和59年</span></td>
+                            <td>42歳</td>
+                        </tr>
+                        <tr>
+                            <td>1983年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和58年</span></td>
+                            <td>43歳</td>
+                        </tr>
+                        <tr>
+                            <td>1982年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和57年</span></td>
+                            <td>44歳</td>
+                        </tr>
+                        <tr>
+                            <td>1981年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和56年</span></td>
+                            <td>45歳</td>
+                        </tr>
+                        <tr>
+                            <td>1980年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和55年</span></td>
+                            <td>46歳</td>
+                        </tr>
+                        <tr>
+                            <td>1979年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和54年</span></td>
+                            <td>47歳</td>
+                        </tr>
+                        <tr>
+                            <td>1978年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和53年</span></td>
+                            <td>48歳</td>
+                        </tr>
+                        <tr>
+                            <td>1977年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和52年</span></td>
+                            <td>49歳</td>
+                        </tr>
+                        <tr>
+                            <td>1976年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和51年</span></td>
+                            <td>50歳</td>
+                        </tr>
+                        <tr>
+                            <td>1975年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和50年</span></td>
+                            <td>51歳</td>
+                        </tr>
+                        <tr>
+                            <td>1974年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和49年</span></td>
+                            <td>52歳</td>
+                        </tr>
+                        <tr>
+                            <td>1973年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和48年</span></td>
+                            <td>53歳</td>
+                        </tr>
+                        <tr>
+                            <td>1972年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和47年</span></td>
+                            <td>54歳</td>
+                        </tr>
+                        <tr>
+                            <td>1971年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和46年</span></td>
+                            <td>55歳</td>
+                        </tr>
+                        <tr>
+                            <td>1970年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和45年</span></td>
+                            <td>56歳</td>
+                        </tr>
+                        <tr>
+                            <td>1969年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和44年</span></td>
+                            <td>57歳</td>
+                        </tr>
+                        <tr>
+                            <td>1968年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和43年</span></td>
+                            <td>58歳</td>
+                        </tr>
+                        <tr>
+                            <td>1967年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和42年</span></td>
+                            <td>59歳</td>
+                        </tr>
+                        <tr>
+                            <td>1966年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和41年</span></td>
+                            <td>60歳</td>
+                        </tr>
+                        <tr>
+                            <td>1965年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和40年</span></td>
+                            <td>61歳</td>
+                        </tr>
+                        <tr>
+                            <td>1964年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和39年</span></td>
+                            <td>62歳</td>
+                        </tr>
+                        <tr>
+                            <td>1963年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和38年</span></td>
+                            <td>63歳</td>
+                        </tr>
+                        <tr>
+                            <td>1962年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和37年</span></td>
+                            <td>64歳</td>
+                        </tr>
+                        <tr>
+                            <td>1961年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和36年</span></td>
+                            <td>65歳</td>
+                        </tr>
+                        <tr>
+                            <td>1960年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和35年</span></td>
+                            <td>66歳</td>
+                        </tr>
+                        <tr>
+                            <td>1959年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和34年</span></td>
+                            <td>67歳</td>
+                        </tr>
+                        <tr>
+                            <td>1958年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和33年</span></td>
+                            <td>68歳</td>
+                        </tr>
+                        <tr>
+                            <td>1957年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和32年</span></td>
+                            <td>69歳</td>
+                        </tr>
+                        <tr>
+                            <td>1956年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和31年</span></td>
+                            <td>70歳</td>
+                        </tr>
+                        <tr>
+                            <td>1955年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和30年</span></td>
+                            <td>71歳</td>
+                        </tr>
+                        <tr>
+                            <td>1954年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和29年</span></td>
+                            <td>72歳</td>
+                        </tr>
+                        <tr>
+                            <td>1953年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和28年</span></td>
+                            <td>73歳</td>
+                        </tr>
+                        <tr>
+                            <td>1952年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和27年</span></td>
+                            <td>74歳</td>
+                        </tr>
+                        <tr>
+                            <td>1951年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和26年</span></td>
+                            <td>75歳</td>
+                        </tr>
+                        <tr>
+                            <td>1950年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和25年</span></td>
+                            <td>76歳</td>
+                        </tr>
+                        <tr>
+                            <td>1949年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和24年</span></td>
+                            <td>77歳</td>
+                        </tr>
+                        <tr>
+                            <td>1948年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和23年</span></td>
+                            <td>78歳</td>
+                        </tr>
+                        <tr>
+                            <td>1947年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和22年</span></td>
+                            <td>79歳</td>
+                        </tr>
+                        <tr>
+                            <td>1946年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和21年</span></td>
+                            <td>80歳</td>
+                        </tr>
+                        <tr>
+                            <td>1945年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和20年</span></td>
+                            <td>81歳</td>
+                        </tr>
+                        <tr>
+                            <td>1944年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和19年</span></td>
+                            <td>82歳</td>
+                        </tr>
+                        <tr>
+                            <td>1943年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和18年</span></td>
+                            <td>83歳</td>
+                        </tr>
+                        <tr>
+                            <td>1942年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和17年</span></td>
+                            <td>84歳</td>
+                        </tr>
+                        <tr>
+                            <td>1941年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和16年</span></td>
+                            <td>85歳</td>
+                        </tr>
+                        <tr>
+                            <td>1940年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和15年</span></td>
+                            <td>86歳</td>
+                        </tr>
+                        <tr>
+                            <td>1939年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和14年</span></td>
+                            <td>87歳</td>
+                        </tr>
+                        <tr>
+                            <td>1938年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和13年</span></td>
+                            <td>88歳</td>
+                        </tr>
+                        <tr>
+                            <td>1937年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和12年</span></td>
+                            <td>89歳</td>
+                        </tr>
+                        <tr>
+                            <td>1936年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和11年</span></td>
+                            <td>90歳</td>
+                        </tr>
+                        <tr>
+                            <td>1935年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和10年</span></td>
+                            <td>91歳</td>
+                        </tr>
+                        <tr>
+                            <td>1934年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和9年</span></td>
+                            <td>92歳</td>
+                        </tr>
+                        <tr>
+                            <td>1933年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和8年</span></td>
+                            <td>93歳</td>
+                        </tr>
+                        <tr>
+                            <td>1932年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和7年</span></td>
+                            <td>94歳</td>
+                        </tr>
+                        <tr>
+                            <td>1931年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和6年</span></td>
+                            <td>95歳</td>
+                        </tr>
+                        <tr>
+                            <td>1930年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和5年</span></td>
+                            <td>96歳</td>
+                        </tr>
+                        <tr>
+                            <td>1929年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和4年</span></td>
+                            <td>97歳</td>
+                        </tr>
+                        <tr>
+                            <td>1928年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和3年</span></td>
+                            <td>98歳</td>
+                        </tr>
+                        <tr>
+                            <td>1927年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和2年</span></td>
+                            <td>99歳</td>
+                        </tr>
+                        <tr>
+                            <td>1926年</td>
+                            <td><span class="era-showa" style="font-weight:700;">昭和元年</span></td>
+                            <td>100歳</td>
+                        </tr>
+
+                    
+                    </tbody>
                 </table>
             </div>
         </section>
@@ -929,17 +1659,53 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer" role="contentinfo">
-        <div class="footer__inner">
-            <nav class="footer__nav" aria-label="フッターナビゲーション">
-                <a href="about.html">このサイトについて</a>
-                <a href="privacy.html">プライバシーポリシー</a>
-                <a href="contact.html">お問い合わせ</a>
-            </nav>
-            <p class="footer__copy">&copy; 2026 便利ツール集 All rights reserved.</p>
-        </div>
-    </footer>
+<footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+        <nav class="footer__nav" aria-label="フッターナビゲーション">
+            <a href="/about.html">このサイトについて</a>
+            <a href="/privacy.html">プライバシーポリシー</a>
+            <a href="/contact.html">お問い合わせ</a>
+        </nav>
+        <p class="footer__copy">&copy; 2026 便利ツール集 All rights reserved.</p>
+    </div>
+</footer>
 
+    <script>
+/* ===== Shared Data & Utilities ===== */
+const CURRENT_YEAR = new Date().getFullYear();
+const ETO_LIST = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
+const ETO_READING = ['ね', 'うし', 'とら', 'う', 'たつ', 'み', 'うま', 'ひつじ', 'さる', 'とり', 'いぬ', 'い'];
+const ETO_ANIMAL = ['🐭', '🐮', '🐯', '🐰', '🐲', '🐍', '🐴', '🐏', '🐵', '🐔', '🐶', '🐗'];
+
+/**
+ * Returns the index of the Eto array for a given year.
+ */
+function getEtoIndex(year) {
+    return (year + 8) % 12; // 子=0 for years where (year+8)%12==0
+}
+
+/**
+ * Returns the Wareki object { era, eraYear, cls } for a given year.
+ */
+function getWareki(year) {
+    if (year >= 2019) return { era: '令和', eraYear: year - 2018, cls: 'era-reiwa' };
+    if (year >= 1989) return { era: '平成', eraYear: year - 1988, cls: 'era-heisei' };
+    if (year >= 1926) return { era: '昭和', eraYear: year - 1925, cls: 'era-showa' };
+    if (year >= 1912) return { era: '大正', eraYear: year - 1911, cls: 'era-taisho' };
+    if (year >= 1868) return { era: '明治', eraYear: year - 1867, cls: 'era-meiji' };
+    return { era: '', eraYear: year, cls: '' };
+}
+
+/**
+ * Formats a Wareki object into a string, converting year 1 to '元'.
+ */
+function formatWareki(w) {
+    if (!w.era) return w.eraYear + '年';
+    const yearStr = w.eraYear === 1 ? '元' : w.eraYear;
+    return w.era + yearStr + '年';
+}
+
+    </script>
     <script>
         /* ===== Era Data ===== */
         const ERAS = [
@@ -1065,60 +1831,7 @@
             inputWarekiYear.max = maxEraYear;
             inputWarekiYear.placeholder = '例: ' + Math.min(8, maxEraYear);
         });
-
-        /* ===== Build Reference Table ===== */
-        function buildRefTable() {
-            const tbody = document.getElementById('ref-table-body');
-            const fragment = document.createDocumentFragment();
-
-            // Build data from 1868 to 2030
-            const years = [];
-            for (let y = 2030; y >= 1868; y--) {
-                const eras = getEraByYear(y);
-                if (eras.length > 0) {
-                    years.push({ seireki: y, era: eras[0] });
-                }
-            }
-
-            // Split into two columns for compact display
-            const half = Math.ceil(years.length / 2);
-            for (let i = 0; i < half; i++) {
-                const tr = document.createElement('tr');
-                const left = years[i];
-                const right = years[i + half];
-
-                // Left pair
-                const td1 = document.createElement('td');
-                td1.textContent = left.seireki + '年';
-                tr.appendChild(td1);
-
-                const td2 = document.createElement('td');
-                td2.innerHTML = '<span class="' + left.era.cls + '">' + formatEraYear(left.era, left.seireki) + '</span>';
-                tr.appendChild(td2);
-
-                // Right pair
-                if (right) {
-                    const td3 = document.createElement('td');
-                    td3.textContent = right.seireki + '年';
-                    tr.appendChild(td3);
-
-                    const td4 = document.createElement('td');
-                    td4.innerHTML = '<span class="' + right.era.cls + '">' + formatEraYear(right.era, right.seireki) + '</span>';
-                    tr.appendChild(td4);
-                } else {
-                    tr.appendChild(document.createElement('td'));
-                    tr.appendChild(document.createElement('td'));
-                }
-
-                fragment.appendChild(tr);
-            }
-
-            tbody.appendChild(fragment);
-        }
-
-        buildRefTable();
     </script>
-
 </body>
 
 </html>

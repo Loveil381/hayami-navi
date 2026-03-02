@@ -1,0 +1,16 @@
+{
+  "name": "便利ツール集",
+  "short_name": "便利ツール",
+  "description": "年齢早見表、西暦和暦変換、干支早見表、入学卒業年度計算、厄年早見表など、日本の暮らしに役立つ無料の計算・早見ツールを集めました。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a6b4a",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

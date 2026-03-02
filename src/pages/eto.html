@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>干支早見表 2026年（令和8年）版 | 便利ツール集</title>
+    <meta name="description" content="干支早見表で自分の干支をすぐにチェック。2026年（令和8年）の干支は午年（うまどし）。十二支の意味や性格、年賀状との関係も解説。">
+    <meta name="keywords" content="干支早見表,干支,十二支,えと,2026年,午年,うまどし,年賀状,性格,六十干支">
+    <meta property="og:title" content="干支早見表 2026年（令和8年）版 | 便利ツール集">
+    <meta property="og:description" content="生まれ年から干支を瞬時に検索。十二支一覧と文化的な意味も詳しく解説。">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ja_JP">
+    <link rel="canonical" href="https://hayami-navi.com/eto.html">
+    {{HEAD}}
+    <style>
+        /* Result */
+        .result-box {
+            text-align: center;
+        }
+
+        .result-emoji {
+            font-size: 72px;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .result-kanji {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 4px;
+        }
+
+        .result-reading {
+            font-size: 16px;
+            color: var(--color-text-muted);
+            margin-bottom: 12px;
+        }
+
+        .result-detail {
+            font-size: 14px;
+            color: var(--color-text);
+            line-height: 1.8;
+        }
+
+        /* Zodiac Wheel */
+        .zodiac-current {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
+            padding: 24px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .zodiac-current__label {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            margin-bottom: 8px;
+        }
+
+        .zodiac-current__main {
+            font-size: 48px;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .zodiac-current__name {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        /* 12-Animal Grid */
+        .zodiac-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .zodiac-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .zodiac-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .zodiac-card.highlight {
+            border-color: var(--color-primary);
+            background: var(--color-primary-light);
+        }
+
+        .zodiac-card__emoji {
+            font-size: 40px;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .zodiac-card__kanji {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .zodiac-card__reading {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-bottom: 8px;
+        }
+
+        .zodiac-card__years {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        .zodiac-card__years span {
+            display: inline-block;
+            background: var(--color-bg);
+            padding: 1px 6px;
+            border-radius: 3px;
+            margin: 2px;
+        }
+
+        .eto-table tbody tr.highlight {
+            background: #fff3cd;
+            font-weight: 700;
+        }
+
+        @media(max-width:640px) {
+            .result-emoji {
+                font-size: 56px;
+            }
+
+            .result-kanji {
+                font-size: 28px;
+            }
+
+            .zodiac-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .zodiac-card {
+                padding: 14px 10px;
+            }
+
+            .zodiac-card__emoji {
+                font-size: 32px;
+            }
+
+            .zodiac-card__kanji {
+                font-size: 18px;
+            }
+
+            .zodiac-current__main {
+                font-size: 40px;
+            }
+
+            .age-table th,
+            .age-table td {
+                padding: 8px 6px;
+            }
+        }
+    </style>
+
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "干支早見表 2026年版",
+    "url": "https://hayami-navi.com/eto.html",
+    "description": "生まれ年から干支を瞬時に確認できる干支早見表。十二支一覧と文化的意味も解説。",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {"@type":"Offer","price":"0","priceCurrency":"JPY"},
+    "inLanguage": "ja"
+  }
+  </script>
+</head>
+
+<body>
+
+    {{HEADER}}
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">ホーム</a> &gt; 干支早見表
+    </div>
+
+    <!-- Main -->
+    <main class="main">
+        <h1 class="page-title">干支早見表 2026年（令和8年）</h1>
+        <p class="page-subtitle">生まれ年を入力するだけで、あなたの干支をすぐに確認できます。</p>
+
+        <!-- Current year zodiac -->
+        <div class="zodiac-current">
+            <div class="zodiac-current__label">2026年（令和8年）の干支</div>
+            <div class="zodiac-current__main">🐴</div>
+            <div class="zodiac-current__name">午年（うまどし）</div>
+        </div>
+
+        <!-- ===== Tool ===== -->
+        <section class="tool-card" id="tool">
+            <h2 class="tool-card__heading">🐉 干支を調べる</h2>
+            <div class="form-row">
+                <div class="form-group" style="flex:1">
+                    <label for="birth-year">生まれ年（西暦）</label>
+                    <input type="number" id="birth-year" min="1924" max="2030" placeholder="例: 1990" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="result-box" id="result-box">
+                <div class="result-emoji" id="res-emoji"></div>
+                <div class="result-kanji" id="res-kanji"></div>
+                <div class="result-reading" id="res-reading"></div>
+                <div class="result-detail" id="res-detail"></div>
+            </div>
+        </section>
+
+        <!-- AD SLOT 1 -->
+        <!-- ad-placement: rectangle-1 -->
+        <div class="ad-slot"><!-- 広告スペース① --></div>
+
+        <!-- ===== 12-Animal Cards ===== -->
+        <section class="table-section">
+            <h2 class="table-section__heading">十二支一覧</h2>
+            <div class="zodiac-grid" id="zodiac-grid">
+                {{ZODIAC_GRID_CARDS}}
+            </div>
+        </section>
+
+        <!-- ===== Year-by-Year Table ===== -->
+        <section class="table-section" id="table">
+            <h2 class="table-section__heading">西暦別 干支早見表</h2>
+            <div class="table-wrapper">
+                <table class="age-table" id="eto-table">
+                    <thead>
+                        <tr>
+                            <th>西暦</th>
+                            <th>干支</th>
+                            <th>読み</th>
+                            <th>年齢（2026年）</th>
+                        </tr>
+                    </thead>
+                    <tbody id="eto-table-body">
+                        {{ETO_TABLE_ROWS}}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- AD SLOT 2 -->
+        <!-- ad-placement: rectangle-2 -->
+        <div class="ad-slot"><!-- 広告スペース② --></div>
+
+        <!-- ===== Article ===== -->
+        <article class="article" id="article">
+            <h2>十二支とは ― 日本の干支の基礎知識</h2>
+            <p>十二支（じゅうにし）は、子（ね）・丑（うし）・寅（とら）・卯（う）・辰（たつ）・巳（み）・午（うま）・未（ひつじ）・申（さる）・酉（とり）・戌（いぬ）・亥（い）の12種類の動物で構成される暦の仕組みです。もともとは中国で生まれた概念で、紀元前の殷（いん）の時代から存在していたとされています。日本には6世紀ごろに伝わり、以来、日本の文化や生活に深く根付いてきました。
+            </p>
+            <p>十二支はもともと動物とは関係のない概念で、年や月、時刻、方角を表すための記号でした。しかし、一般の人々が覚えやすいように12の動物が割り当てられたと言われています。日本に伝わる際に、一部の動物が日本の文化に合わせて変更されました。たとえば、中国では「猪（いのしし）」の代わりに「豚（ぶた）」が使われていますが、日本では猪が採用されています。
+            </p>
+
+            <h3>十二支の動物とその特徴</h3>
+            <ul>
+                <li><strong>子（ね）🐭</strong> ― 繁栄・行動力の象徴。子年生まれは社交的で機転が利くとされます。</li>
+                <li><strong>丑（うし）🐮</strong> ― 勤勉・忍耐の象徴。真面目で努力家、信頼される性格。</li>
+                <li><strong>寅（とら）🐯</strong> ― 勇気・決断力の象徴。リーダーシップがあり情熱的。</li>
+                <li><strong>卯（う）🐰</strong> ― 温和・優雅の象徴。穏やかで人当たりが良い性格。</li>
+                <li><strong>辰（たつ）🐲</strong> ― 成功・活力の象徴。エネルギッシュで野心的。</li>
+                <li><strong>巳（み）🐍</strong> ― 知恵・直感の象徴。洞察力が鋭く思慮深い。</li>
+                <li><strong>午（うま）🐴</strong> ― 自由・活発の象徴。明るく陽気で行動的。</li>
+                <li><strong>未（ひつじ）🐏</strong> ― 平和・芸術の象徴。優しく創造性が豊か。</li>
+                <li><strong>申（さる）🐵</strong> ― 知性・器用の象徴。賢く好奇心旺盛。</li>
+                <li><strong>酉（とり）🐔</strong> ― 勤勉・正確の象徴。几帳面で観察力に優れる。</li>
+                <li><strong>戌（いぬ）🐶</strong> ― 忠実・誠実の象徴。正義感が強く仲間を大切にする。</li>
+                <li><strong>亥（い）🐗</strong> ― 勇敢・率直の象徴。まっすぐで情に厚い。</li>
+            </ul>
+            <p>これらの性格診断はあくまで伝統的な言い伝えですが、日本では会話のきっかけとして「何年（なにどし）生まれ？」と聞くことがよくあります。干支は年齢を推測する手がかりにもなるため、日常的なコミュニケーションの中で自然に使われています。
+            </p>
+
+            <h2>年賀状と干支の深い関係</h2>
+            <p>日本で干支が最も身近に感じられるのは、やはり年賀状でしょう。毎年、その年の干支にちなんだイラストやデザインが年賀状に描かれ、郵便局のお年玉付き年賀はがきにもその年の干支がモチーフとして使われます。2026年は午年（うまどし）なので、馬をテーマにした年賀状が多く見られるでしょう。
+            </p>
+            <p>年賀状の干支デザインは、単に動物を描くだけでなく、その動物に縁起の良い意味を込めるのが日本の伝統です。たとえば、馬は古来より「物事がうまくいく」という語呂合わせで縁起が良いとされ、「馬到成功（ばとうせいこう）」という中国の故事にも通じる成功の象徴です。
+            </p>
+            <p>また、年賀状以外にも、その年の干支の置物や絵馬が神社で販売されたり、テレビや雑誌で干支にちなんだ特集が組まれたりと、日本の正月文化は干支と密接に結びついています。子どもの初正月には、その子の干支にちなんだ縁起物を贈る風習がある地域もあります。
+            </p>
+
+            <h2>六十干支 ― 干支の完全サイクル</h2>
+            <p>一般的に「干支」というと十二支（12種類の動物）を思い浮かべますが、本来の「干支」とは「十干（じっかん）」と「十二支」を組み合わせた60通りの暦を指します。十干は甲（きのえ）・乙（きのと）・丙（ひのえ）・丁（ひのと）・戊（つちのえ）・己（つちのと）・庚（かのえ）・辛（かのと）・壬（みずのえ）・癸（みずのと）の10種類です。
+            </p>
+            <p>十干と十二支を順番に組み合わせていくと、最小公倍数である60の組み合わせが生まれます。これが「六十干支（ろくじっかんし）」で、60年で一巡します。60歳のお祝いを「還暦（かんれき）」と呼ぶのは、まさにこの干支が一巡して元に戻ること（暦が還ること）に由来しています。
+            </p>
+            <p>たとえば、2026年の六十干支は「丙午（ひのえうま）」です。丙午は十干の「丙（ひのえ）」と十二支の「午（うま）」の組み合わせで、60年に一度しか巡ってきません。日本では「丙午年の女性は気性が激しい」という迷信がかつてありましたが、現代ではほとんど気にされなくなっています。
+            </p>
+
+            <div class="tip-box">
+                <strong>💡
+                    豆知識：</strong>十二支は年だけでなく、時刻や方角にも使われてきました。「午前・午後」という言葉は、十二支の「午（うま）」の刻（正午ごろ）を基準に、その前か後かを表したものです。また「子午線（しごせん）」は、子（北）と午（南）を結ぶ線、つまり経線のことです。
+            </div>
+        </article>
+
+        <!-- AD SLOT 3 -->
+        <!-- ad-placement: rectangle-3 -->
+        <div class="ad-slot"><!-- 広告スペース③ --></div>
+
+    </main>
+
+    {{FOOTER}}
+
+    <script src="/js/utils.js"></script>
+    <script>
+        /* ===== Zodiac Data ===== */
+        const ZODIAC = [
+            { kanji: '子', reading: 'ね', animal: 'ねずみ', emoji: '🐭', trait: '社交的で機転が利く' },
+            { kanji: '丑', reading: 'うし', animal: 'うし', emoji: '🐮', trait: '勤勉で忍耐強い' },
+            { kanji: '寅', reading: 'とら', animal: 'とら', emoji: '🐯', trait: '勇気と決断力がある' },
+            { kanji: '卯', reading: 'う', animal: 'うさぎ', emoji: '🐰', trait: '温和で優雅' },
+            { kanji: '辰', reading: 'たつ', animal: 'りゅう', emoji: '🐲', trait: 'エネルギッシュで野心的' },
+            { kanji: '巳', reading: 'み', animal: 'へび', emoji: '🐍', trait: '知恵と洞察力がある' },
+            { kanji: '午', reading: 'うま', animal: 'うま', emoji: '🐴', trait: '明るく活発で行動的' },
+            { kanji: '未', reading: 'ひつじ', animal: 'ひつじ', emoji: '🐏', trait: '優しく創造性が豊か' },
+            { kanji: '申', reading: 'さる', animal: 'さる', emoji: '🐵', trait: '賢く好奇心旺盛' },
+            { kanji: '酉', reading: 'とり', animal: 'とり', emoji: '🐔', trait: '几帳面で観察力に優れる' },
+            { kanji: '戌', reading: 'いぬ', animal: 'いぬ', emoji: '🐶', trait: '忠実で誠実' },
+            { kanji: '亥', reading: 'い', animal: 'いのしし', emoji: '🐗', trait: 'まっすぐで情に厚い' },
+        ];
+
+        /* ===== Interactive Lookup ===== */
+        const birthInput = document.getElementById('birth-year');
+        const resultBox = document.getElementById('result-box');
+
+        birthInput.addEventListener('input', () => {
+            const year = parseInt(birthInput.value);
+            if (!year || year < 1900 || year > 2100) {
+                resultBox.classList.remove('active');
+                return;
+            }
+
+            const idx = getEtoIndex(year);
+            const z = ZODIAC[idx];
+            const age = CURRENT_YEAR - year;
+
+            document.getElementById('res-emoji').textContent = z.emoji;
+            document.getElementById('res-kanji').textContent = z.kanji + '年（' + z.reading + 'どし）';
+            document.getElementById('res-reading').textContent = z.animal + ' ／ ' + z.trait;
+            document.getElementById('res-detail').innerHTML =
+                year + '年生まれ → <strong>' + z.emoji + ' ' + z.kanji + '年</strong>（2026年に' + age + '歳）';
+
+            resultBox.classList.add('active');
+
+            // Highlight matching zodiac card and table row
+            document.querySelectorAll('.zodiac-card').forEach((card, i) => {
+                card.classList.toggle('highlight', i === idx);
+            });
+            document.querySelectorAll('#eto-table-body tr').forEach(tr => {
+                tr.classList.remove('highlight');
+                if (tr.dataset.year == year) {
+                    tr.classList.add('highlight');
+                    tr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

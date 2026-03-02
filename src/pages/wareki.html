@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>西暦⇔和暦変換ツール | 便利ツール集</title>
+    <meta name="description" content="西暦と和暦（令和・平成・昭和・大正・明治）をワンクリックで相互変換。変換早見表と元号の歴史・使い分けも詳しく解説。">
+    <meta name="keywords" content="西暦,和暦,変換,令和,平成,昭和,大正,明治,元号,年号変換">
+    <meta property="og:title" content="西暦⇔和暦変換ツール | 便利ツール集">
+    <meta property="og:description" content="西暦と和暦を瞬時に相互変換。令和・平成・昭和・大正・明治に完全対応。">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ja_JP">
+    <link rel="canonical" href="https://hayami-navi.com/wareki.html">
+    {{HEAD}}
+    <style>
+        /* Mode Tabs */
+        .mode-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 24px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .mode-tab {
+            flex: 1;
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            background: var(--color-bg);
+            color: var(--color-text-muted);
+            border: none;
+            font-family: inherit;
+            transition: all var(--transition);
+        }
+
+        .mode-tab:hover {
+            background: var(--color-primary-light);
+            color: var(--color-primary);
+        }
+
+        .mode-tab.active {
+            background: var(--color-primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* Converter Panels */
+        .converter-panel {
+            display: none;
+            animation: fadeIn .3s ease;
+        }
+
+        .converter-panel.active {
+            display: block;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button {
+            opacity: 1;
+        }
+
+        /* Arrow */
+        .convert-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 0 16px;
+            font-size: 28px;
+            color: var(--color-primary);
+            opacity: .6;
+        }
+
+        .result-box {
+            text-align: center;
+        }
+
+        .result-main {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 6px;
+        }
+
+        .result-sub {
+            font-size: 15px;
+            color: var(--color-text-muted);
+        }
+
+        .result-note {
+            font-size: 13px;
+            color: var(--color-accent);
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        /* Era badge colors */
+        .era-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #fff;
+            margin-right: 6px;
+        }
+
+        .era-badge--reiwa {
+            background: #1a6b4a;
+        }
+
+        .era-badge--heisei {
+            background: #2e7d9c;
+        }
+
+        .era-badge--showa {
+            background: #8b6914;
+        }
+
+        .era-badge--taisho {
+            background: #7b5ea7;
+        }
+
+        .era-badge--meiji {
+            background: #b85450;
+        }
+
+        /* Era summary cards */
+        .era-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .era-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+        }
+
+        .era-card__name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .era-card__range {
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        .era-card__formula {
+            font-size: 11px;
+            color: var(--color-text-muted);
+            margin-top: 6px;
+            background: var(--color-bg);
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        @media(max-width:640px) {
+            .mode-tab {
+                font-size: 13px;
+                padding: 10px 8px;
+            }
+
+            .result-main {
+                font-size: 24px;
+            }
+
+            .era-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .era-card {
+                padding: 12px 8px;
+            }
+
+            .era-card__name {
+                font-size: 17px;
+            }
+
+            .age-table th,
+            .age-table td {
+                padding: 8px 6px;
+            }
+        }
+    </style>
+
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "西暦⇔和暦変換ツール",
+    "url": "https://hayami-navi.com/wareki.html",
+    "description": "西暦と和暦（令和・平成・昭和・大正・明治）を瞬時に相互変換できる無料ツール。",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "offers": {"@type":"Offer","price":"0","priceCurrency":"JPY"},
+    "inLanguage": "ja"
+  }
+  </script>
+</head>
+
+<body>
+
+    {{HEADER}}
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">ホーム</a> &gt; 西暦⇔和暦変換
+    </div>
+
+    <!-- Main -->
+    <main class="main">
+        <h1 class="page-title">西暦⇔和暦変換ツール</h1>
+        <p class="page-subtitle">西暦と和暦をリアルタイムで相互変換。令和・平成・昭和・大正・明治に対応しています。</p>
+
+        <!-- Era Summary Cards -->
+        <div class="era-cards">
+            <div class="era-card">
+                <div class="era-card__name era-reiwa">令和</div>
+                <div class="era-card__range">2019年〜</div>
+                <div class="era-card__formula">西暦 − 2018</div>
+            </div>
+            <div class="era-card">
+                <div class="era-card__name era-heisei">平成</div>
+                <div class="era-card__range">1989年〜2019年</div>
+                <div class="era-card__formula">西暦 − 1988</div>
+            </div>
+            <div class="era-card">
+                <div class="era-card__name era-showa">昭和</div>
+                <div class="era-card__range">1926年〜1989年</div>
+                <div class="era-card__formula">西暦 − 1925</div>
+            </div>
+            <div class="era-card">
+                <div class="era-card__name era-taisho">大正</div>
+                <div class="era-card__range">1912年〜1926年</div>
+                <div class="era-card__formula">西暦 − 1911</div>
+            </div>
+            <div class="era-card">
+                <div class="era-card__name era-meiji">明治</div>
+                <div class="era-card__range">1868年〜1912年</div>
+                <div class="era-card__formula">西暦 − 1867</div>
+            </div>
+        </div>
+
+        <!-- ===== Converter Tool ===== -->
+        <section class="tool-card" id="tool">
+            <h2 class="tool-card__heading">🔄 西暦⇔和暦 変換</h2>
+
+            <!-- Mode Tabs -->
+            <div class="mode-tabs">
+                <button class="mode-tab active" data-mode="seireki" id="tab-seireki">西暦 → 和暦</button>
+                <button class="mode-tab" data-mode="wareki" id="tab-wareki">和暦 → 西暦</button>
+            </div>
+
+            <!-- Panel: 西暦 → 和暦 -->
+            <div class="converter-panel active" id="panel-seireki">
+                <div class="form-row">
+                    <div class="form-group" style="flex:1">
+                        <label for="input-seireki">西暦（年）</label>
+                        <input type="number" id="input-seireki" min="1868" max="2100" placeholder="例: 2026"
+                            autocomplete="off">
+                    </div>
+                </div>
+                <div class="convert-arrow" aria-hidden="true">↓</div>
+                <div class="result-box" id="result-seireki">
+                    <div class="result-main" id="result-seireki-main"></div>
+                    <div class="result-sub" id="result-seireki-sub"></div>
+                    <div class="result-note" id="result-seireki-note"></div>
+                </div>
+            </div>
+
+            <!-- Panel: 和暦 → 西暦 -->
+            <div class="converter-panel" id="panel-wareki">
+                <div class="form-row">
+                    <div class="form-group" style="flex:0 0 auto;min-width:120px">
+                        <label for="input-era">元号</label>
+                        <select id="input-era">
+                            <option value="reiwa">令和</option>
+                            <option value="heisei">平成</option>
+                            <option value="showa">昭和</option>
+                            <option value="taisho">大正</option>
+                            <option value="meiji">明治</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-wareki-year">年</label>
+                        <input type="number" id="input-wareki-year" min="1" max="64" placeholder="例: 8"
+                            autocomplete="off">
+                    </div>
+                </div>
+                <div class="convert-arrow" aria-hidden="true">↓</div>
+                <div class="result-box" id="result-wareki">
+                    <div class="result-main" id="result-wareki-main"></div>
+                    <div class="result-sub" id="result-wareki-sub"></div>
+                    <div class="result-note" id="result-wareki-note"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AD SLOT 1 -->
+        <!-- ad-placement: rectangle-1 -->
+        <div class="ad-slot"><!-- 広告スペース① --></div>
+
+        <!-- ===== Reference Table ===== -->
+        <section class="table-section" id="table">
+            <h2 class="table-section__heading">西暦⇔和暦 変換早見表</h2>
+            <div class="table-wrapper">
+                <table class="age-table" id="ref-table">
+                    <thead>
+                        <tr>
+                            <th>西暦</th>
+                            <th>和暦</th>
+                            <th>西暦</th>
+                            <th>和暦</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ref-table-body">
+                        {{WAREKI_TABLE_ROWS}}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- AD SLOT 2 -->
+        <!-- ad-placement: rectangle-2 -->
+        <div class="ad-slot"><!-- 広告スペース② --></div>
+
+        <!-- ===== Article ===== -->
+        <article class="article" id="article">
+            <h2>元号の歴史 ― 日本独自の紀年法</h2>
+            <p>日本の元号（げんごう）は、西暦とは異なる独自の紀年法で、日本の歴史・文化と密接に結びついています。元号制度の起源は飛鳥時代にまでさかのぼり、「大化」（645年）が最初の元号とされています。以来、約1400年にわたり、日本では元号を使って年を数える伝統が続いてきました。
+            </p>
+            <p>古代から中世にかけては、天皇の即位だけでなく、自然災害や疫病、めでたい兆しなど、さまざまな理由で元号が改められました。これを「改元（かいげん）」と呼びます。たとえば、大きな地震が起きたときに元号を変えて心機一転を図ったり、吉兆が現れたときにお祝いの意味で新しい元号にしたりしたのです。そのため、古い時代には一代の天皇の在位中に何度も元号が変わることがありました。
+            </p>
+            <p>明治時代に入ると「一世一元の制」が定められ、天皇一代につき元号は一つだけとなりました。これにより、元号と天皇の在位期間が一対一で対応するようになり、現在に至るまでこの制度が続いています。明治・大正・昭和・平成・令和と続く近代の5つの元号は、いずれもこの制度のもとで制定されたものです。
+            </p>
+
+            <h3>元号に込められた意味</h3>
+            <p>元号の漢字には、それぞれ深い意味が込められています。たとえば、現在の「令和」は万葉集の序文から引用されたもので、「美しい調和」という意味が込められています。「平成」には「国の内外、天地とも平和が達成される」という願いが、「昭和」には「国民の平和と繁栄、世界各国との協調」という意味があります。元号は単なる年の数え方ではなく、時代の理想や希望を象徴するものでもあるのです。
+            </p>
+            <p>なお、令和以前の元号はすべて中国の古典（漢籍）から出典が選ばれていましたが、令和は初めて日本の古典（国書）である万葉集から採用されました。これは元号の歴史において大きな転換点として注目されています。</p>
+
+            <h2>西暦と和暦の使い分け ― 日常生活での実践</h2>
+            <p>現代の日本では、西暦と和暦の両方が日常的に使われています。しかし、どちらを使うべきか迷う場面も多いのではないでしょうか。ここでは、場面ごとの使い分けの目安をご紹介します。</p>
+
+            <h3>和暦を使う場面</h3>
+            <ul>
+                <li>役所への届出・申請書類（住民票、戸籍謄本、婚姻届など）</li>
+                <li>履歴書の生年月日欄（和暦・西暦どちらも可だが統一する）</li>
+                <li>年賀状や正式な手紙</li>
+                <li>法律関連の文書（契約書、裁判関連書類など）</li>
+                <li>金融機関の書類（口座開設、保険申請など）</li>
+            </ul>
+            <p>公的な文書では伝統的に和暦が多く使われていますが、近年はデジタル化の流れにより西暦を併記する自治体や機関も増えてきています。ただし、戸籍などの記録は和暦で管理されていることが多いため、公的書類では和暦を求められるケースがまだまだ一般的です。
+            </p>
+
+            <h3>西暦を使う場面</h3>
+            <ul>
+                <li>ビジネス文書やメール（特にグローバル企業）</li>
+                <li>IT関連のシステムやデータベース</li>
+                <li>国際的なやり取りや外国語の文書</li>
+                <li>学術論文や研究資料</li>
+                <li>ウェブサイトやSNSでの日付表記</li>
+            </ul>
+            <p>西暦は世界共通のため、国際的な場面やデジタル環境では西暦が標準です。また、年号をまたぐ計算がしやすいのも西暦の利点です。たとえば「平成20年から令和6年まで何年？」と聞かれたら和暦では少し計算が面倒ですが、「2008年から2024年まで」と西暦で考えれば一目瞭然です。
+            </p>
+
+            <div class="tip-box">
+                <strong>💡
+                    ポイント：</strong>書類の中で西暦と和暦を混在させるのは避けましょう。一つの書類では、どちらかに統一するのがマナーです。履歴書では学歴・職歴欄を含め、すべて同じ暦で統一することが大切です。
+            </div>
+
+            <h2>改元のしくみ ― 元号はどう決まるのか</h2>
+            <p>改元とは、元号を新しいものに切り替えることです。現在の日本では「元号法」（1979年制定）により、元号は政令で定めることが規定されています。改元は天皇の代替わりに伴って行われ、新天皇の即位とともに新しい元号が施行されます。
+            </p>
+
+            <h3>令和への改元プロセス</h3>
+            <p>2019年の改元は、現行憲法下では初めて天皇の退位（「譲位」）によって行われた点で歴史的な出来事でした。上皇陛下が2019年4月30日に退位され、翌5月1日に新天皇が即位されるとともに、元号が「平成」から「令和」に切り替わりました。新元号は事前に2019年4月1日に発表され、国民が約1か月の準備期間をもって新元号を迎えることができました。
+            </p>
+            <p>この事前発表の方式は、昭和から平成への改元（1989年1月7日、昭和天皇崩御の翌日に即日施行）とは大きく異なりました。昭和の改元では、国民は事前の準備期間なく新元号に切り替わったため、役所や企業、印刷業界などでは大きな混乱が生じました。令和への改元が比較的スムーズに進んだのは、この事前発表と準備期間があったおかげです。
+            </p>
+
+            <h3>改元時の注意点</h3>
+            <p>改元が行われた年は、同じ年に2つの元号が存在することになります。たとえば2019年は、1月1日〜4月30日が「平成31年」、5月1日以降が「令和元年」です。同様に、1989年は1月7日までが「昭和64年」、1月8日以降が「平成元年」となります。書類に記入する際は、日付が改元の前なのか後なのかを正確に確認するようにしましょう。
+            </p>
+            <p>なお、元号が変わった年の最初の年は「元年（がんねん）」と呼ばれます。「令和1年」ではなく「令和元年」と表記するのが正式です。ただし、コンピュータシステムでは「1年」と数値で扱うことが一般的です。正式な文書や手書きの場合は「元年」を使うのが好ましいでしょう。
+            </p>
+
+            <h3>元号と西暦の換算のコツ</h3>
+            <p>元号と西暦の変換には、各元号ごとの「マジックナンバー」を覚えておくと便利です。令和なら「2018」、平成なら「1988」、昭和なら「1925」、大正なら「1911」、明治なら「1867」を西暦から引くと、対応する元号の年数がわかります。このページの上部にある早見カードでいつでも確認できますので、ぜひご活用ください。
+            </p>
+
+            <div class="tip-box">
+                <strong>💡
+                    まとめ：</strong>元号は日本の大切な文化遺産であり、日常生活にも深く根付いています。西暦と和暦を正しく使い分け、変換できるようにしておくことで、書類の記入や日常の会話がスムーズになります。このツールをブックマークしておけば、いつでも手軽に変換できます。
+            </div>
+        </article>
+
+        <!-- AD SLOT 3 -->
+        <!-- ad-placement: rectangle-3 -->
+        <div class="ad-slot"><!-- 広告スペース③ --></div>
+
+    </main>
+
+    {{FOOTER}}
+
+    <script src="/js/utils.js"></script>
+    <script>
+        /* ===== Era Data ===== */
+        const ERAS = [
+            { id: 'reiwa', name: '令和', start: 2019, end: 2100, offset: 2018, cls: 'era-reiwa', badge: 'era-badge--reiwa' },
+            { id: 'heisei', name: '平成', start: 1989, end: 2019, offset: 1988, cls: 'era-heisei', badge: 'era-badge--heisei' },
+            { id: 'showa', name: '昭和', start: 1926, end: 1989, offset: 1925, cls: 'era-showa', badge: 'era-badge--showa' },
+            { id: 'taisho', name: '大正', start: 1912, end: 1926, offset: 1911, cls: 'era-taisho', badge: 'era-badge--taisho' },
+            { id: 'meiji', name: '明治', start: 1868, end: 1912, offset: 1867, cls: 'era-meiji', badge: 'era-badge--meiji' },
+        ];
+
+        function getEraByYear(year) {
+            // Return all matching eras (some years overlap at era boundaries)
+            return ERAS.filter(e => year >= e.start && year <= e.end);
+        }
+
+        function getEraById(id) {
+            return ERAS.find(e => e.id === id);
+        }
+
+        function formatEraYear(era, seireki) {
+            const y = seireki - era.offset;
+            return era.name + (y === 1 ? '元' : y) + '年';
+        }
+
+        /* ===== Tab Switching ===== */
+        const tabSeireki = document.getElementById('tab-seireki');
+        const tabWareki = document.getElementById('tab-wareki');
+        const panelSeireki = document.getElementById('panel-seireki');
+        const panelWareki = document.getElementById('panel-wareki');
+
+        tabSeireki.addEventListener('click', () => {
+            tabSeireki.classList.add('active');
+            tabWareki.classList.remove('active');
+            panelSeireki.classList.add('active');
+            panelWareki.classList.remove('active');
+        });
+
+        tabWareki.addEventListener('click', () => {
+            tabWareki.classList.add('active');
+            tabSeireki.classList.remove('active');
+            panelWareki.classList.add('active');
+            panelSeireki.classList.remove('active');
+        });
+
+        /* ===== 西暦 → 和暦 ===== */
+        const inputSeireki = document.getElementById('input-seireki');
+        const resultSeirekiBox = document.getElementById('result-seireki');
+
+        inputSeireki.addEventListener('input', () => {
+            const year = parseInt(inputSeireki.value);
+            if (!year || year < 1868 || year > 2100) {
+                resultSeirekiBox.classList.remove('active');
+                return;
+            }
+
+            const eras = getEraByYear(year);
+            if (eras.length === 0) {
+                resultSeirekiBox.classList.remove('active');
+                return;
+            }
+
+            const primary = eras[0];
+            const mainText = formatEraYear(primary, year);
+            document.getElementById('result-seireki-main').innerHTML =
+                '<span class="era-badge ' + primary.badge + '">' + primary.name + '</span>' + mainText;
+            document.getElementById('result-seireki-sub').textContent = year + '年 = ' + mainText;
+
+            // Check for overlap year
+            if (eras.length > 1) {
+                const secondary = eras[1];
+                document.getElementById('result-seireki-note').textContent =
+                    '※ この年は改元の年です。日付によっては ' + formatEraYear(secondary, year) + ' の場合もあります。';
+            } else {
+                document.getElementById('result-seireki-note').textContent = '';
+            }
+
+            resultSeirekiBox.classList.add('active');
+        });
+
+        /* ===== 和暦 → 西暦 ===== */
+        const inputEra = document.getElementById('input-era');
+        const inputWarekiYear = document.getElementById('input-wareki-year');
+        const resultWarekiBox = document.getElementById('result-wareki');
+
+        function convertWarekiToSeireki() {
+            const eraId = inputEra.value;
+            const eraYear = parseInt(inputWarekiYear.value);
+            if (!eraYear || eraYear < 1) {
+                resultWarekiBox.classList.remove('active');
+                return;
+            }
+
+            const era = getEraById(eraId);
+            const seireki = era.offset + eraYear;
+            const maxYear = era.end;
+            const eraYearStr = eraYear === 1 ? '元' : eraYear;
+            const warekiStr = era.name + eraYearStr + '年';
+
+            document.getElementById('result-wareki-main').textContent = '西暦 ' + seireki + '年';
+            document.getElementById('result-wareki-sub').textContent = warekiStr + ' = 西暦' + seireki + '年';
+
+            // Validity check
+            if (seireki > maxYear) {
+                document.getElementById('result-wareki-note').textContent =
+                    '⚠️ ' + era.name + 'は' + (maxYear - era.offset) + '年までです。' + seireki + '年には既に次の元号に変わっています。';
+            } else if (seireki === era.start && eraYear === 1) {
+                document.getElementById('result-wareki-note').textContent =
+                    '※ ' + era.name + '元年です（改元の年）。';
+            } else {
+                document.getElementById('result-wareki-note').textContent = '';
+            }
+
+            resultWarekiBox.classList.add('active');
+        }
+
+        inputEra.addEventListener('change', convertWarekiToSeireki);
+        inputWarekiYear.addEventListener('input', convertWarekiToSeireki);
+
+        // Update max values when era changes
+        inputEra.addEventListener('change', () => {
+            const era = getEraById(inputEra.value);
+            const maxEraYear = era.end - era.offset;
+            inputWarekiYear.max = maxEraYear;
+            inputWarekiYear.placeholder = '例: ' + Math.min(8, maxEraYear);
+        });
+    </script>
+</body>
+
+</html>
