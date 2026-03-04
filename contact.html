@@ -11,325 +11,126 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css?v=1">
     <style>
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box
-        }
+a:hover {
+  text-decoration: none;
+}
 
-        :root {
-            --color-primary: #1a6b4a;
-            --color-primary-light: #e8f5ee;
-            --color-accent: #d4a843;
-            --color-bg: #f7f8fa;
-            --color-surface: #ffffff;
-            --color-text: #2c3e50;
-            --color-text-muted: #6b7b8d;
-            --color-border: #e2e6ea;
-            --color-footer-bg: #2c3e50;
-            --color-footer-text: #cfd8dc;
-            --shadow-card: 0 2px 8px rgba(0, 0, 0, .06);
-            --radius: 10px;
-            --max-width: 1080px;
-            --transition: .25s ease;
-        }
+.form-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 36px 32px;
+  margin-bottom: 24px;
+  max-width: 640px;
+}
 
-        html {
-            scroll-behavior: smooth
-        }
+.form-field {
+  margin-bottom: 20px;
+}
 
-        body {
-            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
-            background: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.8;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            -webkit-font-smoothing: antialiased
-        }
+.form-field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
 
-        a {
-            color: var(--color-primary);
-            text-decoration: underline
-        }
+.form-field .required {
+  color: #d9534f;
+  font-size: 12px;
+  margin-left: 4px;
+}
 
-        a:hover {
-            text-decoration: none
-        }
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--color-text);
+  background: var(--color-bg);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
 
-        .header {
-            background: linear-gradient(135deg, var(--color-primary) 0%, #1e7e56 100%);
-            color: #fff;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, .12)
-        }
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(26, 107, 74, .12);
+}
 
-        .header__inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 14px 24px;
-            display: flex;
-            align-items: center;
-            gap: 14px
-        }
+.form-field textarea {
+  min-height: 180px;
+  resize: vertical;
+  line-height: 1.7;
+}
 
-        .header__icon {
-            font-size: 24px;
-            flex-shrink: 0
-        }
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #b0bec5;
+}
 
-        .header__home {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #fff;
-            text-decoration: none;
-            transition: opacity var(--transition)
-        }
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 14px 36px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
 
-        .header__home:hover {
-            opacity: .85
-        }
+.submit-btn:hover {
+  background: var(--color-primary-hover, #145839);
+  transform: translateY(-1px);
+}
 
-        .header__title {
-            font-size: 18px;
-            font-weight: 700
-        }
+.submit-btn:active {
+  transform: translateY(0);
+}
 
-        .subnav {
-            background: var(--color-surface);
-            border-bottom: 1px solid var(--color-border);
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch
-        }
+@media (max-width:640px) {
+  .header__inner {
+    padding: 12px 16px;
+  }
 
-        .subnav__inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex
-        }
+  .header__title {
+    font-size: 16px;
+  }
 
-        .subnav__link {
-            padding: 12px 18px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--color-text-muted);
-            white-space: nowrap;
-            border-bottom: 3px solid transparent;
-            transition: color var(--transition), border-color var(--transition);
-            text-decoration: none
-        }
+  .subnav__inner {
+    padding: 0 12px;
+  }
 
-        .subnav__link:hover {
-            color: var(--color-primary)
-        }
+  .subnav__link {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
 
-        .breadcrumb {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 14px 24px 0;
-            font-size: 12px;
-            color: var(--color-text-muted);
-            width: 100%
-        }
+  .main {
+    padding: 16px 16px 40px;
+  }
 
-        .breadcrumb a {
-            color: var(--color-primary)
-        }
+  .page-title {
+    font-size: 20px;
+  }
 
-        .main {
-            flex: 1;
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 20px 24px 56px;
-            width: 100%
-        }
-
-        .page-title {
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: 8px;
-            line-height: 1.4
-        }
-
-        .page-subtitle {
-            font-size: 14px;
-            color: var(--color-text-muted);
-            margin-bottom: 28px
-        }
-
-        .form-card {
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-card);
-            padding: 36px 32px;
-            margin-bottom: 24px;
-            max-width: 640px
-        }
-
-        .form-field {
-            margin-bottom: 20px
-        }
-
-        .form-field label {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--color-text);
-            margin-bottom: 6px
-        }
-
-        .form-field .required {
-            color: #d9534f;
-            font-size: 12px;
-            margin-left: 4px
-        }
-
-        .form-field input,
-        .form-field textarea {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1px solid var(--color-border);
-            border-radius: 6px;
-            font-size: 15px;
-            font-family: inherit;
-            color: var(--color-text);
-            background: var(--color-bg);
-            transition: border-color var(--transition), box-shadow var(--transition)
-        }
-
-        .form-field input:focus,
-        .form-field textarea:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(26, 107, 74, .12)
-        }
-
-        .form-field textarea {
-            min-height: 180px;
-            resize: vertical;
-            line-height: 1.7
-        }
-
-        .form-field input::placeholder,
-        .form-field textarea::placeholder {
-            color: #b0bec5
-        }
-
-        .submit-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--color-primary);
-            color: #fff;
-            border: none;
-            padding: 14px 36px;
-            border-radius: 6px;
-            font-size: 15px;
-            font-weight: 600;
-            font-family: inherit;
-            cursor: pointer;
-            transition: background var(--transition), transform var(--transition)
-        }
-
-        .submit-btn:hover {
-            background: var(--color-primary-hover, #145839);
-            transform: translateY(-1px)
-        }
-
-        .submit-btn:active {
-            transform: translateY(0)
-        }
-
-        .note {
-            background: #f0f4f8;
-            border-radius: 8px;
-            padding: 16px 20px;
-            font-size: 14px;
-            color: var(--color-text-muted);
-            margin-bottom: 32px;
-            max-width: 640px;
-            line-height: 1.9
-        }
-
-        .footer {
-            background: var(--color-footer-bg);
-            color: var(--color-footer-text);
-            font-size: 13px
-        }
-
-        .footer__inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 32px 24px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px
-        }
-
-        .footer__nav {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            justify-content: center
-        }
-
-        .footer__nav a {
-            color: var(--color-footer-text);
-            transition: color var(--transition);
-            font-size: 13px;
-            text-decoration: none
-        }
-
-        .footer__nav a:hover {
-            color: #fff
-        }
-
-        .footer__copy {
-            opacity: .7;
-            font-size: 12px
-        }
-
-        @media(max-width:640px) {
-            .header__inner {
-                padding: 12px 16px
-            }
-
-            .header__title {
-                font-size: 16px
-            }
-
-            .subnav__inner {
-                padding: 0 12px
-            }
-
-            .subnav__link {
-                padding: 10px 12px;
-                font-size: 12px
-            }
-
-            .main {
-                padding: 16px 16px 40px
-            }
-
-            .page-title {
-                font-size: 20px
-            }
-
-            .form-card {
-                padding: 24px 18px
-            }
-        }
+  .form-card {
+    padding: 24px 18px;
+  }
+}
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ6TZTK11H"></script>
@@ -340,7 +141,7 @@
 
         gtag('config', 'G-FJ6TZTK11H');
     </script>
-    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE">
+    <meta name="google-site-verification" content="">
 </head>
 
 <body>
