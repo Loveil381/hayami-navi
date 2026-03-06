@@ -2,21 +2,23 @@
 <html lang="ja">
 
 <head>
-    <title>年齢早見表 2026年（令和8年）版 | 便利ツール集</title>
+    <title>年齢早見表 2026年（令和8年）版 | hayami-navi</title>
     <meta name="description" content="2026年（令和8年）の年齢早見表。生まれ年から年齢・干支・和暦を瞬時に確認できます。早生まれ対応。履歴書の書き方も解説。">
-    <meta property="og:title" content="年齢早見表 2026年（令和8年）版 | 便利ツール集">
+    <meta property="og:title" content="年齢早見表 2026年（令和8年）版 | hayami-navi">
     <meta property="og:description" content="2026年（令和8年）の年齢早見表。生まれ年から年齢・干支・和暦を瞬時に確認。早生まれ対応。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://hayami-navi.com/nenrei.html">
     <meta property="og:image" content="https://hayami-navi.com/og-image.png">
     <meta property="og:locale" content="ja_JP">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="年齢早見表 2026年（令和8年）版 | 便利ツール集">
+    <meta name="twitter:title" content="年齢早見表 2026年（令和8年）版 | hayami-navi">
     <meta name="twitter:description" content="2026年（令和8年）の年齢早見表。生まれ年から年齢・干支・和暦を瞬時に確認。早生まれ対応。">
     <meta name="twitter:image" content="https://hayami-navi.com/og-image.png">
     <link rel="canonical" href="https://hayami-navi.com/nenrei.html">
+    <link rel="alternate" hreflang="ja" href="https://hayami-navi.com/nenrei.html">
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a6b4a">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 <link rel="manifest" href="./manifest.json">
@@ -24,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./css/style.css?v=1">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ6TZTK11H"></script>
@@ -49,7 +51,6 @@
     "inLanguage": "ja"
   }
   </script>
-    <meta name="google-site-verification" content="">
 
     <script type="application/ld+json">
     {
@@ -58,6 +59,47 @@
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://hayami-navi.com/"},
         {"@type": "ListItem", "position": 2, "name": "年齢早見表", "item": "https://hayami-navi.com/nenrei.html"}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "年齢早見表とは何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "生まれ年から現在の年齢をひと目で確認できる一覧表です。保険手続き、公的書類の記入、年末調整など様々な場面で活用できます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "数え年と満年齢の違いは？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "満年齢は誕生日を迎えるごとに1歳加算する現代の一般的な数え方です。数え年は生まれた時点で1歳とし、正月を迎えるごとに1歳加算する伝統的な数え方です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "早生まれとは何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1月1日から4月1日までに生まれた人のことを指します。学校の学年が前年の4月2日生まれの人と同じ学年になるため、同学年の中では年齢が若くなります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "2026年に還暦を迎えるのは何年生まれ？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1966年（昭和41年）生まれの方が2026年に満60歳（還暦）を迎えます。"
+      }
+    }
       ]
     }
     </script>
@@ -72,6 +114,7 @@
             <span class="header__icon" aria-hidden="true">🛠️</span>
             <span class="header__title">便利ツール集</span>
         </a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="テーマ切替">🌙</button>
     </div>
 </header>
 
@@ -160,7 +203,7 @@
                     <button type="button" id="btn-scroll-table" class="scroll-to-table-btn">▼ 一覧表で確認</button>
                 </div>
             </div>
-        </section>
+        <div class="btn-copy-wrapper"><button type="button" class="btn-copy" id="btn-copy">📋 結果をコピー</button></div>\n</section>
 
         <!-- AD SLOT 1 -->
         <!-- ad-placement: rectangle-1 -->
@@ -763,6 +806,67 @@
                             <td style="font-weight: 700;">96歳</td>
                             <td>🐴 午（うま）</td>
                         </tr>
+                        <tr data-year="1929">
+                            <td>1929年</td>
+                            <td><span class="era-showa">昭和4年</span></td>
+                            <td style="font-weight: 700;">97歳</td>
+                            <td>🐍 巳（み）</td>
+                        </tr>
+                        <tr data-year="1928">
+                            <td>1928年</td>
+                            <td><span class="era-showa">昭和3年</span></td>
+                            <td style="font-weight: 700;">98歳</td>
+                            <td>🐲 辰（たつ）</td>
+                        </tr>
+                        <tr data-year="1927">
+                            <td>1927年</td>
+                            <td><span class="era-showa">昭和2年</span></td>
+                            <td style="font-weight: 700;">99歳</td>
+                            <td>🐰 卯（う）</td>
+                        </tr>
+                        <tr data-year="1926">
+                            <td>1926年</td>
+                            <td><span class="era-taisho">大正15年 / 昭和元年</span></td>
+                            <td style="font-weight: 700;">100歳</td>
+                            <td>🐯 寅（とら）</td>
+                        </tr>
+                        <tr data-year="1925">
+                            <td>1925年</td>
+                            <td><span class="era-taisho">大正14年</span></td>
+                            <td style="font-weight: 700;">101歳</td>
+                            <td>🐮 丑（うし）</td>
+                        </tr>
+                        <tr data-year="1924">
+                            <td>1924年</td>
+                            <td><span class="era-taisho">大正13年</span></td>
+                            <td style="font-weight: 700;">102歳</td>
+                            <td>🐭 子（ね）</td>
+                        </tr>
+                        <tr data-year="1923">
+                            <td>1923年</td>
+                            <td><span class="era-taisho">大正12年</span></td>
+                            <td style="font-weight: 700;">103歳</td>
+                            <td>🐗 亥（い）</td>
+                        </tr>
+                        <tr data-year="1922">
+                            <td>1922年</td>
+                            <td><span class="era-taisho">大正11年</span></td>
+                            <td style="font-weight: 700;">104歳</td>
+                            <td>🐶 戌（いぬ）</td>
+                        </tr>
+                        <tr data-year="1921">
+                            <td>1921年</td>
+                            <td><span class="era-taisho">大正10年</span></td>
+                            <td style="font-weight: 700;">105歳</td>
+                            <td>🐔 酉（とり）</td>
+                        </tr>
+                        <tr data-year="1920">
+                            <td>1920年</td>
+                            <td><span class="era-taisho">大正9年</span></td>
+                            <td style="font-weight: 700;">106歳</td>
+                            <td>🐵 申（さる）</td>
+                        </tr>
+
 
                     
                     </tbody>
@@ -775,17 +879,17 @@
         <div class="ad-slot"><!-- 広告スペース② --></div>
 
         <!-- ===== Article ===== -->
-        <article class="article" id="article">
+        <article class="article reveal" id="article">
             <h2>年齢早見表の見方と活用方法</h2>
             <p>年齢早見表は、生まれ年（西暦）から現在の年齢をひと目で確認できる便利な一覧表です。日常生活の中で、自分や家族の年齢を正確に把握したい場面は意外と多いものです。たとえば、保険の手続き、公的書類の記入、年末調整の扶養控除の確認など、さまざまなシーンで「今、何歳だっけ？」と確認する必要があります。
             </p>
             <p>この年齢早見表では、2026年（令和8年）を基準に、1930年（昭和5年）から2026年（令和8年）までの各生まれ年に対応する年齢を一覧にしています。誕生日を迎える前後で年齢が1歳異なる点にご注意ください。表に記載されている年齢は、その年の誕生日を迎えた後の満年齢です。
             </p>
-            <p>使い方はとても簡単です。上部の検索ツールで生まれ年を選択するか、下の一覧表からご自身の生まれ年を探してください。西暦・和暦・年齢・干支の4つの情報を同時に確認できるため、複数の情報をまとめて調べたいときにも重宝します。ブックマークしておくと、いつでもすぐに参照できて便利です。
+            <p>使い方はとても簡単です。上部の検索ツールで生まれ年を選択するか、下の一覧表からご自身の生まれ年を探してください。西暦・和暦・年齢・<a href="./eto.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">干支</a>の4つの情報を同時に確認できるため、複数の情報をまとめて調べたいときにも重宝します。ブックマークしておくと、いつでもすぐに参照できて便利です。
             </p>
 
             <h2>西暦と和暦の関係について</h2>
-            <p>日本では西暦（グレゴリオ暦）と和暦（元号を使った年の数え方）の2つの暦が併用されています。公的な書類や伝統的な場面では和暦が使われることが多く、ビジネスやインターネットでは西暦が主流です。どちらの暦も正しく理解しておくことが、日本で生活する上でとても大切です。
+            <p>日本では西暦（グレゴリオ暦）と<a href="./wareki.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">和暦</a>（元号を使った年の数え方）の2つの暦が併用されています。公的な書類や伝統的な場面では和暦が使われることが多く、ビジネスやインターネットでは西暦が主流です。どちらの暦も正しく理解しておくことが、日本で生活する上でとても大切です。
             </p>
 
             <h3>現在使われている元号</h3>
@@ -835,8 +939,8 @@
             <p>日本の学校制度では、4月2日から翌年4月1日までに生まれた児童が同じ学年になります。1月1日〜4月1日に生まれた人は「早生まれ」と呼ばれ、同じ年の4月2日以降に生まれた人より1つ上の学年に入ります。たとえば2000年3月生まれの人は、1999年4月〜2000年4月1日生まれのグループに入り、1999年度の学年になります。
             </p>
 
-            <h3>③ 厄年の数え方と混同</h3>
-            <p>厄年は「数え年」で計算するのが一般的です。満年齢で計算してしまうと1〜2歳のずれが生じます。厄年を調べる場合は当サイトの「<a href="yakudoshi.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">厄年早見表</a>」もあわせてご活用ください。数え年は「満年齢 +
+            <h3>③ <a href="./yakudoshi.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">厄年</a>の数え方と混同</h3>
+            <p>厄年は「数え年」で計算するのが一般的です。満年齢で計算してしまうと1〜2歳のずれが生じます。厄年を調べる場合は当サイトの「<a href="./yakudoshi.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">厄年早見表</a>」もあわせてご活用ください。数え年は「満年齢 +
                 1歳」（元旦以降、誕生日前）もしくは「満年齢 + 2歳」（元旦前）で計算できます。ただし簡易的には「満年齢 + 1」と覚えておくとよいでしょう。</p>
 
             <h3>④ 西暦と和暦の書き間違い</h3>
@@ -907,7 +1011,7 @@
 
         /* ===== Populate birth year dropdown ===== */
         const birthYearSelect = document.getElementById('birth-year');
-        for (let y = CURRENT_YEAR; y >= 1930; y--) {
+        for (let y = CURRENT_YEAR; y >= 1920; y--) {
             const w = getWareki(y);
             const opt = document.createElement('option');
             opt.value = y;
@@ -1009,6 +1113,27 @@
         document.getElementById('birth-month').addEventListener('change', updateResult);
         document.getElementById('hayaumare').addEventListener('change', updateResult);
     </script>
-</body>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const btnCopy = document.getElementById('btn-copy');
+    if(btnCopy) {
+        btnCopy.addEventListener('click', () => {
+            const y = document.getElementById('birth-year').value;
+            if(!y) return;
+            const ageStr = document.getElementById('res-age').textContent;
+            const etoStr = document.getElementById('res-eto').textContent;
+            // Format: ○○年生まれ → 2026年で満○○歳（○○年・○○座）
+            const copyText = `${y}年生まれ → 2026年で満${ageStr}（${y}年・${etoStr}）`;
+            navigator.clipboard.writeText(copyText).then(() => {
+                const origText = btnCopy.textContent;
+                btnCopy.textContent = '✅ コピーしました！';
+                setTimeout(() => { btnCopy.textContent = origText; }, 1500);
+            });
+        });
+    }
+});
+</script>
+\n</body>
 
 </html>

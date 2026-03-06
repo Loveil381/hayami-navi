@@ -2,21 +2,23 @@
 <html lang="ja">
 
 <head>
-    <title>西暦⇔和暦変換ツール | 便利ツール集</title>
+    <title>西暦⇔和暦変換ツール 2026年版 | hayami-navi</title>
     <meta name="description" content="西暦と和暦（令和・平成・昭和・大正・明治）をワンクリックで相互変換。変換早見表と元号の歴史・使い分けも詳しく解説。">
-    <meta property="og:title" content="西暦⇔和暦変換ツール | 便利ツール集">
+    <meta property="og:title" content="西暦⇔和暦変換ツール 2026年版 | hayami-navi">
     <meta property="og:description" content="西暦と和暦を瞬時に相互変換。令和・平成・昭和・大正・明治に完全対応。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://hayami-navi.com/wareki.html">
     <meta property="og:image" content="https://hayami-navi.com/og-image.png">
     <meta property="og:locale" content="ja_JP">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="西暦⇔和暦変換ツール | 便利ツール集">
+    <meta name="twitter:title" content="西暦⇔和暦変換ツール 2026年版 | hayami-navi">
     <meta name="twitter:description" content="西暦と和暦を瞬時に相互変換。令和・平成・昭和・大正・明治に完全対応。">
     <meta name="twitter:image" content="https://hayami-navi.com/og-image.png">
     <link rel="canonical" href="https://hayami-navi.com/wareki.html">
+    <link rel="alternate" hreflang="ja" href="https://hayami-navi.com/wareki.html">
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a6b4a">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 <link rel="manifest" href="./manifest.json">
@@ -24,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./css/style.css?v=1">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ6TZTK11H"></script>
@@ -231,7 +233,6 @@
     "inLanguage": "ja"
   }
   </script>
-    <meta name="google-site-verification" content="">
 
     <script type="application/ld+json">
     {
@@ -240,6 +241,39 @@
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://hayami-navi.com/"},
         {"@type": "ListItem", "position": 2, "name": "西暦⇔和暦変換", "item": "https://hayami-navi.com/wareki.html"}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "令和は西暦何年から？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "令和は2019年5月1日から始まりました。令和元年は西暦2019年にあたります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "昭和と平成の境目は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "昭和は1926年12月25日〜1989年1月7日、平成は1989年1月8日〜2019年4月30日です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "和暦を西暦に変換する簡単な方法は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "令和の場合は年数に2018を足す（例：令和8年→2018+8=2026年）、平成は1988を足す、昭和は1925を足します。"
+      }
+    }
       ]
     }
     </script>
@@ -254,6 +288,7 @@
             <span class="header__icon" aria-hidden="true">🛠️</span>
             <span class="header__title">便利ツール集</span>
         </a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="テーマ切替">🌙</button>
     </div>
 </header>
 
@@ -360,7 +395,7 @@
                     <div class="result-note" id="result-wareki-note"></div>
                 </div>
             </div>
-        </section>
+        <div class="btn-copy-wrapper"><button type="button" class="btn-copy" id="btn-copy">📋 結果をコピー</button></div>\n</section>
 
         <!-- AD SLOT 1 -->
         <!-- ad-placement: rectangle-1 -->
@@ -918,7 +953,7 @@
         <div class="ad-slot"><!-- 広告スペース② --></div>
 
         <!-- ===== Article ===== -->
-        <article class="article" id="article">
+        <article class="article reveal" id="article">
             <h2>元号の歴史 ― 日本独自の紀年法</h2>
             <p>日本の元号（げんごう）は、西暦とは異なる独自の紀年法で、日本の歴史・文化と密接に結びついています。元号制度の起源は飛鳥時代にまでさかのぼり、「大化」（645年）が最初の元号とされています。以来、約1400年にわたり、日本では元号を使って年を数える伝統が続いてきました。
             </p>
@@ -954,12 +989,12 @@
                 <li>学術論文や研究資料</li>
                 <li>ウェブサイトやSNSでの日付表記</li>
             </ul>
-            <p>西暦は世界共通のため、国際的な場面やデジタル環境では西暦が標準です。また、年号をまたぐ計算がしやすいのも西暦の利点です。たとえば「平成20年から令和6年まで何年？」と聞かれたら和暦では少し計算が面倒ですが、「2008年から2024年まで」と西暦で考えれば一目瞭然です。
+            <p>西暦は世界共通のため、国際的な場面やデジタル環境では西暦が標準です。また、年号をまたぐ計算がしやすいのも西暦の利点です。たとえば「平成20年から令和6年まで何年？」と<a href="./nenrei.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">年齢</a>や期間を聞かれたら和暦では少し計算が面倒ですが、「2008年から2024年まで」と西暦で考えれば一目瞭然です。
             </p>
 
             <div class="tip-box">
                 <strong>💡
-                    ポイント：</strong>書類の中で西暦と和暦を混在させるのは避けましょう。一つの書類では、どちらかに統一するのがマナーです。履歴書では学歴・職歴欄を含め、すべて同じ暦で統一することが大切です。
+                    ポイント：</strong>書類の中で西暦と和暦を混在させるのは避けましょう。一つの書類では、どちらかに統一するのがマナーです。<a href="./gakureki.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">履歴書</a>では<a href="./gakureki.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">学歴・職歴欄</a>を含め、すべて同じ暦で統一することが大切です。
             </div>
 
             <h2>改元のしくみ ― 元号はどう決まるのか</h2>
@@ -979,12 +1014,12 @@
             </p>
 
             <h3>元号と西暦の換算のコツ</h3>
-            <p>元号と西暦の変換には、各元号ごとの「マジックナンバー」を覚えておくと便利です。令和なら「2018」、平成なら「1988」、昭和なら「1925」、大正なら「1911」、明治なら「1867」を西暦から引くと、対応する元号の年数がわかります。このページの上部にある早見カードでいつでも確認できますので、ぜひご活用ください。
+            <p>元号と西暦の変換には、各元号ごとの「マジックナンバー」を覚えておくと便利です。令和なら「2018」、平成なら「1988」、昭和なら「1925」、大正なら「1911」、明治なら「1867」を西暦から引くと、対応する元号の年数がわかります。このページの上部にある<a href="./eto.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">干支</a>や<a href="./nenrei.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">年齢</a>の早見カードでいつでも確認できますので、ぜひご活用ください。
             </p>
 
             <div class="tip-box">
                 <strong>💡
-                    まとめ：</strong>元号は日本の大切な文化遺産であり、日常生活にも深く根付いています。西暦と和暦を正しく使い分け、変換できるようにしておくことで、書類の記入や日常の会話がスムーズになります。このツールをブックマークしておけば、いつでも手軽に変換できます。
+                    まとめ：</strong>元号や<a href="./eto.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">干支</a>は日本の大切な文化遺産であり、日常生活にも深く根付いています。西暦と和暦を正しく使い分け、変換できるようにしておくことで、書類の記入や日常の会話がスムーズになります。このツールをブックマークしておけば、いつでも手軽に変換できます。
             </div>
         
             <div class="related-tools" style="margin-top:32px;padding:20px 24px;background:#f0f4f8;border-radius:10px;border:1px solid #e2e6ea;">
@@ -1143,6 +1178,36 @@
             inputWarekiYear.placeholder = '例: ' + Math.min(8, maxEraYear);
         });
     </script>
-</body>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const btnCopy = document.getElementById('btn-copy');
+    if(btnCopy) {
+        btnCopy.addEventListener('click', () => {
+            let copyText = "";
+            const currentTab = document.querySelector('.tab.active').dataset.tab;
+            if (currentTab === 'seireki') {
+                const y = document.getElementById('seireki-input').value;
+                const res = document.getElementById('res-wareki-main').textContent;
+                if(!y || !res || res === '-') return;
+                copyText = `西暦${y}年 → ${res}`;
+            } else {
+                const e = document.getElementById('wareki-era').options[document.getElementById('wareki-era').selectedIndex].text;
+                const y = document.getElementById('wareki-year').value;
+                const res = document.getElementById('res-seireki-main').textContent;
+                if(!y || !res || res === '-') return;
+                const showY = y == 1 ? "元" : y;
+                copyText = `${e}${showY}年 → ${res}`;
+            }
+            navigator.clipboard.writeText(copyText).then(() => {
+                const origText = btnCopy.textContent;
+                btnCopy.textContent = '✅ コピーしました！';
+                setTimeout(() => { btnCopy.textContent = origText; }, 1500);
+            });
+        });
+    }
+});
+</script>
+\n</body>
 
 </html>

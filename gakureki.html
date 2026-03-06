@@ -2,21 +2,23 @@
 <html lang="ja">
 
 <head>
-    <title>入学・卒業年度計算ツール | 便利ツール集</title>
+    <title>入学・卒業年度計算ツール 2026年版 | hayami-navi</title>
     <meta name="description" content="生まれ年から入学・卒業年度を自動計算。小学校から大学院まで、西暦・和暦の両方で確認できます。早生まれ対応。履歴書の学歴欄の書き方も解説。">
-    <meta property="og:title" content="入学・卒業年度計算ツール | 便利ツール集">
+    <meta property="og:title" content="入学・卒業年度計算ツール 2026年版 | hayami-navi">
     <meta property="og:description" content="生まれ年から入学・卒業年を自動計算。小学校〜大学院まで西暦・和暦で確認。早生まれ対応。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://hayami-navi.com/gakureki.html">
     <meta property="og:image" content="https://hayami-navi.com/og-image.png">
     <meta property="og:locale" content="ja_JP">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="入学・卒業年度計算ツール | 便利ツール集">
+    <meta name="twitter:title" content="入学・卒業年度計算ツール 2026年版 | hayami-navi">
     <meta name="twitter:description" content="生まれ年から入学・卒業年を自動計算。小学校〜大学院まで西暦・和暦で確認。早生まれ対応。">
     <meta name="twitter:image" content="https://hayami-navi.com/og-image.png">
     <link rel="canonical" href="https://hayami-navi.com/gakureki.html">
+    <link rel="alternate" hreflang="ja" href="https://hayami-navi.com/gakureki.html">
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a6b4a">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 <link rel="manifest" href="./manifest.json">
@@ -24,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./css/style.css?v=1">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ6TZTK11H"></script>
@@ -215,7 +217,6 @@
     "inLanguage": "ja"
   }
   </script>
-    <meta name="google-site-verification" content="">
 
     <script type="application/ld+json">
     {
@@ -224,6 +225,39 @@
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://hayami-navi.com/"},
         {"@type": "ListItem", "position": 2, "name": "入学・卒業年度計算", "item": "https://hayami-navi.com/gakureki.html"}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "小学校の入学年齢は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "日本では、4月1日時点で満6歳に達している子どもがその年の4月に小学校へ入学します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "早生まれは入学・卒業年度に影響しますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。1月1日〜4月1日生まれの方は前年度の学年に含まれるため、同じ年に生まれた4月2日以降の方より1学年上になります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "履歴書に入学・卒業年度を書く際の注意点は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "西暦か和暦のどちらかに統一し、学校名は正式名称を記載します。留年・休学がある場合は実際の年度を正確に記入してください。"
+      }
+    }
       ]
     }
     </script>
@@ -238,6 +272,7 @@
             <span class="header__icon" aria-hidden="true">🛠️</span>
             <span class="header__title">便利ツール集</span>
         </a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="テーマ切替">🌙</button>
     </div>
 </header>
 
@@ -321,20 +356,20 @@
                     </table>
                 </div>
             </div>
-        </section>
+        <div class="btn-copy-wrapper"><button type="button" class="btn-copy" id="btn-copy">📋 結果をコピー</button></div>\n</section>
 
         <!-- AD SLOT 1 -->
         <!-- ad-placement: rectangle-1 -->
         <div class="ad-slot"><!-- 広告スペース① --></div>
 
         <!-- ===== Article ===== -->
-        <article class="article" id="article">
+        <article class="article reveal" id="article">
             <h2>日本の学校制度と入学時期のしくみ</h2>
             <p>日本の学校の年度は、毎年4月に始まり翌年3月に終わります。これは世界的に見ると珍しい制度で、欧米やアジアの多くの国では9月入学が一般的です。日本が4月入学を採用している背景には、明治時代の会計年度が4月始まりに変更されたことが大きく影響しています。1886年（明治19年）に国の会計年度が4月始まりとなり、それに合わせて学校の年度も4月始まりに統一されました。
             </p>
             <p>日本の教育制度は「6・3・3・4制」と呼ばれ、小学校6年、中学校3年、高等学校3年、大学4年という構成が基本です。このうち、小学校6年間と中学校3年間の計9年間が義務教育となっています。高校への進学率は約99%と非常に高く、大学・短大への進学率も約60%に達しています。
             </p>
-            <p>入学する学年は、子どもの生年月日によって決まります。具体的には、その年度の4月2日から翌年4月1日までに生まれた子どもが同じ学年になります。つまり、4月2日生まれの子どもは新しい学年の最年長に、4月1日生まれの子どもは前の学年の最年少になります。
+            <p>入学する学年は、子どもの<a href="./eto.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">生まれ年</a>や生年月日によって決まります。具体的には、その年度の4月2日から翌年4月1日までに生まれた子どもが同じ学年になります。つまり、4月2日生まれの子どもは新しい学年の最年長に、4月1日生まれの子どもは前の学年の最年少になります。
             </p>
 
             <h3>入学・卒業の具体的な時期</h3>
@@ -355,7 +390,7 @@
             </p>
 
             <h3>早生まれの学年区分の仕組み</h3>
-            <p>日本の法律（年齢計算ニ関スル法律）では、「年齢は誕生日の前日の満了をもって加算される」と定められています。したがって、4月1日生まれの人は、法律上は3月31日に年齢が1つ上がります。学校教育法では「満6歳に達した日の翌日以降における最初の学年の初め」に就学するとされているため、4月1日生まれの子どもは3月31日に6歳になり、翌日の4月1日から始まる学年に間に合う、つまり前の学年に入ることになるのです。
+            <p>日本の法律（<a href="./nenrei.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">年齢</a>計算ニ関スル法律）では、「年齢は誕生日の前日の満了をもって加算される」と定められています。したがって、4月1日生まれの人は、法律上は3月31日に年齢が1つ上がります。学校教育法では「満6歳に達した日の翌日以降における最初の学年の初め」に就学するとされているため、4月1日生まれの子どもは3月31日に6歳になり、翌日の4月1日から始まる学年に間に合う、つまり前の学年に入ることになるのです。
             </p>
             <p>具体的な例を挙げると、2000年3月15日生まれの子どもは早生まれです。この子は、1999年4月2日〜2000年4月1日生まれのグループに入り、2006年4月に小学校に入学します。一方、2000年5月10日生まれの子どもは遅生まれで、2000年4月2日〜2001年4月1日生まれのグループに入り、2007年4月に小学校に入学します。同じ2000年生まれでも、生まれ月によって入学年度が異なるのがポイントです。
             </p>
@@ -368,8 +403,8 @@
             <h2>履歴書の学歴欄を正しく書くコツ</h2>
             <p>就職活動やアルバイトの応募で提出する履歴書の学歴欄は、正確に記入することが非常に重要です。ここでは、学歴欄を正しく書くためのポイントをまとめます。</p>
 
-            <h3>① 西暦と和暦はどちらかに統一</h3>
-            <p>履歴書全体で、西暦か和暦のどちらかに統一するのが基本マナーです。学歴欄だけでなく、職歴欄や資格欄なども含めて、すべて同じ暦を使いましょう。和暦で書く場合は「令和」「平成」「昭和」などの元号を正式に記載します。西暦の場合は4桁で記載しましょう。
+            <h3>① 西暦と<a href="./wareki.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">和暦</a>はどちらかに統一</h3>
+            <p>履歴書全体で、<a href="./wareki.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">西暦か和暦</a>のどちらかに統一するのが基本マナーです。学歴欄だけでなく、職歴欄や資格欄なども含めて、すべて同じ暦を使いましょう。和暦で書く場合は「令和」「平成」「昭和」などの元号を正式に記載します。西暦の場合は4桁で記載しましょう。
             </p>
 
             <h3>② 学校名は正式名称で</h3>
@@ -565,6 +600,32 @@
             timeline.classList.add('active');
         }
     </script>
-</body>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const btnCopy = document.getElementById('btn-copy');
+    if(btnCopy) {
+        btnCopy.addEventListener('click', () => {
+            const y = document.getElementById('birth-year').value;
+            if(!y) return;
+            const heading = document.getElementById('tl-heading').textContent;
+            let copyText = heading + "\n";
+            const rows = document.querySelectorAll('#tl-body tr');
+            rows.forEach(tr => {
+                const td = tr.querySelectorAll('td');
+                if(td.length >= 4) {
+                    copyText += `${td[2].textContent} : ${td[0].textContent} ${td[1].textContent}\n`;
+                }
+            });
+            navigator.clipboard.writeText(copyText.trim()).then(() => {
+                const origText = btnCopy.textContent;
+                btnCopy.textContent = '✅ コピーしました！';
+                setTimeout(() => { btnCopy.textContent = origText; }, 1500);
+            });
+        });
+    }
+});
+</script>
+\n</body>
 
 </html>

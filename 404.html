@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#1a6b4a">
+    <title>ページが見つかりません | hayami-navi</title>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css?v=1">
+
+    <style>
+        .error-page {
+            text-align: center;
+            padding: 80px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .error-number {
+            font-size: 120px;
+            color: var(--color-primary);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .error-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--color-text);
+        }
+
+        .error-subtitle {
+            font-size: 16px;
+            color: var(--color-text-muted);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .btn-home {
+            display: inline-block;
+            background: var(--color-primary);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: var(--radius-lg);
+            font-weight: 700;
+            text-decoration: none;
+            transition: background var(--transition), transform var(--transition);
+            margin-bottom: 48px;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-home:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .error-links-title {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .error-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .error-links a {
+            color: var(--color-primary);
+            font-weight: 500;
+            text-decoration: none;
+            padding: 8px;
+            display: inline-block;
+        }
+
+        .error-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header__inner">
+            <a href="./index.html" class="header__home" aria-label="便利ツール集トップへ">
+                <span class="header__icon" aria-hidden="true">🛠️</span>
+                <span class="header__title">便利ツール集</span>
+            </a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="テーマ切替">🌙</button>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+        <article class="error-page">
+            <div class="error-number">404</div>
+            <h1 class="error-title">お探しのページが見つかりませんでした</h1>
+            <p class="error-subtitle">URLが間違っているか、ページが移動した可能性があります。</p>
+
+            <a href="./index.html" class="btn-home">ホームに戻る</a>
+
+            <div class="error-links-title">または以下のツールをお試しください：</div>
+            <ul class="error-links">
+                <li><a href="./nenrei.html">📊 年齢早見表（2026年版）</a></li>
+                <li><a href="./wareki.html">🔄 西暦⇔和暦変換ツール</a></li>
+                <li><a href="./eto.html">🐉 干支早見表</a></li>
+                <li><a href="./gakureki.html">🎓 入学・卒業年度計算</a></li>
+                <li><a href="./yakudoshi.html">⛩️ 厄年早見表</a></li>
+            </ul>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <nav class="footer__nav" aria-label="フッターナビゲーション">
+                <a href="./about.html">このサイトについて</a>
+                <a href="./privacy.html">プライバシーポリシー</a>
+                <a href="./contact.html">お問い合わせ</a>
+            </nav>
+            <p class="footer__copy">&copy; 2026 便利ツール集 All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="./js/shared.js"></script>
+</body>
+
+</html>

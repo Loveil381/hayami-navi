@@ -4,19 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>厄年早見表 2026年（令和8年）版 | 便利ツール集</title>
+    <meta name="theme-color" content="#1a6b4a">
+    <title>厄年早見表 2026年（令和8年）版 | hayami-navi</title>
     <meta name="description" content="2026年（令和8年）の厄年早見表。生まれ年と性別から前厄・本厄・後厄を自動計算。厄払いの時期や風習、地域の違いも詳しく解説。">
-    <meta property="og:title" content="厄年早見表 2026年（令和8年）版 | 便利ツール集">
+    <meta property="og:title" content="厄年早見表 2026年（令和8年）版 | hayami-navi">
     <meta property="og:description" content="生まれ年と性別で厄年を瞬時に確認。前厄・本厄・後厄の年齢と西暦・和暦を一覧表示。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://hayami-navi.com/yakudoshi.html">
     <meta property="og:image" content="https://hayami-navi.com/og-image.png">
     <meta property="og:locale" content="ja_JP">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="厄年早見表 2026年（令和8年）版 | 便利ツール集">
+    <meta name="twitter:title" content="厄年早見表 2026年（令和8年）版 | hayami-navi">
     <meta name="twitter:description" content="生まれ年と性別で厄年を瞬時に確認。前厄・本厄・後厄の年齢と西暦・和暦を一覧表示。">
     <meta name="twitter:image" content="https://hayami-navi.com/og-image.png">
     <link rel="canonical" href="https://hayami-navi.com/yakudoshi.html">
+    <link rel="alternate" hreflang="ja" href="https://hayami-navi.com/yakudoshi.html">
     <link rel="icon" href="./favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="./apple-touch-icon.png">
     <link rel="manifest" href="./manifest.json">
@@ -25,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style"
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css?v=1">
     <style>
 .year-banner {
@@ -356,7 +358,6 @@
 
         gtag('config', 'G-FJ6TZTK11H');
     </script>
-    <meta name="google-site-verification" content="">
 
     <script type="application/ld+json">
     {
@@ -365,6 +366,47 @@
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://hayami-navi.com/"},
         {"@type": "ListItem", "position": 2, "name": "厄年早見表", "item": "https://hayami-navi.com/yakudoshi.html"}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "厄年とは何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "厄年は災厄が降りかかりやすいとされる年齢のことです。日本の伝統的な風習で、数え年で計算します。男性は25歳・42歳・61歳、女性は19歳・33歳・37歳・61歳が本厄とされています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "厄年の数え方は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "厄年は「数え年」で計算します。数え年は生まれた年を1歳とし、毎年1月1日に1歳ずつ加算する数え方です。満年齢に1歳（誕生日前なら2歳）を足すと数え年になります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "2026年に本厄を迎えるのは何年生まれ？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "男性は2002年生まれ（数え年25歳）、1985年生まれ（数え年42歳）、1966年生まれ（数え年61歳）。女性は2008年生まれ（数え年19歳）、1994年生まれ（数え年33歳）、1990年生まれ（数え年37歳）、1966年生まれ（数え年61歳）が本厄です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "厄除け・厄払いはいつ行けばいい？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "一般的にはお正月から節分（2月3日頃）までに行くのが良いとされています。ただし時期に厳密な決まりはなく、年間を通じて受け付けている神社仏閣も多いです。"
+      }
+    }
       ]
     }
     </script>
@@ -379,6 +421,7 @@
                 <span class="header__icon" aria-hidden="true">🛠️</span>
                 <span class="header__title">便利ツール集</span>
             </a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="テーマ切替">🌙</button>
         </div>
     </header>
 
@@ -435,7 +478,7 @@
                 <div class="yaku-heading" id="yaku-heading"></div>
                 <div class="yaku-groups" id="yaku-groups"></div>
             </div>
-        </section>
+        <div class="btn-copy-wrapper"><button type="button" class="btn-copy" id="btn-copy">📋 結果をコピー</button></div>\n</section>
 
         <!-- AD SLOT 1 -->
         <!-- ad-placement: rectangle-1 -->
@@ -467,11 +510,11 @@
         <div class="ad-slot"><!-- 広告スペース② --></div>
 
         <!-- ===== Article ===== -->
-        <article class="article" id="article">
+        <article class="article reveal" id="article">
             <h2>厄年とは ― 起源と歴史</h2>
             <p>厄年（やくどし）とは、人生の中で災厄が降りかかりやすいとされる年齢のことです。日本では古くから信じられてきた風習で、その起源は平安時代にまでさかのぼると言われています。陰陽道（おんみょうどう）の影響を受けて発展したとされ、室町時代には一般庶民の間にも広く浸透していました。
             </p>
-            <p>厄年は「数え年」で数えるのが伝統的な方法です。数え年とは、生まれた年を1歳と数え、以後お正月を迎えるたびに1歳を加える数え方です。現代の満年齢とは異なるため注意が必要です。一般的に、数え年は「満年齢＋1歳」（ただし誕生日前は＋2歳）として計算できます。当サイトのツールでは、この数え年の計算を自動で行っています。
+            <p>厄年は「<a href="./nenrei.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">数え年</a>」で数えるのが伝統的な方法です。数え年とは、生まれた年を1歳と数え、以後お正月を迎えるたびに1歳を加える数え方です。現代の<a href="./nenrei.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">満年齢</a>とは異なるため注意が必要です。一般的に、数え年は「満年齢＋1歳」（ただし誕生日前は＋2歳）として計算できます。当サイトのツールでは、この数え年の計算を自動で行っています。
             </p>
             <p>男性の本厄は25歳・42歳・61歳、女性の本厄は19歳・33歳・37歳・61歳です。特に男性の42歳は「しに（死に）」、女性の33歳は「さんざん（散々）」と読めることから「大厄（たいやく）」と呼ばれ、最も注意すべき年とされてきました。本厄の前年を「前厄（まえやく）」、翌年を「後厄（あとやく）」と呼び、この3年間は慎重に過ごすべきとされています。
             </p>
@@ -500,7 +543,7 @@
             <p>厄年は全国的に共通した風習ですが、地域によって独自の特色がある場合があります。</p>
             <p>関西地方、特に大阪や京都では、厄年に「厄除けまんじゅう」をご近所に配る風習があります。これは厄を「食べてもらう」ことで分散させるという考えに基づいています。また、石川県や富山県などの北陸地方では、厄年の人が餅まき（もちまき）を行い、集まった人々に餅を配ることで厄を分けてもらう風習が残っています。
             </p>
-            <p>四国地方では、厄年に当たる年齢が他の地域と異なる場合があります。また、沖縄では独自の暦に基づく「トゥシビー」と呼ばれる厄年の概念があり、十二支の生まれ年が13年ごとに巡ってくる年を厄年と考える独特の体系を持っています。
+            <p>四国地方では、厄年に当たる年齢が他の地域と異なる場合があります。また、沖縄では独自の暦に基づく「トゥシビー」と呼ばれる厄年の概念があり、十二支の<a href="./eto.html" style="color:var(--color-primary);text-decoration:underline;font-weight:500;">生まれ年</a>が13年ごとに巡ってくる年を厄年と考える独特の体系を持っています。
             </p>
 
             <div class="tip-box">
@@ -754,6 +797,34 @@
         // buildRefTable();
     </script>
 
-</body>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const btnCopy = document.getElementById('btn-copy');
+    if(btnCopy) {
+        btnCopy.addEventListener('click', () => {
+            const y = document.getElementById('birth-year').value;
+            if(!y) return;
+            const status = document.getElementById('yaku-status').textContent;
+            const heading = document.getElementById('yaku-heading').textContent;
+            let copyText = `${heading}\n結果: ${status}\n`;
+            
+            const activeGroup = document.querySelector('.yaku-group.is-current');
+            if(activeGroup) {
+                const title = activeGroup.querySelector('.yaku-group__title').textContent;
+                const badges = Array.from(activeGroup.querySelectorAll('.yaku-group__badge')).map(b => b.textContent).join(' ');
+                copyText += `詳細: ${title} ${badges}\n`;
+            }
+            
+            navigator.clipboard.writeText(copyText.trim()).then(() => {
+                const origText = btnCopy.textContent;
+                btnCopy.textContent = '✅ コピーしました！';
+                setTimeout(() => { btnCopy.textContent = origText; }, 1500);
+            });
+        });
+    }
+});
+</script>
+\n</body>
 
 </html>
