@@ -2,13 +2,13 @@
 <html lang="ja">
 
 <head>
-    <title>干支早見表 2026年（令和8年）版 | 便利ツール集</title>
-    <meta name="description" content="干支早見表で自分の干支をすぐにチェック。2026年（令和8年）の干支は午年（うまどし）。十二支の意味や性格、年賀状との関係も解説。">
-    <meta property="og:title" content="干支早見表 2026年（令和8年）版 | 便利ツール集">
+    <title>干支早見表 {{CURRENT_YEAR}}年（{{CURRENT_WAREKI}}）版 | {{SITE_NAME}}</title>
+    <meta name="description" content="干支早見表で自分の干支をすぐにチェック。{{CURRENT_YEAR}}年（{{CURRENT_WAREKI}}）の干支は{{CURRENT_ETO_KANJI}}年（{{CURRENT_ETO_READING}}どし）。十二支の意味や性格、年賀状との関係も解説。">
+    <meta property="og:title" content="干支早見表 {{CURRENT_YEAR}}年（{{CURRENT_WAREKI}}）版 | {{SITE_NAME}}">
     <meta property="og:description" content="生まれ年から干支を瞬時に検索。十二支一覧と文化的な意味も詳しく解説。">
     <meta property="og:type" content="article">
     <meta property="og:locale" content="ja_JP">
-    <link rel="canonical" href="https://hayami-navi.com/eto.html">
+    <link rel="canonical" href="{{SITE_URL}}/eto.html">
     {{HEAD}}
     <style>
         /* Result */
@@ -176,8 +176,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "干支早見表 2026年版",
-    "url": "https://hayami-navi.com/eto.html",
+    "name": "干支早見表 {{CURRENT_YEAR}}年版",
+    "url": "{{SITE_URL}}/eto.html",
     "description": "生まれ年から干支を瞬時に確認できる干支早見表。十二支一覧と文化的意味も解説。",
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "All",
@@ -198,14 +198,14 @@
 
     <!-- Main -->
     <main class="main">
-        <h1 class="page-title">干支早見表 2026年（令和8年）</h1>
+        <h1 class="page-title">干支早見表 {{CURRENT_YEAR}}年（{{CURRENT_WAREKI}}）</h1>
         <p class="page-subtitle">生まれ年を入力するだけで、あなたの干支をすぐに確認できます。</p>
 
         <!-- Current year zodiac -->
         <div class="zodiac-current">
-            <div class="zodiac-current__label">2026年（令和8年）の干支</div>
-            <div class="zodiac-current__main">🐴</div>
-            <div class="zodiac-current__name">午年（うまどし）</div>
+            <div class="zodiac-current__label">{{CURRENT_YEAR}}年（{{CURRENT_WAREKI}}）の干支</div>
+            <div class="zodiac-current__main">{{CURRENT_ETO_EMOJI}}</div>
+            <div class="zodiac-current__name">{{CURRENT_ETO_KANJI}}年（{{CURRENT_ETO_READING}}どし）</div>
         </div>
 
         <!-- ===== Tool ===== -->
@@ -248,7 +248,7 @@
                             <th>西暦</th>
                             <th>干支</th>
                             <th>読み</th>
-                            <th>年齢（2026年）</th>
+                            <th>年齢（{{CURRENT_YEAR}}年）</th>
                         </tr>
                     </thead>
                     <tbody id="eto-table-body">
@@ -289,7 +289,7 @@
             </p>
 
             <h2>年賀状と干支の深い関係</h2>
-            <p>日本で干支が最も身近に感じられるのは、やはり年賀状でしょう。毎年、その年の干支にちなんだイラストやデザインが年賀状に描かれ、郵便局のお年玉付き年賀はがきにもその年の干支がモチーフとして使われます。2026年は午年（うまどし）なので、馬をテーマにした年賀状が多く見られるでしょう。
+            <p>日本で干支が最も身近に感じられるのは、やはり年賀状でしょう。毎年、その年の干支にちなんだイラストやデザインが年賀状に描かれ、郵便局のお年玉付き年賀はがきにもその年の干支がモチーフとして使われます。{{CURRENT_YEAR}}年は{{CURRENT_ETO_KANJI}}年（{{CURRENT_ETO_READING}}どし）なので、{{CURRENT_ETO_THEME_ANIMAL}}をテーマにした年賀状が多く見られるでしょう。
             </p>
             <p>年賀状の干支デザインは、単に動物を描くだけでなく、その動物に縁起の良い意味を込めるのが日本の伝統です。たとえば、馬は古来より「物事がうまくいく」という語呂合わせで縁起が良いとされ、「馬到成功（ばとうせいこう）」という中国の故事にも通じる成功の象徴です。
             </p>
@@ -301,7 +301,7 @@
             </p>
             <p>十干と十二支を順番に組み合わせていくと、最小公倍数である60の組み合わせが生まれます。これが「六十干支（ろくじっかんし）」で、60年で一巡します。60歳のお祝いを「還暦（かんれき）」と呼ぶのは、まさにこの干支が一巡して元に戻ること（暦が還ること）に由来しています。
             </p>
-            <p>たとえば、2026年の六十干支は「丙午（ひのえうま）」です。丙午は十干の「丙（ひのえ）」と十二支の「午（うま）」の組み合わせで、60年に一度しか巡ってきません。日本では「丙午年の女性は気性が激しい」という迷信がかつてありましたが、現代ではほとんど気にされなくなっています。
+            <p>たとえば、{{CURRENT_YEAR}}年の六十干支は「{{CURRENT_SEXAGENARY}}（{{CURRENT_SEXAGENARY_READING}}）」です。{{CURRENT_SEXAGENARY}}は十干の「{{CURRENT_SEXAGENARY_STEM}}（{{CURRENT_SEXAGENARY_STEM_READING}}）」と十二支の「{{CURRENT_ETO_KANJI}}（{{CURRENT_ETO_READING}}）」の組み合わせで、60年に一度しか巡ってきません。日本では「丙午年の女性は気性が激しい」という迷信がかつてありましたが、現代ではほとんど気にされなくなっています。
             </p>
 
             <div class="tip-box">
@@ -355,7 +355,7 @@
             document.getElementById('res-kanji').textContent = z.kanji + '年（' + z.reading + 'どし）';
             document.getElementById('res-reading').textContent = z.animal + ' ／ ' + z.trait;
             document.getElementById('res-detail').innerHTML =
-                year + '年生まれ → <strong>' + z.emoji + ' ' + z.kanji + '年</strong>（2026年に' + age + '歳）';
+                year + '年生まれ → <strong>' + z.emoji + ' ' + z.kanji + '年</strong>（{{CURRENT_YEAR}}年に' + age + '歳）';
 
             resultBox.classList.add('active');
 
