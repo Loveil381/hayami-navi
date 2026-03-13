@@ -1,3 +1,5 @@
+// NOTE: Build outputs are committed to the repo root for static hosting.
+// If switching to a CI-based deploy pipeline, add generated HTML to .gitignore.
 const fs = require('fs');
 const path = require('path');
 
