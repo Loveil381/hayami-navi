@@ -2,22 +2,22 @@
 <html lang="ja">
 
 <head>
-    <title>年齢早見表 2026年（令和8年）版 | 便利ツール集</title>
-    <meta name="description" content="2026年（令和8年）の年齢早見表。生まれ年から年齢・干支・和暦を瞬時に確認できます。早生まれ対応。履歴書の書き方も解説。">
-    <meta property="og:title" content="年齢早見表 2026年（令和8年）版 | 便利ツール集">
-    <meta property="og:description" content="2026年（令和8年）の年齢早見表。生まれ年から年齢・干支・和暦を瞬時に確認。早生まれ対応。">
+    <title>年齢早見表 {{CURRENT_YEAR}}年（{{CURRENT_WAREKI}}）版 | {{SITE_NAME}}</title>
+    <meta name="description" content="{{CURRENT_YEAR}}年（{{CURRENT_WAREKI}}）の年齢早見表。生まれ年から年齢・干支・和暦を瞬時に確認できます。早生まれ対応。履歴書の書き方も解説。">
+    <meta property="og:title" content="年齢早見表 {{CURRENT_YEAR}}年（{{CURRENT_WAREKI}}）版 | {{SITE_NAME}}">
+    <meta property="og:description" content="{{CURRENT_YEAR}}年（{{CURRENT_WAREKI}}）の年齢早見表。生まれ年から年齢・干支・和暦を瞬時に確認。早生まれ対応。">
     <meta property="og:type" content="article">
     <meta property="og:locale" content="ja_JP">
-    <link rel="canonical" href="https://hayami-navi.com/nenrei.html">
+    <link rel="canonical" href="{{SITE_URL}}/nenrei.html">
     {{HEAD}}
     <!-- Structured Data -->
     <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "年齢早見表 2026年版",
-    "url": "https://hayami-navi.com/nenrei.html",
-    "description": "2026年（令和8年）の年齢早見表。生まれ年から年齢・干支・和暦を瞬時に確認。",
+    "name": "年齢早見表 {{CURRENT_YEAR}}年版",
+    "url": "{{SITE_URL}}/nenrei.html",
+    "description": "{{CURRENT_YEAR}}年（{{CURRENT_WAREKI}}）の年齢早見表。生まれ年から年齢・干支・和暦を瞬時に確認。",
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "All",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
@@ -37,7 +37,7 @@
 
     <!-- Main Content -->
     <main class="main">
-        <h1 class="page-title">年齢早見表 2026年（令和8年）</h1>
+        <h1 class="page-title">年齢早見表 {{CURRENT_YEAR}}年（{{CURRENT_WAREKI}}）</h1>
         <p class="page-subtitle">生まれ年を選ぶだけで、年齢・干支・和暦をすぐに確認できます。</p>
 
         <!-- ===== Interactive Tool ===== -->
@@ -80,7 +80,7 @@
             <div class="result-box" id="result-box">
                 <div class="result-grid">
                     <div class="result-item">
-                        <div class="result-item__label">2026年の年齢</div>
+                        <div class="result-item__label">{{CURRENT_YEAR}}年の年齢</div>
                         <div class="result-item__value" id="res-age">--</div>
                         <div class="result-item__sub" id="res-age-sub"></div>
                     </div>
@@ -112,7 +112,7 @@
 
         <!-- ===== Age Table ===== -->
         <section class="table-section" id="table">
-            <h2 class="table-section__heading">2026年（令和8年）年齢早見表</h2>
+            <h2 class="table-section__heading">{{CURRENT_YEAR}}年（{{CURRENT_WAREKI}}）年齢早見表</h2>
             <div class="table-wrapper">
                 <table class="age-table" id="age-table">
                     <thead>
@@ -139,7 +139,7 @@
             <h2>年齢早見表の見方と活用方法</h2>
             <p>年齢早見表は、生まれ年（西暦）から現在の年齢をひと目で確認できる便利な一覧表です。日常生活の中で、自分や家族の年齢を正確に把握したい場面は意外と多いものです。たとえば、保険の手続き、公的書類の記入、年末調整の扶養控除の確認など、さまざまなシーンで「今、何歳だっけ？」と確認する必要があります。
             </p>
-            <p>この年齢早見表では、2026年（令和8年）を基準に、1930年（昭和5年）から2026年（令和8年）までの各生まれ年に対応する年齢を一覧にしています。誕生日を迎える前後で年齢が1歳異なる点にご注意ください。表に記載されている年齢は、その年の誕生日を迎えた後の満年齢です。
+            <p>この年齢早見表では、{{CURRENT_YEAR}}年（{{CURRENT_WAREKI}}）を基準に、1930年（昭和5年）から{{CURRENT_YEAR}}年（{{CURRENT_WAREKI}}）までの各生まれ年に対応する年齢を一覧にしています。誕生日を迎える前後で年齢が1歳異なる点にご注意ください。表に記載されている年齢は、その年の誕生日を迎えた後の満年齢です。
             </p>
             <p>使い方はとても簡単です。上部の検索ツールで生まれ年を選択するか、下の一覧表からご自身の生まれ年を探してください。西暦・和暦・年齢・干支の4つの情報を同時に確認できるため、複数の情報をまとめて調べたいときにも重宝します。ブックマークしておくと、いつでもすぐに参照できて便利です。
             </p>
@@ -149,10 +149,10 @@
             </p>
 
             <h3>現在使われている元号</h3>
-            <p>現在は「令和」の時代で、2019年5月1日に令和元年が始まりました。2026年は令和8年にあたります。それ以前の元号は「平成」（1989年〜2019年）、「昭和」（1926年〜1989年）、「大正」（1912年〜1926年）、「明治」（1868年〜1912年）と続いています。
+            <p>現在は「令和」の時代で、2019年5月1日に令和元年が始まりました。{{CURRENT_YEAR}}年は{{CURRENT_WAREKI}}にあたります。それ以前の元号は「平成」（1989年〜2019年）、「昭和」（1926年〜1989年）、「大正」（1912年〜1926年）、「明治」（1868年〜1912年）と続いています。
             </p>
-            <p>西暦から和暦への変換は、各元号の開始年を知っていれば簡単に計算できます。たとえば、令和の場合は西暦から2018を引くだけです。2026年であれば、2026 − 2018 ＝
-                8で、令和8年とわかります。平成なら西暦から1988を、昭和なら1925を引きます。よく使う変換なので、覚えておくと便利です。</p>
+            <p>西暦から和暦への変換は、各元号の開始年を知っていれば簡単に計算できます。たとえば、令和の場合は西暦から2018を引くだけです。{{CURRENT_YEAR}}年であれば、{{CURRENT_YEAR}} − 2018 ＝
+                {{CURRENT_WAREKI_YEAR}}で、{{CURRENT_WAREKI}}とわかります。平成なら西暦から1988を、昭和なら1925を引きます。よく使う変換なので、覚えておくと便利です。</p>
             <p>ただし注意が必要なのは、元号の切り替わりの年です。たとえば昭和64年は1989年1月7日までで、翌1月8日から平成元年になりました。同じ1989年でも、1月前半は昭和、それ以降は平成となるため、書類に記載する際は正確な日付を確認する必要があります。
             </p>
 
@@ -180,7 +180,7 @@
             </div>
 
             <h3>履歴書でよくある記入例</h3>
-            <p>たとえば、1995年（平成7年）6月15日生まれの方が2026年2月に履歴書を提出する場合、まだ誕生日を迎えていないため年齢は「30歳」となります。誕生日を迎えた6月15日以降の提出であれば「31歳」と記入します。生年月日の欄は「平成7年6月15日」または「1995年6月15日」と記入します。
+            <p>たとえば、1995年（平成7年）6月15日生まれの方が{{CURRENT_YEAR}}年2月に履歴書を提出する場合、まだ誕生日を迎えていないため年齢は「30歳」となります。誕生日を迎えた6月15日以降の提出であれば「31歳」と記入します。生年月日の欄は「平成7年6月15日」または「1995年6月15日」と記入します。
             </p>
 
             <h2>年齢の数え方でよくある間違いと注意点</h2>
@@ -188,7 +188,7 @@
 
             <h3>① 誕生日前後の年齢の数え間違い</h3>
             <p>今年の誕生日をまだ迎えていない場合、年齢は「今年 − 生まれ年 −
-                1」です。たとえば1990年8月生まれの人が2026年2月時点で年齢を聞かれたら、「35歳」ではなく「まだ35歳になっていない」ので正しくは「35歳」です（2026 − 1990 = 36
+                1」です。たとえば1990年8月生まれの人が{{CURRENT_YEAR}}年2月時点で年齢を聞かれたら、「35歳」ではなく「まだ35歳になっていない」ので正しくは「35歳」です（{{CURRENT_YEAR}} − 1990 = 36
                 だが、誕生日前なので36 − 1 = 35歳）。この点が最も間違えやすいポイントです。</p>
 
             <h3>② 早生まれの学年計算</h3>

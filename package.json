@@ -1,0 +1,9 @@
+{
+  "name": "hayami-navi",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node build.js",
+    "validate": "node scripts/validate.js"
+  }
+}

@@ -2,13 +2,13 @@
 <html lang="ja">
 
 <head>
-    <title>西暦⇔和暦変換ツール | 便利ツール集</title>
+    <title>西暦⇔和暦変換ツール | {{SITE_NAME}}</title>
     <meta name="description" content="西暦と和暦（令和・平成・昭和・大正・明治）をワンクリックで相互変換。変換早見表と元号の歴史・使い分けも詳しく解説。">
-    <meta property="og:title" content="西暦⇔和暦変換ツール | 便利ツール集">
+    <meta property="og:title" content="西暦⇔和暦変換ツール | {{SITE_NAME}}">
     <meta property="og:description" content="西暦と和暦を瞬時に相互変換。令和・平成・昭和・大正・明治に完全対応。">
     <meta property="og:type" content="article">
     <meta property="og:locale" content="ja_JP">
-    <link rel="canonical" href="https://hayami-navi.com/wareki.html">
+    <link rel="canonical" href="{{SITE_URL}}/wareki.html">
     {{HEAD}}
     <style>
         /* Mode Tabs */
@@ -198,7 +198,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "西暦⇔和暦変換ツール",
-    "url": "https://hayami-navi.com/wareki.html",
+    "url": "{{SITE_URL}}/wareki.html",
     "description": "西暦と和暦（令和・平成・昭和・大正・明治）を瞬時に相互変換できる無料ツール。",
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "All",
@@ -266,7 +266,7 @@
                 <div class="form-row">
                     <div class="form-group" style="flex:1">
                         <label for="input-seireki">西暦（年）</label>
-                        <input type="number" id="input-seireki" min="1868" max="2100" placeholder="例: 2026"
+                        <input type="number" id="input-seireki" min="1868" max="2100" placeholder="例: {{CURRENT_YEAR}}"
                             autocomplete="off">
                     </div>
                 </div>
