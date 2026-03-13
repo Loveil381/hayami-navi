@@ -123,6 +123,11 @@
                         <div class="result-item__sub" id="res-age-sub"></div>
                     </div>
                     <div class="result-item">
+                        <div class="result-item__label">数え年</div>
+                        <div class="result-item__value" id="res-kazoe">--</div>
+                        <div class="result-item__sub" id="res-kazoe-sub"></div>
+                    </div>
+                    <div class="result-item">
                         <div class="result-item__label">干支（えと）</div>
                         <div class="result-item__value" id="res-eto">--</div>
                         <div class="result-item__sub" id="res-eto-sub"></div>
@@ -132,12 +137,14 @@
                         <div class="result-item__value" id="res-wareki">--</div>
                         <div class="result-item__sub" id="res-wareki-sub"></div>
                     </div>
-                    <div class="result-item">
+                    <div class="result-item" style="grid-column: 1 / -1;">
                         <div class="result-item__label">学年</div>
                         <div class="result-item__value" id="res-school" style="font-size:18px;">--</div>
                         <div class="result-item__sub" id="res-school-sub"></div>
                     </div>
                 </div>
+                <!-- 通知バナー領域 -->
+                <div id="res-notices" style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px;"></div>
                 <div style="text-align: center; margin-top: 10px;">
                     <button type="button" id="btn-scroll-table" class="scroll-to-table-btn">▼ 一覧表で確認</button>
                 </div>
@@ -158,7 +165,9 @@
                             <th>西暦</th>
                             <th>和暦</th>
                             <th>年齢</th>
+                            <th>数え年</th>
                             <th>干支</th>
+                            <th>備考</th>
                         </tr>
                     </thead>
                     <tbody id="age-table-body">
@@ -166,583 +175,825 @@
                             <td>2026年</td>
                             <td><span class="era-reiwa">令和8年</span></td>
                             <td style="font-weight: 700;">0歳</td>
+                            <td>1歳</td>
                             <td>🐴 午（うま）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2025">
                             <td>2025年</td>
                             <td><span class="era-reiwa">令和7年</span></td>
                             <td style="font-weight: 700;">1歳</td>
+                            <td>2歳</td>
                             <td>🐍 巳（み）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2024">
                             <td>2024年</td>
                             <td><span class="era-reiwa">令和6年</span></td>
                             <td style="font-weight: 700;">2歳</td>
+                            <td>3歳</td>
                             <td>🐲 辰（たつ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2023">
                             <td>2023年</td>
                             <td><span class="era-reiwa">令和5年</span></td>
                             <td style="font-weight: 700;">3歳</td>
+                            <td>4歳</td>
                             <td>🐰 卯（う）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2022">
                             <td>2022年</td>
                             <td><span class="era-reiwa">令和4年</span></td>
                             <td style="font-weight: 700;">4歳</td>
+                            <td>5歳</td>
                             <td>🐯 寅（とら）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2021">
                             <td>2021年</td>
                             <td><span class="era-reiwa">令和3年</span></td>
                             <td style="font-weight: 700;">5歳</td>
+                            <td>6歳</td>
                             <td>🐮 丑（うし）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2020">
                             <td>2020年</td>
                             <td><span class="era-reiwa">令和2年</span></td>
                             <td style="font-weight: 700;">6歳</td>
+                            <td>7歳</td>
                             <td>🐭 子（ね）</td>
+                            <td><span class="badge badge--school">小1</span></td>
                         </tr>
                         <tr data-year="2019">
                             <td>2019年</td>
                             <td><span class="era-reiwa">令和元年</span></td>
                             <td style="font-weight: 700;">7歳</td>
+                            <td>8歳</td>
                             <td>🐗 亥（い）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2018">
                             <td>2018年</td>
                             <td><span class="era-heisei">平成30年</span></td>
                             <td style="font-weight: 700;">8歳</td>
+                            <td>9歳</td>
                             <td>🐶 戌（いぬ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2017">
                             <td>2017年</td>
                             <td><span class="era-heisei">平成29年</span></td>
                             <td style="font-weight: 700;">9歳</td>
+                            <td>10歳</td>
                             <td>🐔 酉（とり）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2016">
                             <td>2016年</td>
                             <td><span class="era-heisei">平成28年</span></td>
                             <td style="font-weight: 700;">10歳</td>
+                            <td>11歳</td>
                             <td>🐵 申（さる）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2015">
                             <td>2015年</td>
                             <td><span class="era-heisei">平成27年</span></td>
                             <td style="font-weight: 700;">11歳</td>
+                            <td>12歳</td>
                             <td>🐏 未（ひつじ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2014">
                             <td>2014年</td>
                             <td><span class="era-heisei">平成26年</span></td>
                             <td style="font-weight: 700;">12歳</td>
+                            <td>13歳</td>
                             <td>🐴 午（うま）</td>
+                            <td><span class="badge badge--school">中1</span></td>
                         </tr>
                         <tr data-year="2013">
                             <td>2013年</td>
                             <td><span class="era-heisei">平成25年</span></td>
                             <td style="font-weight: 700;">13歳</td>
+                            <td>14歳</td>
                             <td>🐍 巳（み）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2012">
                             <td>2012年</td>
                             <td><span class="era-heisei">平成24年</span></td>
                             <td style="font-weight: 700;">14歳</td>
+                            <td>15歳</td>
                             <td>🐲 辰（たつ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2011">
                             <td>2011年</td>
                             <td><span class="era-heisei">平成23年</span></td>
                             <td style="font-weight: 700;">15歳</td>
+                            <td>16歳</td>
                             <td>🐰 卯（う）</td>
+                            <td><span class="badge badge--school">高1</span></td>
                         </tr>
                         <tr data-year="2010">
                             <td>2010年</td>
                             <td><span class="era-heisei">平成22年</span></td>
                             <td style="font-weight: 700;">16歳</td>
+                            <td>17歳</td>
                             <td>🐯 寅（とら）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2009">
                             <td>2009年</td>
                             <td><span class="era-heisei">平成21年</span></td>
                             <td style="font-weight: 700;">17歳</td>
+                            <td>18歳</td>
                             <td>🐮 丑（うし）</td>
+                            <td><span class="badge badge--zen-ato">前厄</span></td>
                         </tr>
                         <tr data-year="2008">
                             <td>2008年</td>
                             <td><span class="era-heisei">平成20年</span></td>
                             <td style="font-weight: 700;">18歳</td>
+                            <td>19歳</td>
                             <td>🐭 子（ね）</td>
+                            <td><span class="badge badge--yaku-f">女厄</span><span class="badge badge--school">大1</span></td>
                         </tr>
                         <tr data-year="2007">
                             <td>2007年</td>
                             <td><span class="era-heisei">平成19年</span></td>
                             <td style="font-weight: 700;">19歳</td>
+                            <td>20歳</td>
                             <td>🐗 亥（い）</td>
+                            <td><span class="badge badge--zen-ato">後厄</span></td>
                         </tr>
                         <tr data-year="2006">
                             <td>2006年</td>
                             <td><span class="era-heisei">平成18年</span></td>
                             <td style="font-weight: 700;">20歳</td>
+                            <td>21歳</td>
                             <td>🐶 戌（いぬ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2005">
                             <td>2005年</td>
                             <td><span class="era-heisei">平成17年</span></td>
                             <td style="font-weight: 700;">21歳</td>
+                            <td>22歳</td>
                             <td>🐔 酉（とり）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2004">
                             <td>2004年</td>
                             <td><span class="era-heisei">平成16年</span></td>
                             <td style="font-weight: 700;">22歳</td>
+                            <td>23歳</td>
                             <td>🐵 申（さる）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="2003">
                             <td>2003年</td>
                             <td><span class="era-heisei">平成15年</span></td>
                             <td style="font-weight: 700;">23歳</td>
+                            <td>24歳</td>
                             <td>🐏 未（ひつじ）</td>
+                            <td><span class="badge badge--zen-ato">前厄</span></td>
                         </tr>
                         <tr data-year="2002">
                             <td>2002年</td>
                             <td><span class="era-heisei">平成14年</span></td>
                             <td style="font-weight: 700;">24歳</td>
+                            <td>25歳</td>
                             <td>🐴 午（うま）</td>
+                            <td><span class="badge badge--yaku-m">男厄</span></td>
                         </tr>
                         <tr data-year="2001">
                             <td>2001年</td>
                             <td><span class="era-heisei">平成13年</span></td>
                             <td style="font-weight: 700;">25歳</td>
+                            <td>26歳</td>
                             <td>🐍 巳（み）</td>
+                            <td><span class="badge badge--zen-ato">後厄</span></td>
                         </tr>
                         <tr data-year="2000">
                             <td>2000年</td>
                             <td><span class="era-heisei">平成12年</span></td>
                             <td style="font-weight: 700;">26歳</td>
+                            <td>27歳</td>
                             <td>🐲 辰（たつ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1999">
                             <td>1999年</td>
                             <td><span class="era-heisei">平成11年</span></td>
                             <td style="font-weight: 700;">27歳</td>
+                            <td>28歳</td>
                             <td>🐰 卯（う）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1998">
                             <td>1998年</td>
                             <td><span class="era-heisei">平成10年</span></td>
                             <td style="font-weight: 700;">28歳</td>
+                            <td>29歳</td>
                             <td>🐯 寅（とら）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1997">
                             <td>1997年</td>
                             <td><span class="era-heisei">平成9年</span></td>
                             <td style="font-weight: 700;">29歳</td>
+                            <td>30歳</td>
                             <td>🐮 丑（うし）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1996">
                             <td>1996年</td>
                             <td><span class="era-heisei">平成8年</span></td>
                             <td style="font-weight: 700;">30歳</td>
+                            <td>31歳</td>
                             <td>🐭 子（ね）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1995">
                             <td>1995年</td>
                             <td><span class="era-heisei">平成7年</span></td>
                             <td style="font-weight: 700;">31歳</td>
+                            <td>32歳</td>
                             <td>🐗 亥（い）</td>
+                            <td><span class="badge badge--zen-ato">前厄</span></td>
                         </tr>
                         <tr data-year="1994">
                             <td>1994年</td>
                             <td><span class="era-heisei">平成6年</span></td>
                             <td style="font-weight: 700;">32歳</td>
+                            <td>33歳</td>
                             <td>🐶 戌（いぬ）</td>
+                            <td><span class="badge badge--taiyaku">女大厄</span></td>
                         </tr>
                         <tr data-year="1993">
                             <td>1993年</td>
                             <td><span class="era-heisei">平成5年</span></td>
                             <td style="font-weight: 700;">33歳</td>
+                            <td>34歳</td>
                             <td>🐔 酉（とり）</td>
+                            <td><span class="badge badge--zen-ato">後厄</span></td>
                         </tr>
                         <tr data-year="1992">
                             <td>1992年</td>
                             <td><span class="era-heisei">平成4年</span></td>
                             <td style="font-weight: 700;">34歳</td>
+                            <td>35歳</td>
                             <td>🐵 申（さる）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1991">
                             <td>1991年</td>
                             <td><span class="era-heisei">平成3年</span></td>
                             <td style="font-weight: 700;">35歳</td>
+                            <td>36歳</td>
                             <td>🐏 未（ひつじ）</td>
+                            <td><span class="badge badge--zen-ato">前厄</span></td>
                         </tr>
                         <tr data-year="1990">
                             <td>1990年</td>
                             <td><span class="era-heisei">平成2年</span></td>
                             <td style="font-weight: 700;">36歳</td>
+                            <td>37歳</td>
                             <td>🐴 午（うま）</td>
+                            <td><span class="badge badge--yaku-f">女厄</span></td>
                         </tr>
                         <tr data-year="1989">
                             <td>1989年</td>
                             <td><span class="era-heisei">平成元年</span></td>
                             <td style="font-weight: 700;">37歳</td>
+                            <td>38歳</td>
                             <td>🐍 巳（み）</td>
+                            <td><span class="badge badge--zen-ato">後厄</span></td>
                         </tr>
                         <tr data-year="1988">
                             <td>1988年</td>
                             <td><span class="era-showa">昭和63年</span></td>
                             <td style="font-weight: 700;">38歳</td>
+                            <td>39歳</td>
                             <td>🐲 辰（たつ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1987">
                             <td>1987年</td>
                             <td><span class="era-showa">昭和62年</span></td>
                             <td style="font-weight: 700;">39歳</td>
+                            <td>40歳</td>
                             <td>🐰 卯（う）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1986">
                             <td>1986年</td>
                             <td><span class="era-showa">昭和61年</span></td>
                             <td style="font-weight: 700;">40歳</td>
+                            <td>41歳</td>
                             <td>🐯 寅（とら）</td>
+                            <td><span class="badge badge--zen-ato">前厄</span></td>
                         </tr>
                         <tr data-year="1985">
                             <td>1985年</td>
                             <td><span class="era-showa">昭和60年</span></td>
                             <td style="font-weight: 700;">41歳</td>
+                            <td>42歳</td>
                             <td>🐮 丑（うし）</td>
+                            <td><span class="badge badge--taiyaku">男大厄</span></td>
                         </tr>
                         <tr data-year="1984">
                             <td>1984年</td>
                             <td><span class="era-showa">昭和59年</span></td>
                             <td style="font-weight: 700;">42歳</td>
+                            <td>43歳</td>
                             <td>🐭 子（ね）</td>
+                            <td><span class="badge badge--zen-ato">後厄</span></td>
                         </tr>
                         <tr data-year="1983">
                             <td>1983年</td>
                             <td><span class="era-showa">昭和58年</span></td>
                             <td style="font-weight: 700;">43歳</td>
+                            <td>44歳</td>
                             <td>🐗 亥（い）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1982">
                             <td>1982年</td>
                             <td><span class="era-showa">昭和57年</span></td>
                             <td style="font-weight: 700;">44歳</td>
+                            <td>45歳</td>
                             <td>🐶 戌（いぬ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1981">
                             <td>1981年</td>
                             <td><span class="era-showa">昭和56年</span></td>
                             <td style="font-weight: 700;">45歳</td>
+                            <td>46歳</td>
                             <td>🐔 酉（とり）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1980">
                             <td>1980年</td>
                             <td><span class="era-showa">昭和55年</span></td>
                             <td style="font-weight: 700;">46歳</td>
+                            <td>47歳</td>
                             <td>🐵 申（さる）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1979">
                             <td>1979年</td>
                             <td><span class="era-showa">昭和54年</span></td>
                             <td style="font-weight: 700;">47歳</td>
+                            <td>48歳</td>
                             <td>🐏 未（ひつじ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1978">
                             <td>1978年</td>
                             <td><span class="era-showa">昭和53年</span></td>
                             <td style="font-weight: 700;">48歳</td>
+                            <td>49歳</td>
                             <td>🐴 午（うま）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1977">
                             <td>1977年</td>
                             <td><span class="era-showa">昭和52年</span></td>
                             <td style="font-weight: 700;">49歳</td>
+                            <td>50歳</td>
                             <td>🐍 巳（み）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1976">
                             <td>1976年</td>
                             <td><span class="era-showa">昭和51年</span></td>
                             <td style="font-weight: 700;">50歳</td>
+                            <td>51歳</td>
                             <td>🐲 辰（たつ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1975">
                             <td>1975年</td>
                             <td><span class="era-showa">昭和50年</span></td>
                             <td style="font-weight: 700;">51歳</td>
+                            <td>52歳</td>
                             <td>🐰 卯（う）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1974">
                             <td>1974年</td>
                             <td><span class="era-showa">昭和49年</span></td>
                             <td style="font-weight: 700;">52歳</td>
+                            <td>53歳</td>
                             <td>🐯 寅（とら）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1973">
                             <td>1973年</td>
                             <td><span class="era-showa">昭和48年</span></td>
                             <td style="font-weight: 700;">53歳</td>
+                            <td>54歳</td>
                             <td>🐮 丑（うし）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1972">
                             <td>1972年</td>
                             <td><span class="era-showa">昭和47年</span></td>
                             <td style="font-weight: 700;">54歳</td>
+                            <td>55歳</td>
                             <td>🐭 子（ね）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1971">
                             <td>1971年</td>
                             <td><span class="era-showa">昭和46年</span></td>
                             <td style="font-weight: 700;">55歳</td>
+                            <td>56歳</td>
                             <td>🐗 亥（い）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1970">
                             <td>1970年</td>
                             <td><span class="era-showa">昭和45年</span></td>
                             <td style="font-weight: 700;">56歳</td>
+                            <td>57歳</td>
                             <td>🐶 戌（いぬ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1969">
                             <td>1969年</td>
                             <td><span class="era-showa">昭和44年</span></td>
                             <td style="font-weight: 700;">57歳</td>
+                            <td>58歳</td>
                             <td>🐔 酉（とり）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1968">
                             <td>1968年</td>
                             <td><span class="era-showa">昭和43年</span></td>
                             <td style="font-weight: 700;">58歳</td>
+                            <td>59歳</td>
                             <td>🐵 申（さる）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1967">
                             <td>1967年</td>
                             <td><span class="era-showa">昭和42年</span></td>
                             <td style="font-weight: 700;">59歳</td>
+                            <td>60歳</td>
                             <td>🐏 未（ひつじ）</td>
+                            <td><span class="badge badge--zen-ato">前厄</span></td>
                         </tr>
                         <tr data-year="1966">
                             <td>1966年</td>
                             <td><span class="era-showa">昭和41年</span></td>
                             <td style="font-weight: 700;">60歳</td>
+                            <td>61歳</td>
                             <td>🐴 午（うま）</td>
+                            <td><span class="badge badge--yaku-m">男厄</span><span class="badge badge--yaku-f">女厄</span><span class="badge badge--jubilee">還暦</span></td>
                         </tr>
                         <tr data-year="1965">
                             <td>1965年</td>
                             <td><span class="era-showa">昭和40年</span></td>
                             <td style="font-weight: 700;">61歳</td>
+                            <td>62歳</td>
                             <td>🐍 巳（み）</td>
+                            <td><span class="badge badge--zen-ato">後厄</span></td>
                         </tr>
                         <tr data-year="1964">
                             <td>1964年</td>
                             <td><span class="era-showa">昭和39年</span></td>
                             <td style="font-weight: 700;">62歳</td>
+                            <td>63歳</td>
                             <td>🐲 辰（たつ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1963">
                             <td>1963年</td>
                             <td><span class="era-showa">昭和38年</span></td>
                             <td style="font-weight: 700;">63歳</td>
+                            <td>64歳</td>
                             <td>🐰 卯（う）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1962">
                             <td>1962年</td>
                             <td><span class="era-showa">昭和37年</span></td>
                             <td style="font-weight: 700;">64歳</td>
+                            <td>65歳</td>
                             <td>🐯 寅（とら）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1961">
                             <td>1961年</td>
                             <td><span class="era-showa">昭和36年</span></td>
                             <td style="font-weight: 700;">65歳</td>
+                            <td>66歳</td>
                             <td>🐮 丑（うし）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1960">
                             <td>1960年</td>
                             <td><span class="era-showa">昭和35年</span></td>
                             <td style="font-weight: 700;">66歳</td>
+                            <td>67歳</td>
                             <td>🐭 子（ね）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1959">
                             <td>1959年</td>
                             <td><span class="era-showa">昭和34年</span></td>
                             <td style="font-weight: 700;">67歳</td>
+                            <td>68歳</td>
                             <td>🐗 亥（い）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1958">
                             <td>1958年</td>
                             <td><span class="era-showa">昭和33年</span></td>
                             <td style="font-weight: 700;">68歳</td>
+                            <td>69歳</td>
                             <td>🐶 戌（いぬ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1957">
                             <td>1957年</td>
                             <td><span class="era-showa">昭和32年</span></td>
                             <td style="font-weight: 700;">69歳</td>
+                            <td>70歳</td>
                             <td>🐔 酉（とり）</td>
+                            <td><span class="badge badge--jubilee">古希</span></td>
                         </tr>
                         <tr data-year="1956">
                             <td>1956年</td>
                             <td><span class="era-showa">昭和31年</span></td>
                             <td style="font-weight: 700;">70歳</td>
+                            <td>71歳</td>
                             <td>🐵 申（さる）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1955">
                             <td>1955年</td>
                             <td><span class="era-showa">昭和30年</span></td>
                             <td style="font-weight: 700;">71歳</td>
+                            <td>72歳</td>
                             <td>🐏 未（ひつじ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1954">
                             <td>1954年</td>
                             <td><span class="era-showa">昭和29年</span></td>
                             <td style="font-weight: 700;">72歳</td>
+                            <td>73歳</td>
                             <td>🐴 午（うま）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1953">
                             <td>1953年</td>
                             <td><span class="era-showa">昭和28年</span></td>
                             <td style="font-weight: 700;">73歳</td>
+                            <td>74歳</td>
                             <td>🐍 巳（み）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1952">
                             <td>1952年</td>
                             <td><span class="era-showa">昭和27年</span></td>
                             <td style="font-weight: 700;">74歳</td>
+                            <td>75歳</td>
                             <td>🐲 辰（たつ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1951">
                             <td>1951年</td>
                             <td><span class="era-showa">昭和26年</span></td>
                             <td style="font-weight: 700;">75歳</td>
+                            <td>76歳</td>
                             <td>🐰 卯（う）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1950">
                             <td>1950年</td>
                             <td><span class="era-showa">昭和25年</span></td>
                             <td style="font-weight: 700;">76歳</td>
+                            <td>77歳</td>
                             <td>🐯 寅（とら）</td>
+                            <td><span class="badge badge--jubilee">喜寿</span></td>
                         </tr>
                         <tr data-year="1949">
                             <td>1949年</td>
                             <td><span class="era-showa">昭和24年</span></td>
                             <td style="font-weight: 700;">77歳</td>
+                            <td>78歳</td>
                             <td>🐮 丑（うし）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1948">
                             <td>1948年</td>
                             <td><span class="era-showa">昭和23年</span></td>
                             <td style="font-weight: 700;">78歳</td>
+                            <td>79歳</td>
                             <td>🐭 子（ね）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1947">
                             <td>1947年</td>
                             <td><span class="era-showa">昭和22年</span></td>
                             <td style="font-weight: 700;">79歳</td>
+                            <td>80歳</td>
                             <td>🐗 亥（い）</td>
+                            <td><span class="badge badge--jubilee">傘寿</span></td>
                         </tr>
                         <tr data-year="1946">
                             <td>1946年</td>
                             <td><span class="era-showa">昭和21年</span></td>
                             <td style="font-weight: 700;">80歳</td>
+                            <td>81歳</td>
                             <td>🐶 戌（いぬ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1945">
                             <td>1945年</td>
                             <td><span class="era-showa">昭和20年</span></td>
                             <td style="font-weight: 700;">81歳</td>
+                            <td>82歳</td>
                             <td>🐔 酉（とり）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1944">
                             <td>1944年</td>
                             <td><span class="era-showa">昭和19年</span></td>
                             <td style="font-weight: 700;">82歳</td>
+                            <td>83歳</td>
                             <td>🐵 申（さる）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1943">
                             <td>1943年</td>
                             <td><span class="era-showa">昭和18年</span></td>
                             <td style="font-weight: 700;">83歳</td>
+                            <td>84歳</td>
                             <td>🐏 未（ひつじ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1942">
                             <td>1942年</td>
                             <td><span class="era-showa">昭和17年</span></td>
                             <td style="font-weight: 700;">84歳</td>
+                            <td>85歳</td>
                             <td>🐴 午（うま）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1941">
                             <td>1941年</td>
                             <td><span class="era-showa">昭和16年</span></td>
                             <td style="font-weight: 700;">85歳</td>
+                            <td>86歳</td>
                             <td>🐍 巳（み）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1940">
                             <td>1940年</td>
                             <td><span class="era-showa">昭和15年</span></td>
                             <td style="font-weight: 700;">86歳</td>
+                            <td>87歳</td>
                             <td>🐲 辰（たつ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1939">
                             <td>1939年</td>
                             <td><span class="era-showa">昭和14年</span></td>
                             <td style="font-weight: 700;">87歳</td>
+                            <td>88歳</td>
                             <td>🐰 卯（う）</td>
+                            <td><span class="badge badge--jubilee">米寿</span></td>
                         </tr>
                         <tr data-year="1938">
                             <td>1938年</td>
                             <td><span class="era-showa">昭和13年</span></td>
                             <td style="font-weight: 700;">88歳</td>
+                            <td>89歳</td>
                             <td>🐯 寅（とら）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1937">
                             <td>1937年</td>
                             <td><span class="era-showa">昭和12年</span></td>
                             <td style="font-weight: 700;">89歳</td>
+                            <td>90歳</td>
                             <td>🐮 丑（うし）</td>
+                            <td><span class="badge badge--jubilee">卒寿</span></td>
                         </tr>
                         <tr data-year="1936">
                             <td>1936年</td>
                             <td><span class="era-showa">昭和11年</span></td>
                             <td style="font-weight: 700;">90歳</td>
+                            <td>91歳</td>
                             <td>🐭 子（ね）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1935">
                             <td>1935年</td>
                             <td><span class="era-showa">昭和10年</span></td>
                             <td style="font-weight: 700;">91歳</td>
+                            <td>92歳</td>
                             <td>🐗 亥（い）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1934">
                             <td>1934年</td>
                             <td><span class="era-showa">昭和9年</span></td>
                             <td style="font-weight: 700;">92歳</td>
+                            <td>93歳</td>
                             <td>🐶 戌（いぬ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1933">
                             <td>1933年</td>
                             <td><span class="era-showa">昭和8年</span></td>
                             <td style="font-weight: 700;">93歳</td>
+                            <td>94歳</td>
                             <td>🐔 酉（とり）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1932">
                             <td>1932年</td>
                             <td><span class="era-showa">昭和7年</span></td>
                             <td style="font-weight: 700;">94歳</td>
+                            <td>95歳</td>
                             <td>🐵 申（さる）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1931">
                             <td>1931年</td>
                             <td><span class="era-showa">昭和6年</span></td>
                             <td style="font-weight: 700;">95歳</td>
+                            <td>96歳</td>
                             <td>🐏 未（ひつじ）</td>
+                            <td></td>
                         </tr>
                         <tr data-year="1930">
                             <td>1930年</td>
                             <td><span class="era-showa">昭和5年</span></td>
                             <td style="font-weight: 700;">96歳</td>
+                            <td>97歳</td>
                             <td>🐴 午（うま）</td>
+                            <td></td>
+                        </tr>
+                        <tr data-year="1929">
+                            <td>1929年</td>
+                            <td><span class="era-showa">昭和4年</span></td>
+                            <td style="font-weight: 700;">97歳</td>
+                            <td>98歳</td>
+                            <td>🐍 巳（み）</td>
+                            <td></td>
+                        </tr>
+                        <tr data-year="1928">
+                            <td>1928年</td>
+                            <td><span class="era-showa">昭和3年</span></td>
+                            <td style="font-weight: 700;">98歳</td>
+                            <td>99歳</td>
+                            <td>🐲 辰（たつ）</td>
+                            <td><span class="badge badge--jubilee">白寿</span></td>
+                        </tr>
+                        <tr data-year="1927">
+                            <td>1927年</td>
+                            <td><span class="era-showa">昭和2年</span></td>
+                            <td style="font-weight: 700;">99歳</td>
+                            <td>100歳</td>
+                            <td>🐰 卯（う）</td>
+                            <td><span class="badge badge--jubilee">百寿</span></td>
+                        </tr>
+                        <tr data-year="1926">
+                            <td>1926年</td>
+                            <td><span class="era-showa">昭和元年</span></td>
+                            <td style="font-weight: 700;">100歳</td>
+                            <td>101歳</td>
+                            <td>🐯 寅（とら）</td>
+                            <td></td>
+                        </tr>
+                        <tr data-year="1925">
+                            <td>1925年</td>
+                            <td><span class="era-taisho">大正14年</span></td>
+                            <td style="font-weight: 700;">101歳</td>
+                            <td>102歳</td>
+                            <td>🐮 丑（うし）</td>
+                            <td></td>
+                        </tr>
+                        <tr data-year="1924">
+                            <td>1924年</td>
+                            <td><span class="era-taisho">大正13年</span></td>
+                            <td style="font-weight: 700;">102歳</td>
+                            <td>103歳</td>
+                            <td>🐭 子（ね）</td>
+                            <td></td>
                         </tr>
 
                     </tbody>
@@ -906,6 +1157,8 @@
             // Age display
             const resAge = document.getElementById('res-age');
             const resAgeSub = document.getElementById('res-age-sub');
+            const kazoeAge = age + 1;
+
             resAge.textContent = age + '歳';
             if (birthMonth) {
                 const currentMonth = new Date().getMonth() + 1;
@@ -917,6 +1170,10 @@
             } else {
                 resAgeSub.textContent = '誕生日後の満年齢';
             }
+
+            // Kazoe display
+            document.getElementById('res-kazoe').textContent = kazoeAge + '歳';
+            document.getElementById('res-kazoe-sub').textContent = '元旦からの年齢';
 
             // Eto
             const etoIdx = getEtoIndex(birthYear);
@@ -932,6 +1189,42 @@
             const schoolInfo = getSchoolInfo(birthYear, isHayaumare);
             document.getElementById('res-school').textContent = schoolInfo;
             document.getElementById('res-school-sub').textContent = isHayaumare ? '早生まれ調整済み' : '';
+
+            // Notices (Yakudoshi, Jubilee)
+            const noticesContainer = document.getElementById('res-notices');
+            noticesContainer.innerHTML = '';
+            const notices = [];
+
+            // Yakudoshi check logic
+            const yakuMale = { 25: '男性 本厄', 42: '男性 大厄', 61: '男性 本厄', 24: '男性 前厄', 26: '男性 後厄', 41: '男性 前厄', 43: '男性 後厄', 60: '男性 前厄', 62: '男性 後厄' };
+            const yakuFemale = { 19: '女性 本厄', 33: '女性 大厄', 37: '女性 本厄', 61: '女性 本厄', 18: '女性 前厄', 20: '女性 後厄', 32: '女性 前厄', 34: '女性 後厄', 36: '女性 前厄', 38: '女性 後厄', 60: '女性 前厄', 62: '女性 後厄' };
+
+            let yakuText = [];
+            if (yakuMale[kazoeAge]) yakuText.push(yakuMale[kazoeAge]);
+            if (yakuFemale[kazoeAge]) yakuText.push(yakuFemale[kazoeAge]);
+
+            if (yakuText.length > 0) {
+                notices.push(`<div style="padding: 10px; background: #fff3e0; border-left: 4px solid #ff9800; border-radius: 4px; font-size: 14px;"><strong>【厄年】</strong> 今年は数え年${kazoeAge}歳で、<strong>${yakuText.join(' / ')}</strong> にあたります。</div>`);
+            }
+
+            // Jubilee check logic
+            let jubilee = '';
+            if (age === 60) jubilee = '還暦（満60歳）';
+            else if (kazoeAge === 70) jubilee = '古希（数え70歳）';
+            else if (kazoeAge === 77) jubilee = '喜寿（数え77歳）';
+            else if (kazoeAge === 80) jubilee = '傘寿（数え80歳）';
+            else if (kazoeAge === 88) jubilee = '米寿（数え88歳）';
+            else if (kazoeAge === 90) jubilee = '卒寿（数え90歳）';
+            else if (kazoeAge === 99) jubilee = '白寿（数え99歳）';
+            else if (kazoeAge === 100) jubilee = '百寿（数え100歳）';
+
+            if (jubilee) {
+                notices.push(`<div style="padding: 10px; background: #fff8e1; border-left: 4px solid #f57f17; border-radius: 4px; font-size: 14px;"><strong>【長寿祝い】</strong> 今年は <strong>${jubilee}</strong> のお祝い年です。</div>`);
+            }
+
+            if (notices.length > 0) {
+                noticesContainer.innerHTML = notices.join('');
+            }
 
             // Reset animation trigger
             resultBox.classList.remove('active');

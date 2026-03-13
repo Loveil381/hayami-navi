@@ -123,15 +123,49 @@ function buildAgeTableRows(config) {
   const rows = [];
   for (let year = config.currentYear; year >= config.ageTableRange.start; year -= 1) {
     const age = config.currentYear - year;
+    const kazoeAge = age + 1;
     const wareki = getWareki(year);
     const etoIndex = getEtoIndex(year);
+
+    const badges = [];
+
+    // Yakudoshi
+    if (kazoeAge === 42) badges.push('<span class="badge badge--taiyaku">男大厄</span>');
+    else if (kazoeAge === 25 || kazoeAge === 61) badges.push('<span class="badge badge--yaku-m">男厄</span>');
+    
+    if (kazoeAge === 33) badges.push('<span class="badge badge--taiyaku">女大厄</span>');
+    else if (kazoeAge === 19 || kazoeAge === 37 || kazoeAge === 61) badges.push('<span class="badge badge--yaku-f">女厄</span>');
+
+    if ([18, 24, 32, 36, 41, 60].includes(kazoeAge)) badges.push('<span class="badge badge--zen-ato">前厄</span>');
+    if ([20, 26, 34, 38, 43, 62].includes(kazoeAge)) badges.push('<span class="badge badge--zen-ato">後厄</span>');
+
+    // Chōju Iwai
+    if (age === 60) badges.push('<span class="badge badge--jubilee">還暦</span>');
+    if (kazoeAge === 70) badges.push('<span class="badge badge--jubilee">古希</span>');
+    if (kazoeAge === 77) badges.push('<span class="badge badge--jubilee">喜寿</span>');
+    if (kazoeAge === 80) badges.push('<span class="badge badge--jubilee">傘寿</span>');
+    if (kazoeAge === 88) badges.push('<span class="badge badge--jubilee">米寿</span>');
+    if (kazoeAge === 90) badges.push('<span class="badge badge--jubilee">卒寿</span>');
+    if (kazoeAge === 99) badges.push('<span class="badge badge--jubilee">白寿</span>');
+    if (kazoeAge === 100) badges.push('<span class="badge badge--jubilee">百寿</span>');
+
+    // School
+    if (age === 6) badges.push('<span class="badge badge--school">小1</span>');
+    if (age === 12) badges.push('<span class="badge badge--school">中1</span>');
+    if (age === 15) badges.push('<span class="badge badge--school">高1</span>');
+    if (age === 18) badges.push('<span class="badge badge--school">大1</span>');
+
+    const remarks = badges.length > 0 ? badges.join('') : '';
+
     rows.push(
       [
         `                        <tr data-year="${year}">`,
         `\n                            <td>${year}年</td>`,
         `\n                            <td><span class="${wareki.cls}">${formatWareki(wareki)}</span></td>`,
         `\n                            <td style="font-weight: 700;">${age}歳</td>`,
+        `\n                            <td>${kazoeAge}歳</td>`,
         `\n                            <td>${ETO_ANIMAL[etoIndex]} ${ETO_LIST[etoIndex]}（${ETO_READING[etoIndex]}）</td>`,
+        `\n                            <td>${remarks}</td>`,
         '\n                        </tr>\n',
       ].join('')
     );

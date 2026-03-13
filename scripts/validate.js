@@ -185,7 +185,7 @@ function validateNenreiTable() {
   for (const rowHtml of rows) {
     const yearMatch = rowHtml.match(/data-year="(\d+)"/);
     const cells = extractCells(rowHtml);
-    if (!yearMatch || cells.length !== 4) {
+    if (!yearMatch || cells.length !== 6) {
       failures += 1;
       addResult('FAIL', 'Nenrei table structure', `Malformed row: ${stripTags(rowHtml).slice(0, 80)}`);
       continue;
@@ -195,9 +195,12 @@ function validateNenreiTable() {
     const seireki = Number(cells[0].replace('年', ''));
     const wareki = cells[1];
     const age = Number(cells[2].replace('歳', ''));
-    const etoMatch = cells[3].match(/^(?:[^\s]+\s+)?(.+)（(.+)）$/);
+    const kazoe = Number(cells[3].replace('歳', ''));
+    const etoMatch = cells[4].match(/^(?:[^\s]+\s+)?(.+)（(.+)）$/);
+    const remarks = cells[5];
     const expectedWareki = formatWareki(getWareki(year));
     const expectedAge = config.currentYear - year;
+    const expectedKazoe = expectedAge + 1;
     const etoIndex = (year + 8) % 12;
 
     if (year !== seireki) {
@@ -208,14 +211,37 @@ function validateNenreiTable() {
       failures += 1;
       addResult('FAIL', 'Nenrei age table', `${year}: expected ${expectedAge}歳, got ${cells[2]}`);
     }
+    if (kazoe !== expectedKazoe) {
+      failures += 1;
+      addResult('FAIL', 'Nenrei age table', `${year}: expected ${expectedKazoe}歳 (kazoe), got ${cells[3]}`);
+    }
     if (wareki !== expectedWareki) {
       failures += 1;
       addResult('FAIL', 'Nenrei wareki conversion', `${year}: expected ${expectedWareki}, got ${wareki}`);
     }
     if (!etoMatch || etoMatch[1] !== ETO_LIST[etoIndex] || etoMatch[2] !== ETO_READING[etoIndex]) {
       failures += 1;
-      addResult('FAIL', 'Nenrei eto conversion', `${year}: expected ${ETO_LIST[etoIndex]}（${ETO_READING[etoIndex]}）, got ${cells[3]}`);
+      addResult('FAIL', 'Nenrei eto conversion', `${year}: expected ${ETO_LIST[etoIndex]}（${ETO_READING[etoIndex]}）, got ${cells[4]}`);
     }
+    
+    // Validate some specific badges
+    if (kazoe === 42 && !remarks.includes('男大厄')) {
+      failures += 1;
+      addResult('FAIL', 'Nenrei badges', `${year}: expected 男大厄 badge for 42 kazoe`);
+    }
+    if (age === 60 && !remarks.includes('還暦')) {
+      failures += 1;
+      addResult('FAIL', 'Nenrei badges', `${year}: expected 還暦 badge for 60 age`);
+    }
+    if (age === 6 && !remarks.includes('小1')) {
+      failures += 1;
+      addResult('FAIL', 'Nenrei badges', `${year}: expected 小1 badge for 6 age`);
+    }
+    if (kazoe === 77 && !remarks.includes('喜寿')) {
+      failures += 1;
+      addResult('FAIL', 'Nenrei badges', `${year}: expected 喜寿 badge for 77 kazoe`);
+    }
+    
     if (boundaryYears.has(year)) {
       foundBoundaryYears.add(year);
     }
@@ -225,6 +251,7 @@ function validateNenreiTable() {
     addResult('PASS', 'Nenrei age table', `${rows.length} rows validated`);
     addResult('PASS', 'Nenrei wareki conversion', 'Age table wareki values match config.currentYear logic');
     addResult('PASS', 'Nenrei eto conversion', 'Age table eto values match (year + 8) % 12');
+    addResult('PASS', 'Nenrei badges validation', 'Age table badges for yakudoshi, jubilee, school correctly generated');
   }
 
   for (const boundaryYear of boundaryYears) {

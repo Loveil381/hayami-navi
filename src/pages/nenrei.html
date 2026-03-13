@@ -85,6 +85,11 @@
                         <div class="result-item__sub" id="res-age-sub"></div>
                     </div>
                     <div class="result-item">
+                        <div class="result-item__label">数え年</div>
+                        <div class="result-item__value" id="res-kazoe">--</div>
+                        <div class="result-item__sub" id="res-kazoe-sub"></div>
+                    </div>
+                    <div class="result-item">
                         <div class="result-item__label">干支（えと）</div>
                         <div class="result-item__value" id="res-eto">--</div>
                         <div class="result-item__sub" id="res-eto-sub"></div>
@@ -94,12 +99,14 @@
                         <div class="result-item__value" id="res-wareki">--</div>
                         <div class="result-item__sub" id="res-wareki-sub"></div>
                     </div>
-                    <div class="result-item">
+                    <div class="result-item" style="grid-column: 1 / -1;">
                         <div class="result-item__label">学年</div>
                         <div class="result-item__value" id="res-school" style="font-size:18px;">--</div>
                         <div class="result-item__sub" id="res-school-sub"></div>
                     </div>
                 </div>
+                <!-- 通知バナー領域 -->
+                <div id="res-notices" style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px;"></div>
                 <div style="text-align: center; margin-top: 10px;">
                     <button type="button" id="btn-scroll-table" class="scroll-to-table-btn">▼ 一覧表で確認</button>
                 </div>
@@ -120,7 +127,9 @@
                             <th>西暦</th>
                             <th>和暦</th>
                             <th>年齢</th>
+                            <th>数え年</th>
                             <th>干支</th>
+                            <th>備考</th>
                         </tr>
                     </thead>
                     <tbody id="age-table-body">
@@ -276,6 +285,8 @@
             // Age display
             const resAge = document.getElementById('res-age');
             const resAgeSub = document.getElementById('res-age-sub');
+            const kazoeAge = age + 1;
+
             resAge.textContent = age + '歳';
             if (birthMonth) {
                 const currentMonth = new Date().getMonth() + 1;
@@ -287,6 +298,10 @@
             } else {
                 resAgeSub.textContent = '誕生日後の満年齢';
             }
+
+            // Kazoe display
+            document.getElementById('res-kazoe').textContent = kazoeAge + '歳';
+            document.getElementById('res-kazoe-sub').textContent = '元旦からの年齢';
 
             // Eto
             const etoIdx = getEtoIndex(birthYear);
@@ -302,6 +317,42 @@
             const schoolInfo = getSchoolInfo(birthYear, isHayaumare);
             document.getElementById('res-school').textContent = schoolInfo;
             document.getElementById('res-school-sub').textContent = isHayaumare ? '早生まれ調整済み' : '';
+
+            // Notices (Yakudoshi, Jubilee)
+            const noticesContainer = document.getElementById('res-notices');
+            noticesContainer.innerHTML = '';
+            const notices = [];
+
+            // Yakudoshi check logic
+            const yakuMale = { 25: '男性 本厄', 42: '男性 大厄', 61: '男性 本厄', 24: '男性 前厄', 26: '男性 後厄', 41: '男性 前厄', 43: '男性 後厄', 60: '男性 前厄', 62: '男性 後厄' };
+            const yakuFemale = { 19: '女性 本厄', 33: '女性 大厄', 37: '女性 本厄', 61: '女性 本厄', 18: '女性 前厄', 20: '女性 後厄', 32: '女性 前厄', 34: '女性 後厄', 36: '女性 前厄', 38: '女性 後厄', 60: '女性 前厄', 62: '女性 後厄' };
+
+            let yakuText = [];
+            if (yakuMale[kazoeAge]) yakuText.push(yakuMale[kazoeAge]);
+            if (yakuFemale[kazoeAge]) yakuText.push(yakuFemale[kazoeAge]);
+
+            if (yakuText.length > 0) {
+                notices.push(`<div style="padding: 10px; background: #fff3e0; border-left: 4px solid #ff9800; border-radius: 4px; font-size: 14px;"><strong>【厄年】</strong> 今年は数え年${kazoeAge}歳で、<strong>${yakuText.join(' / ')}</strong> にあたります。</div>`);
+            }
+
+            // Jubilee check logic
+            let jubilee = '';
+            if (age === 60) jubilee = '還暦（満60歳）';
+            else if (kazoeAge === 70) jubilee = '古希（数え70歳）';
+            else if (kazoeAge === 77) jubilee = '喜寿（数え77歳）';
+            else if (kazoeAge === 80) jubilee = '傘寿（数え80歳）';
+            else if (kazoeAge === 88) jubilee = '米寿（数え88歳）';
+            else if (kazoeAge === 90) jubilee = '卒寿（数え90歳）';
+            else if (kazoeAge === 99) jubilee = '白寿（数え99歳）';
+            else if (kazoeAge === 100) jubilee = '百寿（数え100歳）';
+
+            if (jubilee) {
+                notices.push(`<div style="padding: 10px; background: #fff8e1; border-left: 4px solid #f57f17; border-radius: 4px; font-size: 14px;"><strong>【長寿祝い】</strong> 今年は <strong>${jubilee}</strong> のお祝い年です。</div>`);
+            }
+
+            if (notices.length > 0) {
+                noticesContainer.innerHTML = notices.join('');
+            }
 
             // Reset animation trigger
             resultBox.classList.remove('active');
